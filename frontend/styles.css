@@ -1,6 +1,6 @@
 html {
     /* This is done so that 1rem = 10px taking into consideration that default font-size of browser is 16px and then from now on I'll use rem as a length unit. */
-    font-size: 62.5%;
+    /*font-size: 62.5%;*/
   }
   
   * {
@@ -12,8 +12,8 @@ html {
   body {
     font-family: "Rubik", sans-serif;
     line-height: 1;
-    color: #555; /* This is our main text color*/
-    font-weight: 400;
+    /* color: #555;  This is our main text color
+    font-weight: 400;*/
   }
   
   .section-hero {
@@ -33,7 +33,7 @@ html {
     gap: 0 9.6rem;
   }
   
-  .heading-primary {
+  .hero-heading-primary {
     font-size: 5.2rem;
     color: #333;
     font-weight: 700;
