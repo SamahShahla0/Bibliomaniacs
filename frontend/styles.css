@@ -1,8 +1,3 @@
-html {
-  /*This is done so that 1rem = 10px taking into consideration that default font-size of browser is 16px and then from now on I'll use rem as a length unit. */
-  font-size: 62.5%;
-}
-
 *, ::after ,::before{
   box-sizing: border-box;
 }
@@ -28,39 +23,45 @@ ul{
   text-decoration: none;
   list-style: none;
 }
+
+/* ######################################################################################### */
+
 .logo{
-  font-size: 3.5rem;
+  font-size: 2.2rem;
 }
+
+/* ########################################################################################### */
+
 .hero-section {
   background-color: #fdf2e9;
-  padding: 8.4rem 0 9.6rem 0;
+  padding: 84px 0 96px 0;
 }
 
 .hero {
   /* We'll not use px to define the length and will use rem. */
   /* max-width: 1300px; */
-  max-width: 130rem;
+  max-width: 1300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 3.2rem;
+  padding: 0 32px;
   margin: 0 auto;
   align-items: center;
-  gap: 0 9.6rem;
+  gap: 0 96px;
 }
 
 .hero-heading-primary {
-  font-size: 5.2rem;
+  font-size: 52px;
   color: #333;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -5px;
   line-height: 1.05;
-  margin-bottom: 3.6rem;
+  /*margin-bottom: 36px;*/
 }
 
 .hero-description {
-  font-size: 2rem;
+  font-size: 20px;
   line-height: 1.5;
-  margin-bottom: 4.8rem;
+  /*margin-bottom: 48px;*/
 }
 
 .hero-img-box {
@@ -75,14 +76,14 @@ ul{
 .btn:link,
 .btn:visited {
   display: inline-block;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 600;
   font-family: inherit;
   border: none;
   cursor: pointer;
   border-radius: 9px;
   /* margin-top: 4.8rem; */
-  padding: 1.6rem 3.2rem;
+  padding: 16px 32px;
   text-decoration: none;
 
   transition: background-color 500ms;
@@ -117,5 +118,5 @@ ul{
 
 /* We'll create a utility class that can be used for any element by simply adding a class. */
 .margin-right-btn {
-  margin-right: 2.4rem;
+  margin-right: 24px;
 }
