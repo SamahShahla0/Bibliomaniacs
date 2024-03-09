@@ -10,8 +10,7 @@
     font-size: 62.5%;
 }
 body{
-  color: #000000;  /*This is our main text color*/
-  /*font-weight: 400;*/
+  color: #000000; 
 }
 a {
   color: inherit;
@@ -27,19 +26,15 @@ ul{
   list-style: none;
 }
 
-/* part 1 */
-.hero-header{
- 
-}
+/* part 1 (hero - header)-----------------------------------------------------------------------------------------*/
 
-/* logo styling */
-.logo{
-  order: 1;
-  font-size: 2.3rem;
-}
-/* Header styling */
-.header-ribbon-1-nav input[type="checkbox"],
-.header-ribbon-1-nav .hamburger-lines{
+
+/* 1) logo styling */
+
+/* 2) Header styling */
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines,
+.navbar h5{
     display: none;
 }
 
@@ -49,7 +44,7 @@ ul{
   margin: auto;
 }
 
-.header-ribbon-1-nav{
+.navbar{
   box-shadow: 0px 5px 10px 0px #aaa;
   position: fixed;
   width: 100%;
@@ -65,7 +60,10 @@ ul{
   height: 64px;
   align-items: center;
 }
-
+.logo{
+  order: 1;
+  font-size: 2.3rem;
+}
 .menu-items{
   order: 2;
   display: flex;
@@ -77,14 +75,14 @@ ul{
   font-size: 1.3rem;
 }
 
-.header-ribbon-1-nav a{
+.navbar a{
   color: #444;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }
 
-.header-ribbon-1-nav a:hover{
+.navbar a:hover{
   color: #117964;
 }
 
@@ -92,7 +90,7 @@ ul{
 
 .hero-section {
   background-color: #fdf2e9;
-  padding: 84px 0 96px 0;
+  padding: 105px 0 96px 0;
 }
 
 .hero {
@@ -101,7 +99,7 @@ ul{
   max-width: 1300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 32px;
+  padding: 80px 0 32px 0;
   margin: 0 auto;
   align-items: center;
   gap: 0 96px;
@@ -190,21 +188,23 @@ ul{
 
 
 
-/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/ 
-@media (max-width: 768px){
-  .header-ribbon-1-nav{
+/* media queries ------------------------------------------------------------------------------------------*/ 
+@media (max-width: 780px){
+  .navbar{
       opacity: 0.95;
   }
 
   .navbar-container input[type="checkbox"],
   .navbar-container .hamburger-lines{
-      display: block;
+    display: block;
   }
-
+  .navbar h5{
+    display: inline;
+}
   .navbar-container{
       display: block;
       position: relative;
-      height: 64px;
+      height: 70px;
   }
 
   .navbar-container input[type="checkbox"]{
@@ -253,23 +253,22 @@ ul{
       transform-origin: 0% 100%;
       transition: transform 0.3s ease-in-out;
   }
-
-  .header-ribbon-1-nav .menu-items{
+  .navbar .menu-items{
       padding-top: 100px;
       background: #fff;
       height: 100vh;
-      max-width: 300px;
+      max-width: 250px;
       transform: translate(-150%);
       display: flex;
       flex-direction: column;
       margin-left: -40px;
-      padding-left: 40px;
+      padding-left: 20px;
       transition: transform 0.5s ease-in-out;
       box-shadow:  5px 0px 10px 0px #aaa;
       overflow: scroll;
   }
 
-  .header-ribbon-1-nav .menu-items li{
+  .navbar .menu-items li{
       margin-bottom: 1rem;
       font-size: 1.3rem;
       font-weight: 500;
@@ -279,7 +278,7 @@ ul{
       position: absolute;
       top: 16px;
       right: 15px;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
   }
 
   .navbar-container input[type="checkbox"]:checked ~ .menu-items{
