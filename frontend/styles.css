@@ -10,7 +10,8 @@
     font-size: 62.5%;
 }
 body{
-  color: #000000; 
+  color: #000000;
+  font-family: comic sans ms, Bubblegum Sans, cursive;
 }
 a {
   color: inherit;
@@ -28,8 +29,14 @@ ul{
 
 /* part 1 (hero - header)-----------------------------------------------------------------------------------------*/
 
-
 /* 1) logo styling */
+.biblio{
+  color: #273c42
+}
+.maniacs{
+  color: #5E8A8D;
+  font-family: "Rock Salt" , cursive;
+}
 
 /* 2) Header styling */
 .navbar input[type="checkbox"],
@@ -57,7 +64,7 @@ ul{
 .navbar-container{
   display: flex;
   justify-content: space-between;
-  height: 64px;
+  height: 80px;
   align-items: center;
 }
 .logo{
@@ -72,7 +79,7 @@ ul{
 .menu-items li{
   list-style: none;
   margin-left: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .navbar a{
@@ -225,7 +232,7 @@ ul{
       width: 35px;
       position: absolute;
       top: 20px;
-      left: 20px;
+      left: 18px;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -237,7 +244,7 @@ ul{
       height: 5px;
       width: 100%;
       border-radius: 10px;
-      background: #333;
+      background: #5E8A8D;
   }
   
   .navbar-container .hamburger-lines .line1{
@@ -262,7 +269,7 @@ ul{
       display: flex;
       flex-direction: column;
       margin-left: -40px;
-      padding-left: 20px;
+      padding-left: 30px;
       transition: transform 0.5s ease-in-out;
       box-shadow:  5px 0px 10px 0px #aaa;
       overflow: scroll;
@@ -276,9 +283,9 @@ ul{
 
   .logo{
       position: absolute;
-      top: 16px;
-      right: 15px;
-      font-size: 2.3rem;
+      top: 0px;
+      right: 18px;
+      font-size: 2.0rem;
   }
 
   .navbar-container input[type="checkbox"]:checked ~ .menu-items{
@@ -304,7 +311,7 @@ ul{
       display: none;
   }
   .logo {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
   }
 
 }
