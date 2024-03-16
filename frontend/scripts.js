@@ -25,12 +25,3 @@ function showDivs(n) {
   dots[slideIndex-1].className += " w3-white";
 }
 
-/*function showads(){
-    axios.get('http://localhost/ecommerce-project/ecommerce-server/get_ads.php').then((response) => {
-      const data = response.data;
-      data.forEach((ad, i) => {
-        document.getElementById("ad").insertAdjacentHTML('beforebegin', '<img class="mySlides" src="data:image/png;base64,'+ad.ad+'" ></img>')
-        document.getElementById("ad").insertAdjacentHTML('beforeend', '<span class="hero-badge demo hero-border hero-transparent hero-hover-white" onclick="currentDiv('+(i+2)+')"></span>')
-      })
-    })
-  }*/
