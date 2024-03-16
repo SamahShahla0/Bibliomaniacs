@@ -43,6 +43,9 @@ ul{
 }
 
 /* 1.2) Header styling */
+.dummy-nav-place{
+  height: 80px;
+}
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines,
 .navbar h5{
