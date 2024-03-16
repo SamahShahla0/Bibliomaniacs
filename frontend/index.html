@@ -22,9 +22,8 @@
     ></script>
   </head>
   <body>
-    <!--Start header and hero sections-->
     <!-- Start Header section -->
-    <section class="hero-header">
+    <section>
       <header class="header">
         <nav class="navbar">
           <div class="navbar-container container">
@@ -64,18 +63,44 @@
           </div>
         </nav>
       </header>
-      <!-- End Header section -->
-
-      <!--Start hero section-->
-      <section class="hero-section">
-        <div class="hero"></div>
-      </section>
-      <!--End hero section-->
     </section>
-    <!--End header and hero sections-->
+    <!--End header section-->
 
     <!--Start main home sections-->
     <main class="home-main">
+      <!--Start hero section-->
+      <section class="hero-section">
+        <div class="hero-content hero-display-container">
+          <img class="mySlides" src="/images/AOU New Logo.png" />
+          <img class="mySlides" src="/images/color-palette-6.webp" />
+          <img class="mySlides" src="/images/color-palette-7.png" />
+          <div
+            class="hero-center hero-container hero-section hero-large hero-text-white hero-display-bottommiddle"
+            style="width: 100%"
+          >
+            <div class="hero-left hero-hover-text-khaki" onclick="plusDivs(-1)">
+              &#10094;
+            </div>
+            <div class="hero-right hero-hover-text-khaki" onclick="plusDivs(1)">
+              &#10095;
+            </div>
+            <span
+              class="hero-badge demo hero-border hero-transparent hero-hover-white"
+              onclick="currentDiv(1)"
+            ></span>
+            <span
+              class="hero-badge demo hero-border hero-transparent hero-hover-white"
+              onclick="currentDiv(2)"
+            ></span>
+            <span
+              class="hero-badge demo hero-border hero-transparent hero-hover-white"
+              onclick="currentDiv(3)"
+            ></span>
+          </div>
+        </div>
+      </section>
+      <!--End hero section-->
+
       <script
         src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
         type="module"
