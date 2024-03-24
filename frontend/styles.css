@@ -107,6 +107,9 @@ ul{
 /* hero section */
 
 .mySlides {display:none}
+.ad-div{
+  background-color: #5E8A8D;
+}
 .hero-left, .hero-right, .hero-badge {
     cursor:pointer
 }
@@ -121,6 +124,7 @@ ul{
     width: 100%;
     height: 100%;
 }
+
 .hero-display-container:hover{
     display:block
 }
@@ -203,11 +207,14 @@ ul{
   }
   .navbar h5{
     display: inline;
-}
+  }
   .navbar-container{
       display: block;
       position: relative;
       height: 70px;
+  }
+  .dummy-nav-place{
+    height: 70px;
   }
 
   .navbar-container input[type="checkbox"]{
@@ -300,6 +307,10 @@ ul{
       transform: rotate(-45deg);
   }
 
+  .hero-content{
+    height: 20rem;
+  }
+
 }
 
 @media (max-width: 500px){
@@ -308,6 +319,10 @@ ul{
   }
   .logo {
     font-size: 1.8rem;
+  }
+
+  .hero-content{
+    height: 17rem;
   }
 
 }
