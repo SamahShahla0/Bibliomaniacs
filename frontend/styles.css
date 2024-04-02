@@ -108,7 +108,8 @@ ul{
 
 .mySlides {display:none}
 .ad-div{
-  background-color: #5E8A8D;
+  height: 100%;
+  background-color: #3e5263;
 }
 .hero-left, .hero-right, .hero-badge {
     cursor:pointer
@@ -184,13 +185,80 @@ ul{
     border:2px solid #ccc!important;
 }
 
+.hero-overlay {
+  height: 100%;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.3), #38A3A5 );
+  background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.one {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.two{
+  width:  50%;
+}
+
+.img-large{
+  height: 1em;
+  padding: 2rem;
+}
 
 
-/* ########################################################################################### */
+p {
+  font-size: .8725rem;
+  color: #C4CFDA;
+  line-height: 170%;
+}
 
+.tag-line {
+  color: #e7b9a5;
+  text-transform: uppercase;
+}
 
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #e7b9a5;
+  width: 650px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-weight: 700;
+}
 
+.page-description {
+  padding-block: 2em;
+  max-width: 500px;
+}
 
+.hero-button {
+  text-transform: uppercase;
+  background-color: #C4CFDA;
+  color: black;
+  padding: 1em 3em;
+  border: none;
+  cursor: pointer;
+  border-radius: .2em;
+  font-weight: bold;
+  transition: 0.3s ease-out;
+}
+
+.hero-button:hover {
+  box-shadow: 0px 5px 25px rgba(255,255,255,0.25);
+}
+
+/*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
 @media (max-width: 780px){
   .navbar{
