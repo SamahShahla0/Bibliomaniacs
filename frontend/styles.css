@@ -120,10 +120,6 @@ ul{
 .hero-display-container{
     position: relative;
 }
-.hero-display-container img{
-    width: 100%;
-    height: 100%;
-}
 
 .hero-display-container:hover{
     display:block
@@ -190,32 +186,38 @@ ul{
   background-size: cover;
 }
 
-.wrapper {
+.hero-wrapper {
   display: flex;
-  width: 90%;
+  justify-content: space-around;
+  width: 93%;
   height: 100%;
   margin: 0 auto;
 }
 
-.one {
-  height: 100%;
+.hero-wrapper-one {
+  margin-top: 3.5rem;
+  height: fit-content;
+  max-height: 100%;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-
-.two{
-  width:  50%;
+.ad-img{
+  height: 80%;
+  width: 600px;
+  border-radius: 20px;
+  margin-top: 2.5rem;
+  transition: transform .2s;
 }
 
-.img-large{
-  height: 1em;
-  padding: 2rem;
+.ad-img:hover{
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-
-p {
+.hero-wrapper-one p {
   font-size: .8725rem;
   color: #C4CFDA;
   line-height: 170%;
@@ -226,40 +228,64 @@ p {
   text-transform: uppercase;
 }
 
-.title {
-  font-family: 'Playfair Display', serif;
+.ad-title {
   font-size: 3rem;
   color: #e7b9a5;
-  width: 650px;
+  width: auto;
   text-transform: uppercase;
   line-height: 1.2;
   font-weight: 700;
 }
 
-.page-description {
+.ad-description {
   padding-block: 2em;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .hero-button {
+  width: 40%;
+  margin-left: 5rem;
   text-transform: uppercase;
   background-color: #C4CFDA;
-  color: black;
-  padding: 1em 3em;
+  color: #273c42;
+  padding: .5em 1em;
   border: none;
   cursor: pointer;
-  border-radius: .2em;
+  border-radius: 0.8em;
   font-weight: bold;
-  transition: 0.3s ease-out;
+  font-size: large;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.2s;
+  
 }
 
 .hero-button:hover {
-  box-shadow: 0px 5px 25px rgba(255,255,255,0.25);
+  width: 50%;
+  box-shadow: 0px 20px 40px rgba(255,255,255,0.25);
+  color: #38A3A5;
+  background-color: #273c42;
 }
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
-@media (max-width: 780px){
+@media (max-width: 1000px){
+  .hero-content{
+    height: fit-content;
+  }
+  .ad-title{
+    font-size: x-large;
+  }
+
+  .ad-img{
+    height: 17.5rem;
+    width: 25rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+
+}
+@media (max-width: 790px){
   .navbar{
       opacity: 0.95;
   }
@@ -357,6 +383,14 @@ p {
       right: 18px;
       font-size: 2.0rem;
   }
+  .hero-left {
+    margin-top: 20px;
+    font-size: 1.8rem;
+  }
+  .hero-right {
+    margin-top: 20px;
+    font-size: 1.8rem;
+  }
 
   .navbar-container input[type="checkbox"]:checked ~ .menu-items{
       transform: translateX(0);
@@ -375,11 +409,38 @@ p {
   }
 
   .hero-content{
-    height: 20rem;
+    height: 83vh;
   }
 
-}
+  .hero-wrapper {
+    flex-direction: column;
+  }
 
+  .ad-title {
+    font-size: x-large;
+  }
+  
+  .hero-wrapper-one{
+    margin-top: 25px;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .hero-button{
+    font-size: medium;
+    align-self: center;
+    margin: 0;
+  }
+
+  .ad-img{
+    width: 100%;
+    height: 240px;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+    padding-left: 0;
+  }
+
+
+}
 @media (max-width: 500px){
   .navbar-container input[type="checkbox"]:checked ~ .logo{
       display: none;
@@ -387,9 +448,4 @@ p {
   .logo {
     font-size: 1.8rem;
   }
-
-  .hero-content{
-    height: 17rem;
-  }
-
 }
