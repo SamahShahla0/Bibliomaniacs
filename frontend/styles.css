@@ -217,7 +217,7 @@ ul{
 
 .ad-img:hover{
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.7);
 }
 
 .hero-wrapper-one p {
@@ -236,7 +236,7 @@ ul{
   width: auto;
   text-transform: uppercase;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .ad-description {
@@ -339,13 +339,13 @@ ul{
   /*box-shadow: 0px 2px 50px 10px rgba(0, 0, 0, 0.21);*/
  }
  
- .new-books-header {
+ .new-section-header {
   height: 70px;
   width: 100%;
   padding: 0 30px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
  }
- .new-books-header-title {
+ .new-section-header-title {
   font-family: "Rock Salt" , cursive;
   font-size: 2rem;
   font-weight: 800;
@@ -363,21 +363,10 @@ ul{
   width: 40%;
   height: 300px;
   margin-right: 1px;
-  &:nth-child(1) {
-   background-color: #fbadaf;
-  }
-  &:nth-child(2) {
-   background-color: #a4e0eb;
-  }
-  &:nth-child(3) {
-   background-color: #edb9d6;
-  }
-  &:nth-child(4) {
-   background-color: #fdca95;
-  }
-  &:nth-child(5) {
-   background-color: #cbb5e2;
-  }
+  border-style: solid;
+  border-width: 2px;
+  border-color: #273C42;
+  border-radius: 20px;
  }
  
  .flickity-page-dots {
@@ -454,45 +443,69 @@ ul{
   margin-top: 25px;
   text-align: center;
   background-color: #F4F4F4;
-  color: #fbadaf;
+  color:  #273c42;
   font-weight: 600;
   padding: 8px;
   font-size: 14px;
   width: 160px;
   border-radius: 10px;
-  border: 0;
+  border-width: 2px;
+  border-color: #38a3a5;
   transition: all 0.3s ease-in-out;
-  transition-delay: 0.1s;
   &:hover {
-   color: #ff6e72;
+   color:#38a3a5;
    background-color: #273c42;
-   width: 170px;
-  }
-  &.book-blue {
-   color: #a4e0eb;
-   &:hover {
-    color: #22cdec;
-   }
-  }
-  &.book-pink {
-   color: #edb9d6;
-   &:hover {
-    color: #ff6dbe;
-   }
-  }
-  &.book-yellow {
-   color: #fdca95;
-   &:hover {
-    color: #fb9124;
-   }
-  }
-  &.book-purple {
-   color: #cbb5e2;
-   &:hover {
-    color: #a764ec;
-   }
+   width: 180px;
   }
  }
+
+ /* 2.4) our advantages section styling */
+
+ /* our advantages section */
+.our-advantages {
+  width: 100%;
+  height: auto;
+}
+.our-advantages-content{
+  padding: 0 10%;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.row .advantage {
+  padding: 25px 15px;
+  background: transparent;
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.row .advantage:hover {
+  color: #fff;
+  background-color: #5E8A8D ;
+  transform: scale(1.05);
+}
+
+.row .advantage i {
+  color:#38A3A5;
+  margin-bottom: 20px;
+  font-size: 40px;
+  transition: 0.5s;
+}
+
+.row .advantage:hover i {
+  color: #fff;
+}
+
+.row .advantage h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -686,7 +699,7 @@ ul{
   .book-cell {
     width: 80%;
    }
-  .new-books-header-title{
+  .new-section-header-title{
     font-size: 1.5rem;
   }
 
@@ -719,15 +732,21 @@ ul{
   .book-see {
     width: 120px;
     font-size: 13px;
+    &:hover{
+      width: 140px;
+    }
    }
    .book-photo {
     width: 130px;
     height: 200px;
    }
-   .new-books-header{
+   .book-sum{
+    font-size: 12px;
+   }
+   .new-section-header{
     height: 55px;
    }
-   .new-books-header-title {
+   .new-section-header-title {
     font-size: 1.3rem;
    }
 
