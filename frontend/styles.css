@@ -253,7 +253,7 @@ ul{
   padding: .5em 1em;
   border: none;
   cursor: pointer;
-  border-radius: 0.8em;
+  border-radius: 10px;
   font-family: "Rock Salt" , cursive;
   font-weight: bold;
   font-size: medium;
@@ -336,7 +336,6 @@ ul{
   padding-bottom: 25px;
   margin: 0 auto;
   overflow: hidden;
-  background-color: #38A3A5 ;
   /*box-shadow: 0px 2px 50px 10px rgba(0, 0, 0, 0.21);*/
  }
  
@@ -355,14 +354,14 @@ ul{
   width: 100%;
  }
  .book {
-  background: #38A3A5;
+  background:  #F4F4F4;
  }
  .book-cell {
   position: relative;
   display: flex;
   padding: 25px;
   width: 40%;
-  height: 250px;
+  height: 300px;
   margin-right: 1px;
   &:nth-child(1) {
    background-color: #fbadaf;
@@ -429,14 +428,12 @@ ul{
  
  .book-content {
   padding: 0 20px;
-  color: #ffffff;
   overflow: hidden;
  }
  .book-title {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #ffffff;
   font-weight: 600;
  }
  .book-author {
@@ -456,15 +453,20 @@ ul{
  .book-see {
   margin-top: 25px;
   text-align: center;
-  background-color: #fff;
+  background-color: #F4F4F4;
   color: #fbadaf;
   font-weight: 600;
   padding: 8px;
   font-size: 14px;
   width: 160px;
-  border-radius: 20px;
+  border-radius: 10px;
+  border: 0;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
   &:hover {
    color: #ff6e72;
+   background-color: #273c42;
+   width: 170px;
   }
   &.book-blue {
    color: #a4e0eb;
@@ -491,16 +493,6 @@ ul{
    }
   }
  }
- .main-wrapper {
-  width: 100%;
-  display: flex;
-  flex-grow: 1;
-  margin-top: 100px;
-  overflow: hidden;
- }
-
-
-
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
