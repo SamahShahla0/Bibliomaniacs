@@ -77,7 +77,7 @@ ul{
 }
 .logo{
   order: 1;
-  font-size: 2.3rem;
+  font-size: 2.1rem;
 }
 .menu-items{
   order: 2;
@@ -88,7 +88,7 @@ ul{
   font-family: "Rock Salt" , cursive;
   list-style: none;
   margin-left: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .navbar a{
@@ -344,10 +344,11 @@ ul{
   width: 100%;
   padding: 0 30px;
   margin-bottom: 10px;
+  margin-top: 10px;
  }
  .new-section-header-title {
   font-family: "Rock Salt" , cursive;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 800;
  }
  .book-slide {
@@ -506,6 +507,112 @@ ul{
   font-weight: 600;
   margin-bottom: 20px;
 }
+ 
+/* 2.5) styling view all categories section */
+
+/* view categories */
+
+.view-categories-content {
+  display: block;
+  padding: 10px 20px 0;
+}
+
+.view-cat-menu{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.view-cat-menu ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-width: 100%;
+  border: 2px solid;
+  border-color: #273C42;
+  border-radius: 1em;
+  background: #fff;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.view-cat-menu li {
+	list-style:none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.view-cat-menu .icon {
+  display: block;
+  padding: 1em;
+  position: relative;
+  text-decoration: none;
+  border-radius: 5px;
+  overflow: hidden;
+  transition-delay: 0.15s;
+  transition: color 0.4s ease 0.15s;
+}
+
+.view-cat-menu .icon span, .view-cat-menu .icon:before {
+  position: relative;
+  display: block;
+  z-index: 5;
+  transition: transform 0.35s ease-in-out, text-shadow 0.35s ease-in-out;
+}
+
+.view-cat-menu .icon span {
+  width: calc(100% + 1.8em);
+  margin-left: -0.8em;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-family: comic sans ms, Bubblegum Sans, cursive !important;
+  font-weight: 800 !important;
+}
+
+.view-cat-menu .icon:before {
+  width: 2.4em;
+  font:  1.6em/1 FontAwesome;
+  color: #fff;
+  margin: 0.7em auto 1.2em;
+}
+
+.view-cat-menu .icon:after {
+  content: "";
+  display: inline-block;
+  width: 14em;
+  height: 14em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 0 0 -7em;
+  background-color: #5E8A8D ;
+  z-index: 1;
+  border-radius: 100%;
+  transform-origin: 50% 7.5%;
+  transform: scale(0.28);
+  transition: transform 0.35s cubic-bezier(0.83, -0.6, 0.68, 0.99);
+}
+
+.view-cat-menu .icon:hover:after {
+  transform: scale(1) translateY(-3.5em);
+  background-color:#38A3A5 ;
+}
+
+.view-cat-menu.l-rounded .icon {
+  transition-delay: 0s;
+}
+.view-cat-menu.l-rounded .icon:after {
+  transition-duration: 0.25s;
+}
+.view-cat-menu.l-rounded .icon:hover:before {
+  transform: translateY(-0.2em);
+  text-shadow: 0.1em 4px 0 0.3em rgba(0, 0, 0, 0.1);
+}
+.view-cat-menu.l-rounded .icon:hover span {
+  transform: translateY(-1.3em);
+}
+.view-cat-menu.l-rounded .icon:hover:after {
+  transform: scale(0.46) translateY(-0.3em);
+  box-shadow: 0 0.2em 0 0.15em rgba(0, 0, 0, 0.1);
+}
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -623,7 +730,7 @@ ul{
 
   .navbar .menu-items li{
       margin-bottom: 1rem;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 500;
   }
 
@@ -631,7 +738,7 @@ ul{
       position: absolute;
       top: 0px;
       right: 18px;
-      font-size: 2.0rem;
+      font-size: 1.9rem;
   }
   .hero-left {
     margin-top: 20px;
@@ -679,6 +786,7 @@ ul{
     font-size: small;
     align-self: center;
     margin: 0;
+    width: fit-content;
   }
 
   .ad-img{
@@ -703,12 +811,15 @@ ul{
     font-size: 1.5rem;
   }
 
+
 } 
 @media (max-width: 575px) {
   .book-cell {
    width: 100%;
   }
- }
+  .view-cat-menu ul{
+    grid-template-columns: 1fr 1fr;
+  }
  
 
 @media (max-width: 500px){
@@ -716,7 +827,7 @@ ul{
       display: none;
   }
   .logo {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .ad-img{
     height: 25vh;
@@ -747,7 +858,14 @@ ul{
     height: 55px;
    }
    .new-section-header-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
    }
+
+   .view-cat-menu li .icon span{
+    font-size: smaller;
+    font-weight: 600 !important;
+   }
+
+  }
 
 }
