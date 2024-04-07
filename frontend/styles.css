@@ -32,7 +32,7 @@ ul{
   text-decoration: none;
   list-style: none;
 }
-/* color palette: 0) #273C42 1) #5E8A8D  2) #38A3A5 3) #97AEB2  4) #48B89F 5) #84DCC6 6) #A5FFD6  7) #F4F4F4 */
+/* color palette: 0) #273C42 1) #5E8A8D  2) #38A3A5 3)  #ff5e14  4) #48B89F 5) #84DCC6 6) #A5FFD6  7) #F4F4F4 */
 /* part 1 (hero)----------------------------------------------------------------------------------------- */
 
 /* 1.1) logo styling */
@@ -95,13 +95,11 @@ ul{
   color:  #273c42;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease-in-out;
 }
 
 .navbar a:hover{
   color: #38A3A5 ;
 }
-
 /* part 2 (main: home page)-----------------------------------------------------------------------------------------*/
 
 /* 2.1) hero styling */
@@ -227,6 +225,7 @@ ul{
 
 .ad-tag-line {
   text-transform: uppercase;
+  color:  #ff5e14 !important;
 }
 
 .ad-title {
@@ -252,7 +251,7 @@ ul{
   padding: .5em 1em;
   border: none;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: "Rock Salt" , cursive;
   font-weight: bold;
   font-size: medium;
@@ -264,7 +263,7 @@ ul{
 .hero-button:hover {
   width: 50%;
   box-shadow: 0px 20px 40px rgba(255,255,255,0.25);
-  color: #38A3A5;
+  color:  #ff5e14 !important;
   background-color: #273c42;
 }
 
@@ -288,7 +287,7 @@ ul{
   font-size: 22px;
   font-weight: 900;
   text-align: center;
-  color: #38A3A5;
+  color:  #ff5e14 !important;
   margin-bottom: 5px;
   }
   
@@ -296,11 +295,11 @@ ul{
   width: 700px;
   padding: 12px 24px;
   transition: transform 250ms ease-in-out;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 22px;
   color: #38A3A5;
   background-color: transparent;
-
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -448,9 +447,9 @@ ul{
   padding: 8px;
   font-size: 14px;
   width: 160px;
-  border-radius: 10px;
+  border-radius: 20px;
   border-width: 2px;
-  border-color: #38a3a5;
+  border-color: #ff5e14;
   transition: all 0.3s ease-in-out;
   &:hover {
    color:#38a3a5;
@@ -492,7 +491,7 @@ ul{
 }
 
 .row .advantage i {
-  color:#38A3A5;
+  color:  #ff5e14;
   margin-bottom: 20px;
   font-size: 40px;
   transition: 0.5s;
@@ -604,6 +603,7 @@ ul{
 .view-cat-menu.l-rounded .icon:hover:before {
   transform: translateY(-0.2em);
   text-shadow: 0.1em 4px 0 0.3em rgba(0, 0, 0, 0.1);
+  color:  #ff5e14;
 }
 .view-cat-menu.l-rounded .icon:hover span {
   transform: translateY(-1.3em);
