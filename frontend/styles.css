@@ -13,7 +13,7 @@
 body{ 
   color: #273C42 ;
   background-color: #F4F4F4;
-  font-family: comic sans ms, cursive;
+  font-family: comic sans ms, Bubblegum Sans, cursive;
 }
 body::-webkit-scrollbar{
   display: none;
@@ -323,6 +323,7 @@ ul{
   outline: 0;
   border: 1px solid transparent;
   border-bottom: 3px solid #273c42;
+  border-radius: 5px;
   background-position: 98% center;
 }
 
@@ -414,12 +415,12 @@ ul{
  }
  
  .book-content {
-  padding: 0 20px;
-  overflow: hidden;
+  padding: 0 10px;
+ 
  }
  .book-title {
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: wrap;
   overflow: hidden;
   font-weight: 600;
  }
@@ -427,7 +428,7 @@ ul{
   margin-top: 3px;
   font-size: 14px;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: wrap;
   overflow: hidden;
  }
  .book-sum {
@@ -511,7 +512,7 @@ ul{
 
 .view-categories-content {
   display: block;
-  padding: 10px 20px 0;
+  padding: 10px 10px 0;
 }
 
 .view-cat-menu{
@@ -622,12 +623,14 @@ ul{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
-  padding: 10px 20px 0;
+  padding: 10px 10px 0;
 }
 
 .month-deals-content .book-cell{
   width: 350px;
-  height: 250px;
+  height: fit-content;
+  padding: 15px;
+  margin-right: 0;
 }
 .month-deals-content .book-photo{
   height: 200px;
@@ -829,7 +832,7 @@ ins {
    }
 
    .month-deals-content .book-cell {
-      width: min-content;
+      width:auto;
    }
 
    
@@ -1010,7 +1013,6 @@ ins {
 
 
 
-
 } 
 @media (max-width: 575px) {
   .book-cell {
@@ -1019,7 +1021,10 @@ ins {
   .view-cat-menu ul{
     grid-template-columns: 1fr 1fr;
   }
- 
+  .month-deals-content{
+    grid-template-columns: repeat(1,1fr);
+  }
+
 
 @media (max-width: 500px){
   .navbar-container input[type="checkbox"]:checked ~ .logo{
