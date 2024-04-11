@@ -9,12 +9,11 @@
 .html{
     font-size: 62.5%;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
 body{ 
   color: #273C42 ;
   background-color: #F4F4F4;
-  font-family: comic sans ms, Bubblegum Sans, cursive;
+  font-family: comic sans ms, cursive;
 }
 body::-webkit-scrollbar{
   display: none;
@@ -50,8 +49,7 @@ ul{
   height: 80px;
 }
 .navbar input[type="checkbox"],
-.navbar .hamburger-lines,
-.navbar h5{
+.navbar .hamburger-lines{
     display: none;
 }
 
@@ -83,9 +81,11 @@ ul{
   order: 2;
   display: flex;
 }
+.menu-items h5 {
+  display: inline;
+}
 
 .menu-items li{
-  font-family: "Rock Salt" , cursive;
   list-style: none;
   margin-left: 1.5rem;
   font-size: 1.3rem;
@@ -93,12 +93,14 @@ ul{
 
 .navbar a{
   color:  #273c42;
-  text-decoration: none;
   font-weight: 500;
 }
 
 .navbar a:hover{
   color: #38A3A5 ;
+  text-decoration: underline !important;
+  text-underline-offset: 15px;
+  text-decoration-color: #273c42 !important;
 }
 /* part 2 (main: home page)-----------------------------------------------------------------------------------------*/
 
@@ -295,11 +297,11 @@ ul{
   width: 700px;
   padding: 12px 24px;
   transition: transform 250ms ease-in-out;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 22px;
   color: #38A3A5;
-  background-color: transparent;
+  background-color:#fff;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 18px 18px;
@@ -321,8 +323,7 @@ ul{
   outline: 0;
   border: 1px solid transparent;
   border-bottom: 3px solid #273c42;
-  border-radius: 0;
-  background-position: 100% center;
+  background-position: 98% center;
 }
 
 /* 2.3) New books section styling */
@@ -352,9 +353,6 @@ ul{
  .book-slide {
   width: 100%;
  }
- .book {
-  background:  #F4F4F4;
- }
  .book-cell {
   position: relative;
   display: flex;
@@ -362,6 +360,7 @@ ul{
   width: 40%;
   height: 300px;
   margin-right: 1px;
+  background: #fff;
   border-style: solid;
   border-width: 2px;
   border-color: #273C42;
@@ -398,7 +397,7 @@ ul{
  
  .book-photo {
   width: 180px;
-  height: 280px;
+  height: 250px;
   flex-shrink: 0;
   bottom: -35px;
   left: 35px;
@@ -613,17 +612,50 @@ ul{
   box-shadow: 0 0.2em 0 0.15em rgba(0, 0, 0, 0.1);
 }
 
+/* Styling Deals Of The month Section */
 
+/* Deals of the month section */
+.month-deals{
+  margin-top: 20px;
+}
+.month-deals-content{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  padding: 10px 20px 0;
+}
 
-
-
+.month-deals-content .book-cell{
+  width: 350px;
+  height: 250px;
+}
+.month-deals-content .book-photo{
+  height: 200px;
+  width: 150px;
+  cursor: pointer;
+}
+.month-deals-content .book-see{
+  width: fit-content;
+  &:hover{
+    width: 120px;
+  }
+}
+del{
+  color: #ff5e14;
+}
+ins {
+  color:  #38A3A5 ;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 1em 1em 1em .5em;
+}
 
 
 /* Styling Footer Section */
 
 /* Footer section */
 .footer-section {
-  background-image: linear-gradient(180deg, #273C42 , #6acbcd);
+  background-image: linear-gradient(180deg, #273C42 , #38A3A5 );
   background-size: cover;
   position: relative;
 }
@@ -713,7 +745,6 @@ ul{
 }
 .footer-widget ul li {
   color: #F4F4F4;
-  display: inline-block;
   float: left;
   width: 50%;
   margin-bottom: 12px;
@@ -792,6 +823,16 @@ ul{
   .book-cell {
     width: 60%;
    }
+
+   .month-deals-content{
+    grid-template-columns: 1fr 1fr;
+   }
+
+   .month-deals-content .book-cell {
+      width: min-content;
+   }
+
+   
 
 }
 @media (max-width: 790px){
@@ -892,6 +933,10 @@ ul{
       right: 18px;
       font-size: 1.9rem;
   }
+
+  .footer-logo .logo{
+    position: inherit;
+  }
   .hero-left {
     margin-top: 20px;
     font-size: 1.8rem;
@@ -962,6 +1007,8 @@ ul{
   .new-section-header-title{
     font-size: 1.5rem;
   }
+
+
 
 
 } 
