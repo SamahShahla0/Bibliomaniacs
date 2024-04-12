@@ -438,7 +438,7 @@ ul{
   display: -webkit-box;
  }
  
- .book-see {
+ .btn{
   margin-top: 25px;
   text-align: center;
   background-color: #F4F4F4;
@@ -637,7 +637,7 @@ ul{
   width: 150px;
   cursor: pointer;
 }
-.month-deals-content .book-see{
+.month-deals-content .btn{
   width: fit-content;
   &:hover{
     width: 120px;
@@ -853,8 +853,8 @@ ins {
 
 /*sign in up page*/
 .sign-in-up-main{
-  background-color: #c9d6ff;
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background-color: #38A3A5;
+  background: linear-gradient(to right, #e2e2e2, #38A3A5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -863,7 +863,7 @@ ins {
 }
 
 .sign-container{
-  background-color: #fff;
+  background-color: #F4F4F4;
   border-radius: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
   position: relative;
@@ -885,33 +885,13 @@ ins {
 }
 
 .sign-container a{
-  color: #333;
   font-size: 13px;
   text-decoration: none;
   margin: 15px 0 10px;
 }
 
-.sign-container button{
-  background-color: #512da8;
-  color: #fff;
-  font-size: 12px;
-  padding: 10px 45px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.sign-container button.hidden{
-  background-color: transparent;
-  border-color: #fff;
-}
-
 .sign-container form{
-  background-color: #fff;
+  background-color: #F4F4F4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -920,8 +900,13 @@ ins {
   height: 100%;
 }
 
+.sign-container h1{
+  font-family: "Rock Salt" , cursive;
+  font-size: larger;
+}
+
 .sign-container input{
-  background-color: #eee;
+  background-color: #ccc;
   border: none;
   margin: 8px 0;
   padding: 10px 15px;
@@ -929,6 +914,10 @@ ins {
   border-radius: 8px;
   width: 100%;
   outline: none;
+}
+
+.sign-container input:focus{
+  border: 2px solid #ff5e14;
 }
 
 .sign-form-container{
@@ -983,7 +972,7 @@ ins {
   overflow: hidden;
   transition: all 0.6s ease-in-out;
   border-radius: 150px 0 0 100px;
-  z-index: 1000;
+  z-index: 50;
 }
 
 .sign-container.active .sign-toggle-container{
@@ -992,9 +981,9 @@ ins {
 }
 
 .sign-toggle{
-  background-color: #512da8;
+  background-color: #273C42;
   height: 100%;
-  background: linear-gradient(to right, #5c6bc0, #512da8);
+  background: linear-gradient(to right, #38A3A5, #273C42);
   color: #fff;
   position: relative;
   left: -100%;
@@ -1250,6 +1239,9 @@ ins {
     font-size: 1.5rem;
   }
 
+  .sign-container h1{
+    font-size: medium;
+  }
 
 
 } 
@@ -1284,7 +1276,7 @@ ins {
     width: 180px;
    }
 
-  .book-see {
+  .btn {
     width: 120px;
     font-size: 13px;
     &:hover{

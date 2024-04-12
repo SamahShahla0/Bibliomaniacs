@@ -8,10 +8,6 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-    />
-    <link
-      rel="stylesheet"
       type="text/css"
       href="//fonts.googleapis.com/css?family=Rock+Salt"
     />
@@ -28,7 +24,6 @@
       src="https://kit.fontawesome.com/cbe57ec8d5.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   </head>
 </html>
 <body class="sign-page">
@@ -82,10 +77,11 @@
       <div class="sign-form-container sign-up">
         <form>
           <h1>Create Account</h1>
-          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Last Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <button class="btn">Sign Up</button>
         </form>
       </div>
       <div class="sign-form-container sign-in">
@@ -94,7 +90,7 @@
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <a href="#">→ Forget Your Password? ←</a>
-          <button>Sign In</button>
+          <button class="btn">Sign In</button>
         </form>
       </div>
       <div class="sign-toggle-container">
@@ -102,14 +98,14 @@
           <div class="sign-toggle-panel sign-toggle-left">
             <h1>Welcome Back!</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button class="hidden" id="login">Sign In</button>
+            <button class="btn hidden" id="login">Sign In</button>
           </div>
           <div class="sign-toggle-panel sign-toggle-right">
             <h1>Hello, Friend!</h1>
             <p>
               Register with your personal details to use all of site features
             </p>
-            <button class="hidden" id="register">Sign Up</button>
+            <button class="btn hidden" id="register">Sign Up</button>
           </div>
         </div>
       </div>
