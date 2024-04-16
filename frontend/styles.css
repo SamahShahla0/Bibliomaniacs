@@ -1167,11 +1167,32 @@ ins {
 
 /*about us services page - services section*/
 .services-section{
-	font-family: "Poppins", sans-serif;
-	background-color: #e6edf7;
-	color: #202020;
-	padding-top: 115px;
-    padding-bottom: 120px;
+  display: block;
+	background-color: #F4F4F4;
+	padding-top: 50px;
+  padding-bottom: 120px;
+  text-align: left;
+}
+
+.services-section .container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.services-section .justify-center{
+  text-align: center !important;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center !important;
+}
+
+.services-section .no-gap-here{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px;
 }
 
 .services-section .services-header {
@@ -1180,10 +1201,13 @@ ins {
 
 .services-section .services-header .title {
 	position: relative;
-    padding-bottom: 14px;
-    margin-bottom: 25px;
-	font-weight: 700;
-    font-size: 32px;
+  padding-bottom: 14px;
+  margin-bottom: 25px;
+  font-size:40px;
+  font-family: "Rock Salt" , cursive;
+  line-height: 1.28em;
+  color: #273C42;
+  font-weight: 600;
 }
 
 .services-section .services-header .title:before {
@@ -1192,31 +1216,17 @@ ins {
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 50px;
+	width: 200px;
 	height: 3px;
-	background-color: #ff4500;
-    border-radius: 3px;
+	background-color: #38A3A5;
 }
 
-.services-section .services-header .title:after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-    transform: translateX(30px);
-	width: 10px;
-	height: 3px;
-	background-color: #504f93;
-    border-radius: 3px;
-}
 
 .services-section .services-header .description {
-	font-size: 14px;
-    color: #282828;
-}
-
-.services-section .no-gap-here{
-  gap: 0px !important;
+  font-size: 16px;
+  line-height: 26px;
+  color: #848484;
+  font-weight: 400;
 }
 
 .services-section .single-service {
@@ -1224,6 +1234,7 @@ ins {
     margin-top: 30px;
     background-color: #fff;
     border-radius: 10px;
+    border: 1px solid #273C42;
     padding: 40px 30px;
     overflow: hidden;
 }
@@ -1240,8 +1251,8 @@ ins {
     transform: translate(40%, -40%);
     width: 150px;
     height: 150px;
-    background-color: #ff4500;
-    border: 6px solid #504f93;
+    background-color: #38A3A5;
+    border: 6px solid #ff4500;
     border-radius: 50%;
     opacity: 0.5;
     z-index: 10;
@@ -1262,7 +1273,7 @@ ins {
 	margin-bottom: 26px;
     width: 70px;
     height: 70px;
-    background-color: #ff4500;
+    background-color: #ff5e14;
     border-radius: 5px;
     line-height: 70px;
     text-align: center;
@@ -1273,14 +1284,14 @@ ins {
 
 .services-section .single-service:hover .icon {
 	background-color: #fff;
-	color: #ff4500;
+	color: #ff5e14;
 }
 
 .services-section .single-service .title {
-    margin-bottom: 18px;
-	font-weight: 700;
-    font-size: 23px;
-    transition: color .3s;
+  margin-bottom: 18px;
+	font-weight: 500;
+  font-size: 23px;
+  transition: color .3s;
 }
 
 .services-section .single-service:hover .title {
@@ -1289,7 +1300,10 @@ ins {
 
 .services-section .single-service .description {
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #848484;
+    font-weight: 400;
     transition: color .3s;
 }
 
@@ -1301,6 +1315,11 @@ ins {
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
+@media (min-width: 1200px){
+.services-section .container {
+    max-width: 1140px;
+  }
+}
 @media (max-width: 1100px){
   .hero-content{
     height: fit-content;
@@ -1336,6 +1355,12 @@ ins {
 
    
 
+}
+@media (max-width: 1020px) {
+  .services-section .no-gap-here{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
 }
 @media (max-width: 790px){
   .navbar{
@@ -1529,7 +1554,7 @@ ins {
     font-size: medium;
   }
 
-  .sec-title h2{
+  .sec-title h2, .services-section .services-header .title{
     font-size: 24px;
   }
   .about-section .image-column .inner-column .author-desc h2{
@@ -1538,7 +1563,12 @@ ins {
   .about-section .image-column .inner-column .author-desc span{
     font-size: x-small;
   }
-
+  .services-section .single-service .title{
+    font-size: 18px;
+  }
+  .services-section .single-service .description{
+    font-size: 16px;
+  }
 
 } 
 
@@ -1553,7 +1583,11 @@ ins {
     grid-template-columns: repeat(1,1fr);
   }
 
+  .services-section .no-gap-here{
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
 
+}
 @media (max-width: 500px){
   .logo {
     font-size: 1.6rem;
@@ -1595,6 +1629,5 @@ ins {
     font-weight: 600 !important;
    }
 
-  }
-
 }
+
