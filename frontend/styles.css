@@ -1252,7 +1252,7 @@ ins {
     width: 150px;
     height: 150px;
     background-color: #38A3A5;
-    border: 6px solid #ff4500;
+    border: 6px solid #ff5e14;
     border-radius: 50%;
     opacity: 0.5;
     z-index: 10;
@@ -1311,6 +1311,91 @@ ins {
 	color: #fff;
 }
 
+/*########################################################################################### */
+/* Start styling terms and conditions privacy page */
+
+/*terms and conditions privacy page terms and conditions section */
+.terms-and-conditions-privacy-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.terms-and-conditions-privacy{
+  border-radius: 3px;
+  height: auto;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #848484;
+}
+
+.terms-and-conditions-privacy-heading{
+  margin-top: 70px;
+  margin-bottom: 15px;
+  font-size: 32px;
+  font-family: "Rock Salt" , cursive;
+  color: #273c42;
+}
+.termsParagraphIntro{
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.terms-Welcome{
+  font-weight: 800;
+  color: #273c42;
+}
+.termsLeadingSection{
+  width: 83%;
+  margin-top: 15px;
+  margin-bottom:15px;
+}
+.sn{
+  font-size: 32px;
+  padding-right: 5px;
+  color: #38A3A5;
+}
+.st{
+  font-size: 32px;
+  color: #38A3A5;
+}
+.spl{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.termInfoContainer{
+  position:relative;
+  width: 100%;    
+}
+.termLead{
+  font-weight: 700;
+  margin-left: 15px;  
+  margin-top: 15px;
+  margin-block-end: 5px;  
+  font-size: 16px;
+}
+.termDetails{
+  margin-left: 15px;
+}
+
+.secionLine{
+  height: 40px;
+  width:5px;
+  position:absolute;
+  top: 3px;
+}
+.Orange{
+  color: #ff5e14;
+}
+.lineColorGreen{
+  background-image: linear-gradient(to right bottom, #84DCC6, #38A3A5);
+}
+.lineColorOrange{
+  background-image: linear-gradient(to right bottom, #ffb900, #ff5e14);
+}
 
 
 /*########################################################################################### */
@@ -1585,6 +1670,10 @@ ins {
 
   .services-section .no-gap-here{
     grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  .terms-and-conditions-privacy-heading , .sn , .st {
+    font-size: 24px;
   }
 
 }
