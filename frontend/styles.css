@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 *,
 *::after,
 *::before{
@@ -13,7 +15,7 @@
 body{ 
   color: #273C42 ;
   background-color: #F4F4F4;
-  font-family: comic sans ms, Bubblegum Sans, cursive;
+  font-family: comic sans ms, "Comic Neue", cursive;
 }
 body::-webkit-scrollbar{
   display: none;
@@ -83,17 +85,14 @@ ul{
 }
 .menu-items h5 {
   display: inline;
+  font-weight: inherit;
+  font-size: inherit;
 }
 
 .menu-items li{
   list-style: none;
   margin-left: 1.5rem;
-  font-size: 1.3rem;
-}
-
-.navbar a{
-  color:  #273c42;
-  font-weight: 500;
+  font-size: 18px;
 }
 
 .navbar a:hover{
@@ -561,7 +560,7 @@ ul{
   margin-left: -0.8em;
   overflow: hidden;
   text-transform: uppercase;
-  font-family: comic sans ms, Bubblegum Sans, cursive !important;
+  font-family: comic sans ms, "Comic Neue", cursive;
   font-weight: 800 !important;
 }
 
@@ -1032,7 +1031,7 @@ ins {
 /*########################################################################################### */
 /* Start styling About us services page */
 
-/*about us services page*/
+/*about us services page about us section */
 .about-section{
   position: relative;
   padding: 70px 0;
@@ -1166,6 +1165,10 @@ ins {
   height: 100%;
 }
 
+/*about us services page - services section*/
+
+
+
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -1211,7 +1214,7 @@ ins {
   }
 
   .navbar i{
-    color: #38A3A5;
+    color: #ff5e14;
   }
 
   .navbar-container input[type="checkbox"],
@@ -1247,7 +1250,7 @@ ins {
       height: 28px;
       width: 35px;
       position: absolute;
-      top: 20px;
+      top: 18px;
       left: 18px;
       z-index: 2;
       display: flex;
@@ -1257,10 +1260,10 @@ ins {
 
   .navbar-container .hamburger-lines .line{
       display: block;
-      height: 4px;
+      height: 3px;
       width: 100%;
       border-radius: 10px;
-      background: #5E8A8D;
+      background: #38A3A5;
   }
   
   .navbar-container .hamburger-lines .line1{
@@ -1278,14 +1281,15 @@ ins {
   }
   .navbar .menu-items{
       padding-top: 100px;
-      background: #fff;
+      background: linear-gradient(180deg, #273c42, #38A3A5);
       height: 100vh;
-      max-width: 250px;
+      width: 100vw;
       transform: translate(-150%);
       display: flex;
       flex-direction: column;
-      margin-left: -40px;
-      padding-left: 30px;
+      align-items: center;
+      justify-content: first baseline;
+      margin-left: -9px;
       transition: transform 0.5s ease-in-out;
       box-shadow:  5px 0px 10px 0px #aaa;
       overflow: scroll;
@@ -1293,8 +1297,13 @@ ins {
 
   .navbar .menu-items li{
       margin-bottom: 1rem;
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-size: 20px;
+      font-weight: normal;
+  }
+  .navbar a{
+    color: #F4F4F4;
+    letter-spacing: 5px;
+    line-height: 10px;
   }
 
   .logo{
@@ -1314,6 +1323,10 @@ ins {
   .hero-right {
     margin-top: 20px;
     font-size: 1.8rem;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .logo{
+    display: none;
   }
 
   .navbar-container input[type="checkbox"]:checked ~ .menu-items{
@@ -1413,9 +1426,6 @@ ins {
 
 
 @media (max-width: 500px){
-  .navbar-container input[type="checkbox"]:checked ~ .logo{
-      display: none;
-  }
   .logo {
     font-size: 1.6rem;
   }
