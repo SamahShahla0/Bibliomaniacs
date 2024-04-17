@@ -6,6 +6,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 .html{
@@ -1414,6 +1415,90 @@ ins {
 
 
 /*########################################################################################### */
+/* Start styling single article page */
+
+/* single article page */
+.main-article {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  min-height: 100%;
+}
+.article-banner {
+  width: 100%;
+  filter: grayscale(95%);
+}
+.article-banner img {
+  height: 70vh;
+  width: 100%;
+  display: block;
+}
+
+.article-banner:hover {
+  filter: grayscale(0);
+}
+#articleHeader {
+  font-family: "Rock Salt" , cursive;
+  background-color: #fff;
+  height: fit-content;
+  padding: 15px;
+  border: solid 2px #273c42;
+  margin: 15px 1rem 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.article-content {
+  padding: 15px 7rem;
+  font-size: 18px;
+}
+#Quote {
+  line-height: 1.2em;
+  font-size: 22px;
+  column-span: all;
+  margin: 15px 0;
+  padding: 0.6rem;
+  margin-left: 5px;
+  border: 5px solid #38A3A5;
+}
+.quote-effect {
+  opacity: 0.5;
+  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+.quote-effect:hover {
+  opacity: 1;
+}
+.article-content p{
+  margin: 15px 0;
+}
+.article-simpleQuote {
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-left: 5px solid #ff5e14;
+}
+
+#articleFooter {
+  margin: 0 6rem 20px 6rem;
+  font-size: 1rem;
+  border-top: solid 1px #ccc;
+}
+.footer-anchor {
+  text-decoration: underline #ff5e14 !important;
+  transition: text-decoration-color 300ms;
+  color: #000;
+  font-weight: bold;
+}
+.footer-anchor:hover {
+  color: #38A3A5;
+  text-decoration-color: #273C42;
+}
+
+
+
+/*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
 @media (min-width: 1200px){
 .services-section .container {
@@ -1669,6 +1754,12 @@ ins {
   .services-section .single-service .description{
     font-size: 16px;
   }
+  .article-content {
+    padding: 0 2rem;
+  }
+  #articleFooter {
+    margin: 0 2rem;
+  }
 
 } 
 
@@ -1689,6 +1780,11 @@ ins {
 
   .terms-and-conditions-privacy-heading , .sn , .st {
     font-size: 24px;
+  }
+  #articleHeader{
+    font-size: 18px;
+    margin-bottom: 1rem;
+    padding: 8px;
   }
 
 }
@@ -1732,6 +1828,22 @@ ins {
     font-size: smaller;
     font-weight: 600 !important;
    }
+   #articleHeader {
+    font-size: 18px;
+  }
+  .article-content {
+    padding: 0 1rem;
+    font-size: 14px;
+  }
+  #Quote {
+    font-size: 16px;
+    padding: 0.2rem;
+    border: 2px solid #38A3A5;
+  }
+  #articleFooter {
+    margin: 0 1rem;
+    line-height: 1.2;
+  }
 
 }
 
