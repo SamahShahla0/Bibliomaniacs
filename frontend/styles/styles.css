@@ -1496,7 +1496,171 @@ ins {
   text-decoration-color: #273C42;
 }
 
+/*########################################################################################### */
+/* Start styling contact us page */
 
+/* contact us page */
+
+.contact-us-main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.8), #38A3A5 );
+  position: relative;
+}
+
+.contact-us-main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.contact-us-main section {
+  position: relative;
+  z-index: 3;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.contact-us-main .container {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contact-us-main .section-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.contact-us-main .section-header h2 {
+  font-family: "Rock Salt" , cursive;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.contact-us-main .section-header p {
+  color: #FFF;
+}
+
+.contact-us-main .row  {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-us-main .contact-info {
+  width: 40%;
+}
+
+.contact-us-main .contact-info-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.contact-us-main .contact-info-icon {
+  height: 70px;
+  width: 70px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.contact-us-main .contact-info-icon i {
+  font-size: 30px;
+  line-height: 70px;
+  color: #38A3A5;
+}
+
+.contact-us-main .contact-info-content {
+  margin-left: 20px;
+}
+
+.contact-us-main .contact-info-content h4 {
+  font-family: "Rock salt", cursive;
+  color: #ff5e14;
+  font-size: 1.4em;
+  margin-bottom: 5px;
+}
+
+.contact-us-main .contact-info-content p {
+  color: #FFF;
+  font-size: 1em;
+}
+
+.contact-us-main .contact-form {
+  background-color: #fff;
+  padding: 40px;
+  width: 55%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.contact-us-main .contact-form h2 {
+  font-family: "Rock salt", cursive;
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #273C42;
+}
+
+.contact-us-main .contact-form .input-box {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+.contact-us-main .contact-form .input-box input,
+.contact-us-main .contact-form .input-box textarea{
+  width: 100%;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #273C42;
+  outline: none;
+  resize: none;
+}
+
+.contact-us-main .contact-form .input-box span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: #666;
+}
+
+.contact-us-main .contact-form .input-box input:focus ~ span,
+.contact-form .input-box textarea:focus ~ span{
+  color: #ff5e14;
+  font-size: 12px;
+  transform: translateY(-20px);
+}
+
+.contact-us-main .contact-form .input-box input[type="submit"]{
+  width: 80%;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 18px;
+  transition: 0.5s;
+  border: 2px solid #38A3A5;
+}
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -1544,6 +1708,24 @@ ins {
 @media (max-width: 1020px) {
   .services-section .no-gap-here{
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+ 
+  .contact-us-main section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .contact-us-main .row {
+    flex-direction: column;
+  }
+  
+  .contact-us-main .contact-info {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .contact-us-main .contact-form {
+    width: 100%;
   }
   
 }
