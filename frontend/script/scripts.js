@@ -33,6 +33,9 @@ if(pPath == "index.html"){
 else if(pPath == "sign-in-up.html"){
   signPage()
 }
+else if(pPath == "cart.html"){
+  cartPage()
+}
 
 
 // Define functions for each page
@@ -60,3 +63,18 @@ function signPage() {
   });
 }
 
+
+function cartPage() {
+  // Remove Items From Cart
+$('a.remove').click(function(){
+  e.preventDefault();
+  $( this ).parent().parent().parent().hide( 400 );
+ 
+})
+
+// Just for testing, show all items
+  $('a.btn.continue').click(function(){
+    $('li.items').show(400);
+  })
+
+}
