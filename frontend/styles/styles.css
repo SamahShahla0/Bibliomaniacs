@@ -1664,13 +1664,15 @@ ins {
 
 
 /*##########################################################################################*/ 
-.cf:before,.cf:after
- {
+/* Start styling cart page */
+
+/* cart page */
+
+.cf:before,.cf:after{
   content: " ";
   display: table;
 }
-.cf:after 
-{
+.cf:after {
   clear: both;
 }
 
@@ -1684,40 +1686,40 @@ ins {
 
 .cart-heading {
   padding: 1em 0;
-  border-bottom: 1px solid #D0D0D0;
+  border-bottom: 1px solid #273C42;
 }
  
 .cart-heading h1 {
-   font-size: 2em;
-   float: left;
-  }
+  font-size: 2em;
+  float: left;
+  font-family: "Rock Salt", cursive;
+}
 .cart-heading  a{
-    &:link , &:visited {
-      text-decoration: none;
-      letter-spacing: -.015em;
-      font-size: .75em;
-      padding: 1em;
-      color: #fff;
-      background: #82ca9c;
-      font-weight: bold;
-      border-radius: 50px;
-      float: right;
-      text-align: right;
-       
+  text-decoration: none;
+  padding: 0.8em;
+  margin-top: 15px;
+  color: #F4F4F4;
+  background: #273C42;
+  border-radius: 50px;
+  border: 1px solid #ff5e14;
+  float: right;
+  text-align: right;
+
+  &:after {
+    content: "\276f";
+    padding: .5em;
+    position: relative;
+    right:0; 
+  }
+  
+  &:hover , &:focus, &:active {
+    background: #38A3A5;
+    color: #273C42;
     &:after {
-      content: "\276f";
-      padding: .5em;
-      position: relative;
-      right:0; 
-    }
-    &:hover , &:focus, &:active {
-      background: #f69679;
-      
-      &:after {
-        right: -10px;
-      }
+      right: -10px;
     }
   }
+  
 }
 
 .cart {
@@ -1726,9 +1728,9 @@ ins {
     display: block;
     width: 100%;
     padding: 1.5em;
-    border-bottom: 1px solid #fafafa;
-    &.even {
-      background: #fafafa;
+    border-bottom: 1px solid #D0D0D0;
+    &:last-child{
+      border-bottom: 1px solid #273C42;
     }
     .infoWrap {
       display: table;
@@ -1742,9 +1744,7 @@ ins {
         color: #777;
         margin-bottom: .5em;
       }
-      
       h3 {
-   
         font-size: 1em;
         font-weight: bold;
         text-transform: uppercase;
@@ -1755,18 +1755,18 @@ ins {
         font-size: .85em;
         
         color: #777777;
-        .quantity {
+        .cart-qty {
           font-weight: bold;
           color: #333;
         }
         
         &.stockStatus {
-          color: #82CA9C;
+          color: #38A3A5;
           font-weight: bold;
           padding: .5em 0 0 1em;
           text-transform: uppercase;
           &.out {
-            color: #F69679;
+            color: #ff5e14;
           }
         }
         
@@ -1775,7 +1775,7 @@ ins {
         width: 4em;
         float: left;
       }
-      &.qtyWrap , &.prodTotal {
+      &.prodTotal {
         text-align: center;
         p {
           font-weight: bold;
@@ -1784,7 +1784,7 @@ ins {
        
       }
       
-    input.qty {
+    input.cart-qty {
         width: 2em;
         text-align: center;
         font-size: 1em;
@@ -1799,29 +1799,14 @@ ins {
     }
   }  
 }   
- 
-.special {
-  display: block;
-  .specialContent {
-    padding: 1em 1em 0;
-    display: block; 
-    margin-top:.5em;
-    border-top: 1px solid #dadada;
-    &:before {
-      content: "\21b3";
-      font-size: 1.5em;
-      margin-right: 1em;
-      color: #6f6f6f;
-      font-family: helvetica, arial, sans-serif;
-    }
-  }
-}
+
 
 a.remove {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  background: #e0e0e0;
+  background: #ff5e14;
+  opacity: 0.5;
   padding: .5em;
   font-size: .75em;
   display: inline-block;
@@ -1829,11 +1814,12 @@ a.remove {
   line-height: .85;
   &:hover {
     background: #f30;
+    opacity: 1;
   }
 }
 
 .promoCode {
-  border:2px solid #efefef;
+  border: 2px solid #273C42;
   float: left;
   width: 35%;
   padding: 2%;
@@ -1841,6 +1827,7 @@ a.remove {
     display: block;
     width: 100%;
     font-style: italic;
+    font-family: "Rock Salt", cursive;
     font-size: 1.15em;
     margin-bottom: .5em;
     letter-spacing: -.025em; 
@@ -1850,54 +1837,37 @@ a.remove {
     font-size: 1em;
     padding: .5em;
     float: left;
-    border: 1px solid #dadada;
+    border: 1px solid #273C42;
+    border-radius: 15px;
     &:active, &:focus {
       outline: 0;
     }
   }
-  a.btn {
+  a {
+    color: #F4F4F4;
+    background: #273C42;
+    border-radius: 50px;
+    border: 1px solid #ff5e14;
     float: left;
-    width: 15%;
-    padding: .75em 0;
+    width: 12%;
+    padding: 7px 0;
+    margin-left: 5px;
     border-radius: 0 1em 1em 0;
     text-align: center;
-    border: 1px solid #82ca9c;
     &:hover {
-      border: 1px solid #f69679;
-      background: #f69679;
+      width: 13%;
+      background: #38A3A5;
+      color: #273C42;
+      &:after {
+        right: -10px;
+      }
     }
-  }
-}
-
-.btn {
-  &:link , &:visited {
-    text-decoration: none;
-    letter-spacing: -.015em;
-    font-size: 1em;
-    padding: 1em 3em;
-    color: #fff;
-    background: #82ca9c;
-    font-weight: bold;
-    border-radius: 50px;
-    float: right;
-    text-align: right;
-  }
-  &:after {
-    content: "\276f";
-    padding: .5em;
-    position: relative;
-    right:0;
-  }
-  &:hover , &:focus, &:active {
-    background: #f69679;
     &:after {
-      right: -10px;
+      content: "\276f";
+      padding: .5em;
+      position: relative;
+      right:0;
     }
-  }
-  
-  .promoCode & {
-    font-size: .85em;
-    padding: .5em 2em;
   }
 }
 
@@ -1929,53 +1899,34 @@ a.remove {
   }
 }
 
-@media only screen and (max-width:39.375em){
+.checkout-btn {
+  width: 100%;
+  text-decoration: none;
+  padding: 0.8em;
+  margin-top: 15px;
+  color: #F4F4F4;
+  background: #273C42;
+  border-radius: 50px;
+  border: 1px solid #ff5e14;
+  float: right;
+  font-weight: 800;
+  text-align: center;
 
-  .cart-main-wrap {
-    width: 98%;
-    padding: 2% 0;
+  &:after {
+    content: "\276f";
+    padding: .5em;
+    position: relative;
+    right:0; 
   }
-  .cart-heading {
-    padding: 1em;
-    font-size: 90%;
-  }
-  .cart {
-    .items {
-      .cartSection {
-        width: 90%;
-        display: block;float: left;
-        &.qtyWrap {
-          width: 10%;
-          text-align: center;
-          padding: .5em 0;
-          float: right;
-          &:before {
-            content: "QTY";
-            display: block;
-            padding: .25em;
-            font-size: .75em;
-          }
-        }
-        &.prodTotal , &.removeWrap { 
-          display: none;
-        }
-        .itemImg {
-          width: 25%;
-        }
-      }
+  
+  &:hover , &:focus, &:active {
+    background: #38A3A5;
+    color: #273C42;
+    &:after {
+      right: -10px;
     }
   }
-  .promoCode , .subtotal{
-    width: 100%;
-  }
-
-  a.btn {
-    width: 100%;
-    text-align: center;
-  }
-
 }
- 
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -2259,7 +2210,50 @@ a.remove {
   }
 
 } 
+@media (max-width: 630px){
+  .cart-main-wrap {
+    width: 98%;
+    padding: 2% 0;
+  }
+  .cart-heading {
+    padding: 1em;
+    font-size: 90%;
+  }
 
+  .cart-heading  a{
+    font-size: smaller;
+  }
+  .cart {
+    .items {
+      .cartSection {
+        width: 90%;
+        display: block;float: left;
+        &.qtyWrap {
+          width: 10%;
+          text-align: center;
+          padding: .5em 0;
+          float: right;
+          &:before {
+            content: "QTY";
+            display: block;
+            padding: .25em;
+            font-size: .75em;
+          }
+        }
+        &.prodTotal , &.removeWrap { 
+          display: none;
+        }
+        .itemImg {
+          width: 25%;
+        }
+      }
+    }
+  }
+  .promoCode , .subtotal{
+    width: 100%;
+  }
+
+}
 @media (max-width: 575px) {
   .book-cell {
    width: 100%;

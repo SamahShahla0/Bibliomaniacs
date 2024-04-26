@@ -73,7 +73,7 @@ $('a.remove').click(function(){
 })
 
 // Just for testing, show all items
-  $('a.btn.continue').click(function(){
+  $('a.btn').click(function(){
     $('li.items').show(400);
   })
 
