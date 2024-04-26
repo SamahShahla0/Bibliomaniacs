@@ -66,15 +66,9 @@ function signPage() {
 
 function cartPage() {
   // Remove Items From Cart
-$('a.remove').click(function(){
-  e.preventDefault();
-  $( this ).parent().parent().parent().hide( 400 );
- 
-})
-
-// Just for testing, show all items
-  $('a.btn').click(function(){
-    $('li.items').show(400);
+  $('a.remove').click(function(e){
+    e.preventDefault();
+    $(this).parent().parent().parent().hide( 400 );
+  
   })
-
 }
