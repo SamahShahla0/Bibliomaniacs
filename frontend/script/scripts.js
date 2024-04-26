@@ -25,7 +25,6 @@ function showDivs(n) {
 
 
 
-
 let pPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
 if(pPath == "index.html"){
   landingPage()
@@ -42,14 +41,12 @@ else if(pPath == "cart.html"){
 
 
 function landingPage() {
-  // Code specific to page 1
   showDivs(slideIndex);
   
 }
 
 
 function signPage() {
-  // Code specific to page 2
   const signContainer = document.getElementById('signContainer');
   const registerBtn = document.getElementById('register');
   const loginBtn = document.getElementById('login');
@@ -65,7 +62,6 @@ function signPage() {
 
 
 function cartPage() {
-  // Remove Items From Cart
   $('a.remove').click(function(e){
     e.preventDefault();
     $(this).parent().parent().parent().hide( 400 );
