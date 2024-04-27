@@ -38,6 +38,9 @@ else if(pPath == "cart.html"){
 else if(pPath == "catalog.html"){
   catalogPage()
 }
+else if(pPath == "my-account.html"){
+  MyAccountPage()
+}
 
 
 // Define functions for each page
@@ -221,5 +224,67 @@ function catalogPage() {
       addCards(currentPage + 1);
     });
   };
+
+}
+
+
+function MyAccountPage() {
+  // Activate tab on click
+  /*$('#myTab a').on('click', function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+
+  // Initialize DataTable
+  $(document).ready(function() {
+    $('#my-orders-table').DataTable();
+  });
+
+  // My account nav click
+  $(document).ready(function() {
+    $(document).on('click', '.tg-tabs-content-wrapp .my-account-dashboard .card', function() {
+      var dataToggle = $(this).attr('data-toggle'); // Corrected attribute name
+      $('.tg-account .account-banner .nav-area  a#' + dataToggle).click();
+    });
+  });*/
+  document.addEventListener("DOMContentLoaded", function() {
+    var tabLinks = document.querySelectorAll(".nav-item .nav-link");
+    tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            var targetTabId = this.getAttribute("href").substring(1);
+            showTab(targetTabId);
+        });
+    });
+
+    // DataTable initialization (this part should be replaced with actual DataTable initialization)
+    var ordersTable = document.getElementById("my-orders-table");
+    if (ordersTable) {
+        // Initialize DataTable
+    }
+
+    var cards = document.querySelectorAll(".my-account-dashboard .card");
+    cards.forEach(function(card) {
+        card.addEventListener("click", function() {
+            var areaToggle = this.getAttribute("area-toggle");
+            var navLink = document.querySelector(".nav-area a#" + areaToggle);
+            if (navLink) {
+                navLink.click();
+            }
+        });
+    });
+  });
+
+  function showTab(tabId) {
+      var tabs = document.querySelectorAll(".tab-pane");
+      tabs.forEach(function(tab) {
+          tab.classList.remove("active");
+      });
+
+      var activeTab = document.getElementById(tabId);
+      if (activeTab) {
+          activeTab.classList.add("active");
+      }
+  }
 
 }

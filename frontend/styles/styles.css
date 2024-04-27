@@ -2066,6 +2066,278 @@ a.remove {
   height:auto;
 }
 
+/*############################################################################################ */
+/* Start my account page */
+
+/* my account page */
+
+/* Base Styles */
+.my-account-main .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Account Banner Styles */
+.account-banner {
+  background: #207ba1;
+  width: 100%;
+  padding: 100px 0 0;
+}
+
+.account-banner .inner-banner .detail * {
+  color: #fff;
+}
+
+
+.account-banner .inner-banner .detail h3.user-name {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.account-banner .inner-banner .nav-area {
+  width: 100%;
+  margin-top: 45px;
+}
+
+.account-banner .inner-banner .nav-area ul li a {
+  background: rgba(255, 255, 255, .4);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 0;
+  font-size: 16px;
+  border: none;
+  padding: 10px 28px;
+  min-width: 120px;
+  display: inline-block;
+  transition: .4s;
+  text-align: center;
+}
+
+.account-banner .inner-banner .nav-area ul li {
+  margin-right: 7px;
+}
+
+.account-banner .inner-banner .nav-area ul li a.active,
+.account-banner .inner-banner .nav-area ul li a:hover {
+  color: #207ba1;
+  background: #fff;
+}
+
+
+/* Custom styles */
+.account-banner {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.account-banner .inner-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account-banner .inner-banner .detail,
+.account-banner .inner-banner .profile {
+  flex-basis: 50%;
+}
+
+.account-banner .inner-banner .nav-area {
+  margin-top: 20px;
+}
+
+.account-banner .inner-banner .nav-area ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.account-banner .inner-banner .nav-area ul li a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.account-banner .inner-banner .nav-area ul li a i {
+  margin-right: 5px;
+}
+
+/* Hide tab names on small screens */
+@media (max-width: 768px) {
+  .account-banner .inner-banner .nav-area ul li a span {
+      display: none;
+  }
+}
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  .container {
+      padding: 0 10px;
+  }
+
+  .account-banner {
+      padding: 80px 0 0;
+  }
+
+  .account-banner .inner-banner .nav-area ul li a {
+      padding: 10px 15px;
+      min-width: auto;
+  }
+}
+
+/* Tabs Content Styles */
+.tabs {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.tabs .inner {
+  padding: 0 15px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* orders */
+
+/* Custom styles to replace Bootstrap table classes */
+#my-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#my-orders-table th,
+#my-orders-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+#my-orders-table th {
+  background-color: #f2f2f2;
+}
+
+#my-orders-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#my-orders-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Adjust table layout for smaller screens */
+  #my-orders-table th,
+  #my-orders-table td {
+      padding: 6px; /* Reduce padding for smaller screens */
+  }
+
+  /* Optionally, you can hide certain columns or adjust font sizes */
+}
+
+
+
+/* Custom styles */
+.address-form {
+  margin-top: 20px;
+}
+
+.address-form .inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.address-form .form-group {
+  margin-bottom: 20px;
+}
+
+.address-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.address-form input[type="text"],
+.address-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.address-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .address-form .inner {
+      padding: 0 10px;
+  }
+}
+
+
+/* Custom styles */
+.account-detail-form {
+  margin-top: 20px;
+}
+
+.account-detail-form .inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.account-detail-form .form-group {
+  margin-bottom: 20px;
+}
+
+.account-detail-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.account-detail-form input[type="text"],
+.account-detail-form input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.account-detail-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .account-detail-form .inner {
+      padding: 0 10px;
+  }
+}
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 

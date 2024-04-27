@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliomaniacs - home</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Rock+Salt"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/cbe57ec8d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  </head>
+  <body>
+    <!-- Start Header section -->
+    <section class="header">
+      <header>
+        <nav class="navbar">
+          <div class="navbar-container container">
+            <input type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+              <li><a href="#">Home</a></li>
+              <li><a href="about-us-services.html">About Us</a></li>
+              <li><a href="catalog.html">Catalog</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li>
+                <a href="favorites.html">
+                  <h5>Favorites</h5>
+                  <i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <h5>Cart</h5>
+                  <i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+              <li>
+                <a href="sign-in-up.html">
+                  <h5>Account</h5>
+                  <i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+            </ul>
+            <h1 class="logo">
+              <span class="biblio">Biblio</span
+              ><span class="maniacs">maniacs</span>
+            </h1>
+          </div>
+        </nav>
+      </header>
+    </section>
+    <!--End header section-->
+    <div class="dummy-nav-place"></div>
+    <!--Start main sections-->
+    <main class="my-account-main">
+      <section class="tg-may-account-wrapp tg">
+        <div class="inner">
+          <div class="tg-account">
+            <!-- Account banner start -->
+            <div class="account-banner">
+              <div class="inner-banner">
+                <div class="container">
+                  <div class="row justify-content-center align-items-center">
+                    <div class="col-md-8 detail">
+                      <div class="inner">
+                        <h1 class="page-title">My Account</h1>
+                        <h3 class="user-name">Hello Yash!</h3>
+                        <p class="description">
+                          Aspernatur magni in repellat repellendus itaque
+                          consequuntur alias necessitatibus.
+                        </p>
+                      </div>
+                    </div>
+                    <!-- Column end -->
+                    <div class="col-md-4 profile"></div>
+                    <!-- Column end -->
+                  </div>
+                  <!-- Row end -->
+
+                  <!-- Navbar Start -->
+                  <div class="nav-area">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="my-order"
+                          data-toggle="tab"
+                          href="#my-orders"
+                          role="tab"
+                          aria-controls="my-orders"
+                          aria-selected="false"
+                          ><i class="fas fa-file-invoice"></i>
+                          <span>Orders</span></a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="my-address"
+                          data-toggle="tab"
+                          href="#address"
+                          role="tab"
+                          aria-controls="address"
+                          aria-selected="false"
+                          ><i class="fas fa-map-marker-alt"></i>
+                          <span>Address</span></a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="account-detail"
+                          data-toggle="tab"
+                          href="#account-details"
+                          role="tab"
+                          aria-controls="account-details"
+                          aria-selected="false"
+                          ><i class="fas fa-user-alt"></i>
+                          <span>Account Details</span></a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="logout"
+                          data-toggle="tab"
+                          href="#logout"
+                          role="tab"
+                          aria-controls="logout"
+                          aria-selected="false"
+                          ><i class="fas fa-sign-out-alt"></i>
+                          <span>Logout</span></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Navbar End -->
+                </div>
+              </div>
+            </div>
+            <!-- Banner end   -->
+
+            <!-- Tabs Content start -->
+            <div class="tabs tg-tabs-content-wrapp">
+              <div class="inner">
+                <div class="container">
+                  <div class="inner">
+                    <div class="tab-content" id="myTabContent">
+                      <div
+                        class="tab-pane show active"
+                        id="my-orders"
+                        role="tabpanel"
+                        aria-labelledby="my-order"
+                      >
+                        <table id="my-orders-table">
+                          <thead>
+                            <tr>
+                              <th>Order</th>
+                              <th>Date</th>
+                              <th>Status</th>
+                              <th>Total</th>
+                              <th class="action">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>#8083</td>
+                              <td>Sep 9, 2021</td>
+                              <td>Completed</td>
+                              <td>$350</td>
+                              <td class="action">
+                                <a href="#" class="view-order">View Order</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#8283</td>
+                              <td>Sep 8, 2021</td>
+                              <td>Pending</td>
+                              <td>$190</td>
+                              <td class="action">
+                                <a href="#" class="view-order">View Order</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#8483</td>
+                              <td>Sep 7, 2021</td>
+                              <td>Completed</td>
+                              <td>$399</td>
+                              <td class="action">
+                                <a href="#" class="view-order">View Order</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="address"
+                        role="tabpanel"
+                        aria-labelledby="my-address"
+                      >
+                        <div class="address-form">
+                          <div class="inner">
+                            <form class="tg-form" action="" method="">
+                              <div class="form-group">
+                                <label for="inputAddress">Address</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputAddress"
+                                  placeholder="1234 Main St"
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress2">Address 2</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputAddress2"
+                                  placeholder="Apartment, studio, or floor"
+                                />
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputCity">City</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputCity"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputState">State</label>
+                                  <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <label for="inputZip">Zip</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputZip"
+                                  />
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary">
+                                Update
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="account-details"
+                        role="tabpanel"
+                        aria-labelledby="account-detail"
+                      >
+                        <div class="account-detail-form">
+                          <div class="inner">
+                            <form class="tg-form" action="" method="">
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputfname">First Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputfname"
+                                    placeholder="First Name"
+                                  />
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputlname">Last Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputlname"
+                                    placeholder="Last Name"
+                                  />
+                                </div>
+                                <div class="form-group col-md-12">
+                                  <label for="inputdname">Display Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputdname"
+                                    placeholder="Display Name"
+                                  />
+                                </div>
+                                <div class="form-group col-md-12">
+                                  <label for="inputEmail4">Email</label>
+                                  <input
+                                    type="email"
+                                    class="form-control"
+                                    id="inputEmail4"
+                                    placeholder="Email"
+                                  />
+                                </div>
+                                <div class="form-group col-md-12">
+                                  <label for="inputdob">Birthdate</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputdob"
+                                    placeholder="MM/DD/YYYY"
+                                  />
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary">
+                                Update
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="dummy-nav-place"></div>
+
+    <!--End main sections-->
+
+    <!--Start footer sections-->
+    <section class="footer">
+      <footer class="footer-section">
+        <div class="container">
+          <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="cta-text">
+                    <h4>Find us</h4>
+                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-phone"></i>
+                  <div class="cta-text">
+                    <h4>Call us</h4>
+                    <span>9876543210 0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="far fa-envelope-open"></i>
+                  <div class="cta-text">
+                    <h4>Mail us</h4>
+                    <span>mail@info.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-content pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 mb-50">
+                <div class="footer-widget">
+                  <div class="footer-logo">
+                    <a href="index.html"
+                      ><h1 class="logo">
+                        <span class="biblio">Biblio</span
+                        ><span class="maniacs">maniacs</span>
+                      </h1></a
+                    >
+                  </div>
+                  <div class="footer-text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
+                      sed do eiusmod tempor incididuntut consec tetur
+                      adipisicing elit,Lorem ipsum dolor sit amet.
+                    </p>
+                  </div>
+                  <div class="footer-social-icon">
+                    <span>Follow us</span>
+                    <a href="#"
+                      ><i class="fab fa-facebook-f facebook-bg"></i
+                    ></a>
+                    <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                    <a href="#"
+                      ><i class="fab fa-google-plus-g google-bg"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="footer-widget">
+                  <div class="footer-widget-heading">
+                    <h3>Useful Links</h3>
+                  </div>
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                      <a href="terms-and-conditions-privacy.html"
+                        >Terms and Conditions</a
+                      >
+                    </li>
+                    <li><a href="about-us-services.html">About us</a></li>
+                    <li>
+                      <a href="terms-and-conditions-privacy.html"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li>
+                      <a href="about-us-services.html#servicesSection"
+                        >Our Services</a
+                      >
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                <div class="footer-widget">
+                  <div class="footer-widget-heading">
+                    <h3>Subscribe</h3>
+                  </div>
+                  <div class="footer-text mb-25">
+                    <p>
+                      Don’t miss to subscribe to our new feeds, kindly fill the
+                      form below.
+                    </p>
+                  </div>
+                  <div class="subscribe-form">
+                    <form action="#">
+                      <input type="text" placeholder="Email Address" />
+                      <button><i class="fab fa-telegram-plane"></i></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                <div class="copyright-text">
+                  <p>Copyright &copy; 2024, All Right Reserved.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <!--End footer sections-->
+    <script src="script/scripts.js"></script>
+  </body>
+</html>
