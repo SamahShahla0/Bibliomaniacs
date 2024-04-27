@@ -421,7 +421,7 @@ ul{
  }
  .book-title {
   text-overflow: ellipsis;
-  white-space: wrap;
+  white-space: nowrap;
   overflow: hidden;
   font-weight: 600;
  }
@@ -629,10 +629,15 @@ ul{
 
 .month-deals-content .book-cell{
   width: 350px;
-  height: fit-content;
+  height: min-content;
   padding: 15px;
   margin-right: 0;
 }
+
+.month-deals-content .book-cell .book-content{
+  width: 160px;
+}
+
 .month-deals-content .book-photo{
   height: 200px;
   width: 150px;
@@ -1927,6 +1932,49 @@ a.remove {
     }
   }
 }
+/*############################################################################################ */
+/* Start catalog page */
+
+/* catalog page */
+
+.card-actions {
+  margin: 8px;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.load-more {
+  width: calc((100% / 3) - 8px);
+  padding: 16px;
+  background-color: #273C42;
+  opacity: 0.7;
+  color: #F4F4F4;
+  border: 2px solid #ff5e14;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+.load-more:hover{
+  background-color: #38A3A5;
+  color: #273C42;
+  opacity: 1;
+}
+.load-more:not([disabled]):hover {
+  box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2);
+}
+
+.load-more[disabled] {
+  background-color: #F4F4F4 !important;
+  color: #373636;
+  cursor: not-allowed;
+}
+
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -1968,7 +2016,7 @@ a.remove {
       width:auto;
    }
 
-   
+
 
 }
 @media (max-width: 1020px) {
