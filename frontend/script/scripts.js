@@ -24,6 +24,13 @@ function showDivs(n) {
 }
 
 
+/*function redirectToPage(pageName) {
+  // Redirect to the target page
+  console.log("testtt testt")
+  window.location.href = pageName;
+}*/
+
+
 
 let pPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
 if(pPath == "index.html"){
@@ -44,6 +51,7 @@ else if(pPath == "my-account.html"){
 
 
 // Define functions for each page
+
 
 
 function landingPage() {
@@ -229,24 +237,7 @@ function catalogPage() {
 
 
 function MyAccountPage() {
-  // Activate tab on click
-  /*$('#myTab a').on('click', function(e) {
-    e.preventDefault();
-    $(this).tab('show');
-  });
 
-  // Initialize DataTable
-  $(document).ready(function() {
-    $('#my-orders-table').DataTable();
-  });
-
-  // My account nav click
-  $(document).ready(function() {
-    $(document).on('click', '.tg-tabs-content-wrapp .my-account-dashboard .card', function() {
-      var dataToggle = $(this).attr('data-toggle'); // Corrected attribute name
-      $('.tg-account .account-banner .nav-area  a#' + dataToggle).click();
-    });
-  });*/
   document.addEventListener("DOMContentLoaded", function() {
     var tabLinks = document.querySelectorAll(".nav-item .nav-link");
     tabLinks.forEach(function(tabLink) {
