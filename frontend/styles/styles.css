@@ -2081,55 +2081,9 @@ a.remove {
 
 /* Account Banner Styles */
 .account-banner {
-  background: #207ba1;
+  background-image: linear-gradient(180deg,  #273C42, #38A3A5 );
   width: 100%;
-  padding: 100px 0 0;
-}
-
-.account-banner .inner-banner .detail * {
-  color: #fff;
-}
-
-
-.account-banner .inner-banner .detail h3.user-name {
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.account-banner .inner-banner .nav-area {
-  width: 100%;
-  margin-top: 45px;
-}
-
-.account-banner .inner-banner .nav-area ul li a {
-  background: rgba(255, 255, 255, .4);
-  color: #fff;
-  font-weight: 500;
-  border-radius: 0;
-  font-size: 16px;
-  border: none;
-  padding: 10px 28px;
-  min-width: 120px;
-  display: inline-block;
-  transition: .4s;
-  text-align: center;
-}
-
-.account-banner .inner-banner .nav-area ul li {
-  margin-right: 7px;
-}
-
-.account-banner .inner-banner .nav-area ul li a.active,
-.account-banner .inner-banner .nav-area ul li a:hover {
-  color: #207ba1;
-  background: #fff;
-}
-
-
-/* Custom styles */
-.account-banner {
-  text-align: center;
-  padding: 20px 0;
+  padding: 50px 0 0;
 }
 
 .account-banner .inner-banner {
@@ -2138,13 +2092,54 @@ a.remove {
   justify-content: space-between;
 }
 
-.account-banner .inner-banner .detail,
-.account-banner .inner-banner .profile {
-  flex-basis: 50%;
+.account-banner .inner-banner .row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-banner .inner-banner .detail * {
+  color: #F4F4F4;
+}
+
+#user-username{
+  color: #ff5e14;
+}
+
+.account-banner .inner-banner .page-title{
+  font-family: "Rock Salt", cursive;
+  font-size: 2rem;
+}
+.account-banner .inner-banner .detail h3.user-name {
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .account-banner .inner-banner .nav-area {
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-banner .inner-banner .nav-area ul li a {
+  background: rgba(255, 255, 255, .4);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  border: 1px solid #273C42;
+  padding: 10px 28px;
+  min-width: 120px;
+  display: inline-block;
+  transition: .4s;
+  text-align: center;
+}
+
+.account-banner .inner-banner .nav-area ul li a i {
+  margin-right: 5px;
 }
 
 .account-banner .inner-banner .nav-area ul li {
@@ -2152,35 +2147,11 @@ a.remove {
   margin-right: 10px;
 }
 
-.account-banner .inner-banner .nav-area ul li a {
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.account-banner .inner-banner .nav-area ul li a i {
-  margin-right: 5px;
-}
-
-/* Hide tab names on small screens */
-@media (max-width: 768px) {
-  .account-banner .inner-banner .nav-area ul li a span {
-      display: none;
-  }
-}
-/* Responsive Styles */
-@media only screen and (max-width: 768px) {
-  .container {
-      padding: 0 10px;
-  }
-
-  .account-banner {
-      padding: 80px 0 0;
-  }
-
-  .account-banner .inner-banner .nav-area ul li a {
-      padding: 10px 15px;
-      min-width: auto;
-  }
+.account-banner .inner-banner .nav-area ul li a.active,
+.account-banner .inner-banner .nav-area ul li a:hover {
+  color: #273C42;
+  background: #F4F4F4;
+  border-color: #ff5e14;
 }
 
 /* Tabs Content Styles */
@@ -2201,9 +2172,9 @@ a.remove {
   display: block;
 }
 
+
 /* orders */
 
-/* Custom styles to replace Bootstrap table classes */
 #my-orders-table {
   width: 100%;
   border-collapse: collapse;
@@ -2212,7 +2183,7 @@ a.remove {
 
 #my-orders-table th,
 #my-orders-table td {
-  border: 1px solid #ccc;
+  border: 2px solid #38A3A5;
   padding: 8px;
 }
 
@@ -2228,23 +2199,7 @@ a.remove {
   background-color: #ddd;
 }
 
-
-
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  /* Adjust table layout for smaller screens */
-  #my-orders-table th,
-  #my-orders-table td {
-      padding: 6px; /* Reduce padding for smaller screens */
-  }
-
-  /* Optionally, you can hide certain columns or adjust font sizes */
-}
-
-
-
-/* Custom styles */
+/* address form */
 .address-form {
   margin-top: 20px;
 }
@@ -2264,35 +2219,21 @@ a.remove {
   margin-bottom: 5px;
 }
 
-.address-form input[type="text"],
-.address-form select {
+.address-form input[type="text"]{
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #38A3A5;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
 .address-form button[type="submit"] {
-  display: block;
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .address-form .inner {
-      padding: 0 10px;
-  }
+  font-size: 18px;
 }
 
 
-/* Custom styles */
+/* account details form */
 .account-detail-form {
   margin-top: 20px;
 }
@@ -2316,28 +2257,17 @@ a.remove {
 .account-detail-form input[type="email"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #38A3A5;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
 .account-detail-form button[type="submit"] {
-  display: block;
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
+  font-size: 18px;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .account-detail-form .inner {
-      padding: 0 10px;
-  }
-}
+
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -2638,7 +2568,39 @@ a.remove {
   }
 
 
-} 
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+      padding: 0 10px;
+  }
+
+  .account-banner {
+      padding: 30px 0 0;
+  }
+  .account-banner .inner-banner .nav-area ul li a span {
+    display: none;
+  }
+
+  .account-banner .inner-banner .nav-area ul li a {
+      padding: 10px 15px;
+      min-width: auto;
+  }
+
+  #my-orders-table th,
+  #my-orders-table td {
+      padding: 6px; /* Reduce padding for smaller screens */
+  }
+
+  .address-form .inner {
+    padding: 0 10px;
+  }
+
+  .account-detail-form .inner {
+    padding: 0 10px;
+  }
+
+}
 @media (max-width: 630px){
   .cart-main-wrap {
     width: 98%;

@@ -82,19 +82,19 @@
             <div class="account-banner">
               <div class="inner-banner">
                 <div class="container">
-                  <div class="row justify-content-center align-items-center">
+                  <div class="row">
                     <div class="col-md-8 detail">
                       <div class="inner">
                         <h1 class="page-title">My Account</h1>
-                        <h3 class="user-name">Hello Yash!</h3>
+                        <h3 class="user-name">
+                          Hello <span id="user-username">Yash</span>!
+                        </h3>
                         <p class="description">
                           Aspernatur magni in repellat repellendus itaque
                           consequuntur alias necessitatibus.
                         </p>
                       </div>
                     </div>
-                    <!-- Column end -->
-                    <div class="col-md-4 profile"></div>
                     <!-- Column end -->
                   </div>
                   <!-- Row end -->
@@ -181,7 +181,6 @@
                               <th>Date</th>
                               <th>Status</th>
                               <th>Total</th>
-                              <th class="action">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -190,27 +189,18 @@
                               <td>Sep 9, 2021</td>
                               <td>Completed</td>
                               <td>$350</td>
-                              <td class="action">
-                                <a href="#" class="view-order">View Order</a>
-                              </td>
                             </tr>
                             <tr>
                               <td>#8283</td>
                               <td>Sep 8, 2021</td>
                               <td>Pending</td>
                               <td>$190</td>
-                              <td class="action">
-                                <a href="#" class="view-order">View Order</a>
-                              </td>
                             </tr>
                             <tr>
                               <td>#8483</td>
                               <td>Sep 7, 2021</td>
                               <td>Completed</td>
-                              <td>$399</td>
-                              <td class="action">
-                                <a href="#" class="view-order">View Order</a>
-                              </td>
+                              <td>$3999</td>
                             </tr>
                           </tbody>
                         </table>
@@ -242,34 +232,25 @@
                                   placeholder="Apartment, studio, or floor"
                                 />
                               </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputCity">City</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputCity"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputState">State</label>
-                                  <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                  </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                  <label for="inputZip">Zip</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputZip"
-                                  />
-                                </div>
+
+                              <div class="form-group">
+                                <label for="inputCity">City</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputCity"
+                                />
                               </div>
-                              <button type="submit" class="btn btn-primary">
-                                Update
-                              </button>
+                              <div class="form-group">
+                                <label for="inputState">State</label>
+                                <input
+                                  type="text"
+                                  id="inputState"
+                                  class="form-control"
+                                />
+                              </div>
+
+                              <button type="submit" class="btn">Update</button>
                             </form>
                           </div>
                         </div>
@@ -283,56 +264,44 @@
                         <div class="account-detail-form">
                           <div class="inner">
                             <form class="tg-form" action="" method="">
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputfname">First Name</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputfname"
-                                    placeholder="First Name"
-                                  />
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputlname">Last Name</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputlname"
-                                    placeholder="Last Name"
-                                  />
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <label for="inputdname">Display Name</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputdname"
-                                    placeholder="Display Name"
-                                  />
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <label for="inputEmail4">Email</label>
-                                  <input
-                                    type="email"
-                                    class="form-control"
-                                    id="inputEmail4"
-                                    placeholder="Email"
-                                  />
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <label for="inputdob">Birthdate</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputdob"
-                                    placeholder="MM/DD/YYYY"
-                                  />
-                                </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputfname">First Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputfname"
+                                  placeholder="First Name"
+                                />
                               </div>
-                              <button type="submit" class="btn btn-primary">
-                                Update
-                              </button>
+                              <div class="form-group col-md-6">
+                                <label for="inputlname">Last Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputlname"
+                                  placeholder="Last Name"
+                                />
+                              </div>
+                              <div class="form-group col-md-12">
+                                <label for="inputdname">Display Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="inputdname"
+                                  placeholder="Display Name"
+                                />
+                              </div>
+                              <div class="form-group col-md-12">
+                                <label for="inputEmail4">Email</label>
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="inputEmail4"
+                                  placeholder="Email"
+                                />
+                              </div>
+
+                              <button type="submit" class="btn">Update</button>
                             </form>
                           </div>
                         </div>
