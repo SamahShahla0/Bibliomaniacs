@@ -2359,7 +2359,7 @@ a.remove {
     padding:0 1rem;
 }
 
-.checkout-btn-final{
+.place-order-btn{
   padding: 15px;
   font-weight: 700;
   font-size: 1.2rem;
@@ -2368,10 +2368,56 @@ a.remove {
   letter-spacing: .11rem;
 }
 
-.checkout-btn-final:hover{
+.place-order-btn:hover{
 	transform: scale(1.05) translateY(-3px) !important;
   box-shadow: 3px 3px 6px #38373785 !important;
 }
+
+
+/*############################################################################################ */
+/* Start placed order page */
+
+/* placed order page */
+
+/* Write page CSS here*/
+.background-container {
+  background: linear-gradient(to bottom, #38A3A5, #ff5e14);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.message-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-container {
+  background: #F4F4F4;
+  height: auto;
+  max-width: 90%;
+  box-shadow: 5px 5px 10px grey;
+  text-align: center;
+  padding: 100px;
+}
+
+.hr-container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.confirm-green-box {
+  background: #38A3A5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.success-container h1 {
+  font-family: 'Rock Salt', cursive;
+  letter-spacing: 2px;
+}
+
+
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -2691,9 +2737,18 @@ a.remove {
     width: 100%;
   }
 
+  .background-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
+  .success-container {
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
 }
-
 @media only screen and (max-width: 768px) {
   .container {
       padding: 0 10px;

@@ -73,58 +73,44 @@
     <!--End header section-->
     <div class="dummy-nav-place"></div>
     <!--Start main sections-->
-    <main class="checkout-main">
-      <div class="mainscreen">
-        <div class="card">
-          <div class="leftside">
-            <img src="/images/credit-card.jpg" class="circle-img" alt="logo" />
-          </div>
-          <div class="rightside">
-            <form action="">
-              <h1>CheckOut</h1>
-              <h3>Payment Information</h3>
-              <p>Cardholder Name</p>
-              <input type="text" class="inputbox" name="name" required />
-              <p>Card Number</p>
-              <input
-                type="number"
-                class="inputbox"
-                name="card_number"
-                id="card_number"
-                required
-              />
+    <main class="order-placed-main">
+      <div class="background-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="message-box">
+                <div class="success-container">
+                  <br />
+                  <img
+                    src="https://scontent-lcy1-1.xx.fbcdn.net/v/t1.6435-9/31301640_2114242505489348_3921532491046846464_n.png?_nc_cat=104&ccb=1-3&_nc_sid=973b4a&_nc_ohc=pfOalMq8BzUAX-k-rhY&_nc_ht=scontent-lcy1-1.xx&oh=3af014dd12fa6e3d1816a3425a80e516&oe=609BE04A"
+                    alt=""
+                    style="height: 100px"
+                  />
+                  <br />
+                  <div class="hr-container">
+                    <hr />
+                  </div>
+                  <br />
+                  <h1>Thank you for your order</h1>
+                  <br />
 
-              <p>Card Type</p>
-              <select class="inputbox" name="card_type" id="card_type" required>
-                <option value="">--Select a Card Type--</option>
-                <option value="Visa">Visa</option>
-                <option value="RuPay">RuPay</option>
-                <option value="MasterCard">MasterCard</option>
-              </select>
-              <div class="expcvv">
-                <p class="expcvv_text">Expiry</p>
-                <input
-                  type="date"
-                  class="inputbox"
-                  name="exp_date"
-                  id="exp_date"
-                  required
-                />
+                  <div class="confirm-green-box">
+                    <br />
+                    <h5>ORDER CONFIRMATION</h5>
+                    <p>Your order #2465 has been successful!</p>
+                    <p>
+                      Thank you for choosing Oui Oui fashion. You will shortly
+                      receive a confirmation email.
+                    </p>
+                  </div>
 
-                <p class="expcvv_text2">CVV</p>
-                <input
-                  type="password"
-                  class="inputbox"
-                  name="cvv"
-                  id="cvv"
-                  required
-                />
+                  <br />
+                  <button id="create-btn" class="btn place-order-btn">
+                    Back to shop
+                  </button>
+                </div>
               </div>
-              <p></p>
-              <button type="submit" class="btn place-order-btn">
-                Place Order
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
