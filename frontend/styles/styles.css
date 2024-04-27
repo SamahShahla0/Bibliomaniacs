@@ -2267,7 +2267,111 @@ a.remove {
   font-size: 18px;
 }
 
+/*############################################################################################ */
+/* Start checkout page */
 
+/* checkout page */
+
+.mainscreen{
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(180deg,   #ff5e14, #38A3A5 );
+}
+
+.mainscreen .card {
+	width: 60rem;
+  margin: auto;
+  background: #F4F4F4;
+  position:center;
+  align-self: center;
+  top: 50rem;
+  border-radius: 1.5rem;
+  box-shadow: 4px 3px 20px #3535358c;
+  display:flex;
+  flex-direction: row;
+    
+}
+
+.leftside {
+	background: #273C42;
+	width: 25rem;
+	display: inline-flex;
+  align-items: center;
+  justify-content: center;
+	border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.circle-img {
+  object-fit: cover;
+	width: 20em;
+  height: 20em;
+  border-radius: 100%;
+}
+
+.rightside {
+  background-color: #F4F4F4;
+	width: 35rem;
+	border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  padding: 1rem 2rem 3rem 3rem;
+}
+
+.rightside h1{
+  font-family: "Rock Salt" , cursive;
+}
+
+.rightside p{
+  display:block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: .8rem 0;
+}
+
+.inputbox{
+  color:#273C42;
+	width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #38A3A5;
+  margin-bottom: 1rem;
+  border-radius: 0.3rem;
+  color: #615a5a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline:none;
+}
+.inputbox:focus{
+  border-color: #ff5e14;
+}
+
+.expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text{
+    padding-right: 1rem;
+}
+.expcvv_text2{
+    padding:0 1rem;
+}
+
+.checkout-btn-final{
+  padding: 15px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  width:100% !important;
+  letter-spacing: .11rem;
+}
+
+.checkout-btn-final:hover{
+	transform: scale(1.05) translateY(-3px) !important;
+  box-shadow: 3px 3px 6px #38373785 !important;
+}
 
 /*########################################################################################### */
 /* media queries ------------------------------------------------------------------------------------------*/ 
@@ -2333,6 +2437,26 @@ a.remove {
   
   .contact-us-main .contact-form {
     width: 100%;
+  }
+
+  .card{
+    flex-direction: column;
+    width: auto;
+  }
+
+  .leftside{
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius:0;
+    border-radius:0;
+  }
+
+  .rightside{
+    width:auto;
+    border-bottom-left-radius: 1.5rem;
+    padding:0.5rem 3rem 3rem 2rem;
+    border-radius:0;
   }
   
 }
