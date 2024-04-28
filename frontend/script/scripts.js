@@ -24,11 +24,11 @@ function showDivs(n) {
 }
 
 
-/*function redirectToPage(pageName) {
+function redirectToPage(pageName) {
   // Redirect to the target page
   console.log("testtt testt")
   window.location.href = pageName;
-}*/
+}
 
 
 
@@ -104,14 +104,24 @@ function catalogPage() {
   const createBookCard = (bookData) => {
     const card = document.createElement("div");
     card.className = "book-cell";
-  
+
     const bookImgDiv = document.createElement("div");
     bookImgDiv.className = "book-img";
+  
+    // Creating anchor element
+    const imgAnchor = document.createElement("a");
+    imgAnchor.href = "single-book-page.html"; // Replace "your_target_page_url_here" with the URL you want to link to
+    
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
     bookImg.src = bookData.imgSrc;
     bookImg.alt = bookData.title;
-    bookImgDiv.appendChild(bookImg);
+    
+    // Appending image to the anchor
+    imgAnchor.appendChild(bookImg);
+    
+    // Appending anchor to the image div
+    bookImgDiv.appendChild(imgAnchor);
   
     const bookContentDiv = document.createElement("div");
     bookContentDiv.className = "book-content";

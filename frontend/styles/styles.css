@@ -481,7 +481,7 @@ ul{
   font-size: 15px;
   border-radius: 5px;
   text-align: center;
-  cursor: pointer;
+  cursor: context-menu;
   transition: 0.5s;
 }
 
