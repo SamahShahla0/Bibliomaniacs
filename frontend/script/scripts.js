@@ -84,10 +84,9 @@ function cartPage() {
 }
 
 
-function catalogPage() {
+async function catalogPage() {
   const cardContainer = document.getElementById("card-container");
   const loadMoreButton = document.getElementById("load-more");
-
 
   const cardLimit = 10;
   const cardIncrease = 5;
@@ -153,97 +152,50 @@ function catalogPage() {
     card.appendChild(bookContentDiv);
   
     cardContainer.appendChild(card);
+
+    cardContainer.appendChild(card);
   };
 
-  const addCards = (pageIndex) => {
+  const fetchBookData = async () => {
+    try {
+      const response = await fetch('/api/books'); // Replace '/api/books' with your backend API endpoint
+      if (!response.ok) {
+        throw new Error('Failed to fetch book data');
+      }
+      const bookDataList = await response.json();
+      return bookDataList;
+    } catch (error) {
+      console.error('Error fetching book data:', error);
+      return [];
+    }
+  };
+
+  const addCards = async (pageIndex) => {
     currentPage = pageIndex;
 
     handleButtonStatus();
+
+    const bookDataList = await fetchBookData();
 
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange =
       pageIndex * cardIncrease > cardLimit ? cardLimit : pageIndex * cardIncrease;
 
-    // Assuming you have an array of bookData called bookDataList
     for (let i = startRange; i < endRange && i < bookDataList.length; i++) {
       createBookCard(bookDataList[i]);
     }
   };
 
-  // Example usage:
-  const bookDataList = [
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "http://127.0.0.1:5500/images/harrypotter2.jpg"
-    },
-    // Add more book data objects here...
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "http://127.0.0.1:5500/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "http://127.0.0.1:5500/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "http://127.0.0.1:5500/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    },
-    {
-      title: "The ultimate guide to Computer Science",
-      author: "Elizabeth Gilbert",
-      price: "€32,50",
-      imgSrc: "/images/harrypotter2.jpg"
-    }
-  ];
-
-
-  window.onload = function () {
-    addCards(currentPage);
+  window.onload = async function () {
+    await addCards(currentPage);
     loadMoreButton.addEventListener("click", () => {
       addCards(currentPage + 1);
     });
   };
-
 }
+
+catalogPage();
+
 
 
 function MyAccountPage() {
