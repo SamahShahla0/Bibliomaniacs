@@ -85,6 +85,7 @@ function cartPage() {
 
 
 async function catalogPage() {
+
   const cardContainer = document.getElementById("card-container");
   const loadMoreButton = document.getElementById("load-more");
 
@@ -114,7 +115,7 @@ async function catalogPage() {
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
     bookImg.src = bookData.imgSrc;
-    bookImg.alt = bookData.title;
+    bookImg.alt = bookData.tittle;
     
     // Appending image to the anchor
     imgAnchor.appendChild(bookImg);
@@ -126,7 +127,7 @@ async function catalogPage() {
     bookContentDiv.className = "book-content";
     const bookTitleDiv = document.createElement("div");
     bookTitleDiv.className = "book-title";
-    bookTitleDiv.textContent = bookData.title;
+    bookTitleDiv.textContent = bookData.tittle;
     const bookAuthorDiv = document.createElement("div");
     bookAuthorDiv.className = "book-author";
     bookAuthorDiv.textContent = "by " + bookData.author;
@@ -158,7 +159,7 @@ async function catalogPage() {
 
   const fetchBookData = async () => {
     try {
-      const response = await fetch('/api/books'); // Replace '/api/books' with your backend API endpoint
+      const response = await fetch('http://localhost/Bibliomaniacs/backend/get_books.php'); // Replace '/api/books' with your backend API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch book data');
       }
@@ -194,7 +195,6 @@ async function catalogPage() {
   };
 }
 
-catalogPage();
 
 
 
