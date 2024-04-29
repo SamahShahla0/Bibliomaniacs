@@ -97,6 +97,9 @@ else if(pPath == "my-account.html"){
 else if(pPath == "contact-us.html"){
   contactUsPage()
 }
+else if(pPath == "blog.html"){
+  blogPage()
+}
 
 
 // Define functions for each page
@@ -163,7 +166,7 @@ async function catalogPage() {
     
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
-    bookImg.src = "data:image/webp;base64," + bookData.image_base64; // Assuming the image is JPEG format, adjust accordingly
+    bookImg.src = "data:image/webp;base64," + bookData.image_base64; 
     bookImg.alt = bookData.tittle;
     
     // Appending image to the anchor
@@ -415,4 +418,62 @@ function contactUsPage(){
 
   handleContactForm(); 
 
+}
+
+function blogPage(){
+  // Function to fetch blogs from the API
+  function getBlogs() {
+    fetch('http://localhost/Bibliomaniacs/backend/get_blogs.php') // Fetch blogs from the PHP API
+        .then(response => response.json()) // Parse the JSON response
+        .then(blogs => populateBlogSection(blogs)) // Call the function to populate the blog section
+        .catch(error => console.error('Error fetching blogs:', error)); // Handle any errors
+  }
+
+  // Function to populate the blog section with fetched blogs
+  function populateBlogSection(blogs) {
+      const blogSection = document.querySelector('.latest-blog-section .row');
+
+      // Iterate over each blog and create HTML elements to display them
+      blogs.forEach(blog => {
+          const blogItem = document.createElement('div');
+          blogItem.classList.add('col-sm-6', 'col-md-4', 'item');
+
+          const blogLink = document.createElement('a');
+          blogLink.href = 'single-article.html';
+          blogItem.appendChild(blogLink);
+
+          const blogImage = document.createElement('img');
+          blogImage.classList.add('img-fluid');
+          blogImage.src = "data:image/webp;base64," + blog.blog_img_64;// Set the source of the blog image
+          blogLink.appendChild(blogImage);
+
+          const blogTitle = document.createElement('h3');
+          blogTitle.classList.add('pt-3', 'name');
+          blogTitle.textContent = blog.blog_title; // Set the title of the blog
+          blogItem.appendChild(blogTitle);
+
+          const blogDescription = document.createElement('p');
+          blogDescription.classList.add('description');
+          // Split the blog text by dots
+          const sentences = blog.blog_text.split('.');
+          // Take the first sentence and add a dot to include it
+          const firstSentence = sentences[0] + '.';
+          // Set the description of the blog
+          blogDescription.textContent = firstSentence;
+          blogItem.appendChild(blogDescription);
+
+          const readMoreLink = document.createElement('a');
+          readMoreLink.classList.add('action');
+          readMoreLink.href = 'single-article.html';
+          readMoreLink.innerHTML = 'Read article <i class="fa fa-arrow-circle-right"></i>';
+          blogItem.appendChild(readMoreLink);
+
+          blogSection.appendChild(blogItem);
+      });
+  }
+
+  // Call the function to fetch blogs when the page is loaded
+  window.onload = function() {
+      getBlogs();
+  };
 }
