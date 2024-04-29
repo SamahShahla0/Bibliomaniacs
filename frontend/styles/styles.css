@@ -668,7 +668,7 @@ ins {
 }
 .latest-blog-content .item {
   padding: 10px;
-  min-height:425px;
+  min-height: 480px;
   text-align: left;
   border: 2px solid;
   border-color: #273C42;
@@ -696,6 +696,10 @@ ins {
   font-size:14px;
   margin-top:15px;
   margin-bottom:0;
+  max-height: 60px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
 }
 
 .latest-blog-content .item .action {
