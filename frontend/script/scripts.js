@@ -31,6 +31,52 @@ function redirectToPage(pageName) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('subscribe-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    const subscriberEmail = document.getElementById('subscriberEmail');
+    const email = subscriberEmail.value;
+
+    // Send email address to server
+    sendEmailToServer(email);
+  });
+
+  function sendEmailToServer(email) {
+    // Create a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open('POST', 'http://localhost/Bibliomaniacs/backend/new_subscriber.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Define what happens on successful data submission
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // Handle the response from the server
+        console.log(xhr.responseText);
+        alert('Subscription successful!');
+        // Optionally, reset the form after successful submission
+        form.reset();
+      } else {
+        console.error('Error sending email:', xhr.statusText);
+        alert('Subscription failed. Please try again later.');
+      }
+    };
+
+    // Define what happens in case of error
+    xhr.onerror = function() {
+      console.error('Request failed');
+    };
+
+    // Send the request
+    xhr.send('email=' + encodeURIComponent(email));
+  }
+});
+
+
 
 let pPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
 if(pPath == "index.html"){
