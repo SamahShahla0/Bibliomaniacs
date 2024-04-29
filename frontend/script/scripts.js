@@ -30,7 +30,7 @@ function redirectToPage(pageName) {
   window.location.href = pageName;
 }
 
-
+/* for subscribe feature */
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('subscribe-form');
 
