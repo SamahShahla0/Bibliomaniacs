@@ -7,6 +7,7 @@ header("Access-Control-Allow-Methods: POST");
 
 // Allow specific headers
 header("Access-Control-Allow-Headers: Content-Type");
+header ('Content-Type: multipart/form-data' );
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,22 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['sender_email'] ?? '';
     $message = $_POST['message'] ?? '';
 
-    // Validate form data (you might want to add more robust validation)
     if (empty($fullName) || empty($email) || empty($message)) {
         http_response_code(400); // Bad Request
         echo json_encode(array("error" => "Please fill in all required fields"));
         exit;
     }
 
-    // Save the message to the database (you need to implement your database connection and logic here)
-    // Example database connection
-    include 'connection.php'; // Assuming you have a file named connection.php with your database connection code
+    // Save the message to the database 
+    include 'connection.php';
 
-    // Insert the email address into the subscribers table
     $conn = connectDB(); 
 
-
-    // Example query to insert the message into the messages table
     $sql = "INSERT INTO messages (full_name, sender_email, message) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $fullName, $email, $message);

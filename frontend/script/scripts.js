@@ -390,22 +390,13 @@ function contactUsPage(){
 
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
-        console.log('Form submitted');
-        const formData = new FormData(this);
-
-        console.log("startt 111");
-        // Log the form data to check its contents
-        for (var pair of formData.entries()) {
-            console.log(pair[0]+ ': ' + pair[1]); 
-        }
-
-        console.log("222");
-        console.log(formData);
+        const formData = new FormData(contactForm);
 
         // Send form data to backend
         fetch('http://localhost/Bibliomaniacs/backend/save_messages.php', {
             method: 'POST',
             body: formData
+            
         })
         .then(response => {
             if (response.ok) {
