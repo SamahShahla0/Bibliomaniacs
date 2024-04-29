@@ -100,7 +100,9 @@ else if(pPath == "contact-us.html"){
 else if(pPath == "blog.html"){
   blogPage()
 }
-
+else if(pPath == "single-article.html"){
+  singleBlogPage()
+}
 
 // Define functions for each page
 
@@ -420,13 +422,20 @@ function contactUsPage(){
 
 }
 
-function blogPage(){
+function blogPage() {
+  let numBlogsDisplayed = 0; // Track the number of blogs already displayed
+  let totalBlogs = 0; // Track the total number of blogs available
+  const blogsPerPage = 4; // Number of blogs to display per page
+
   // Function to fetch blogs from the API
   function getBlogs() {
-    fetch('http://localhost/Bibliomaniacs/backend/get_blogs.php') // Fetch blogs from the PHP API
-        .then(response => response.json()) // Parse the JSON response
-        .then(blogs => populateBlogSection(blogs)) // Call the function to populate the blog section
-        .catch(error => console.error('Error fetching blogs:', error)); // Handle any errors
+      fetch('http://localhost/Bibliomaniacs/backend/get_blogs.php') // Fetch blogs from the PHP API
+          .then(response => response.json()) // Parse the JSON response
+          .then(blogs => {
+              totalBlogs = blogs.length; // Update the total number of blogs available
+              populateBlogSection(blogs.slice(numBlogsDisplayed, numBlogsDisplayed + blogsPerPage)); // Display initial blogs
+          })
+          .catch(error => console.error('Error fetching blogs:', error)); // Handle any errors
   }
 
   // Function to populate the blog section with fetched blogs
@@ -439,12 +448,12 @@ function blogPage(){
           blogItem.classList.add('col-sm-6', 'col-md-4', 'item');
 
           const blogLink = document.createElement('a');
-          blogLink.href = 'single-article.html';
+          blogLink.href = `single-article.html?idblogs=${blog.idblogs}`;
           blogItem.appendChild(blogLink);
 
           const blogImage = document.createElement('img');
           blogImage.classList.add('img-fluid');
-          blogImage.src = "data:image/webp;base64," + blog.blog_img_64;// Set the source of the blog image
+          blogImage.src = "data:image/webp;base64," + blog.blog_img_64; // Set the source of the blog image
           blogLink.appendChild(blogImage);
 
           const blogTitle = document.createElement('h3');
@@ -454,26 +463,101 @@ function blogPage(){
 
           const blogDescription = document.createElement('p');
           blogDescription.classList.add('description');
-          // Split the blog text by dots
-          const sentences = blog.blog_text.split('.');
-          // Take the first sentence and add a dot to include it
-          const firstSentence = sentences[0] + '.';
-          // Set the description of the blog
-          blogDescription.textContent = firstSentence;
+          blogDescription.textContent = blog.blog_text; // Set the description of the blog
           blogItem.appendChild(blogDescription);
 
           const readMoreLink = document.createElement('a');
           readMoreLink.classList.add('action');
-          readMoreLink.href = 'single-article.html';
+          readMoreLink.href = `single-article.html?idblogs=${blog.idblogs}`;
           readMoreLink.innerHTML = 'Read article <i class="fa fa-arrow-circle-right"></i>';
           blogItem.appendChild(readMoreLink);
 
           blogSection.appendChild(blogItem);
       });
+
+      // Update the number of blogs displayed
+      numBlogsDisplayed += blogs.length;
+
+      // Check if all blogs have been displayed
+      if (numBlogsDisplayed >= totalBlogs) {
+          disableLoadMoreButton();
+      }
   }
 
-  // Call the function to fetch blogs when the page is loaded
+  // Function to disable the "Load more" button
+  function disableLoadMoreButton() {
+      const loadMoreButton = document.getElementById('load-more');
+      loadMoreButton.disabled = true;
+      loadMoreButton.classList.add('disabled');
+  }
+
+  // Event listener for the "Load more" button
+  document.getElementById('load-more').addEventListener('click', function() {
+      getBlogs(); // Fetch more blogs when the button is clicked
+  });
+
+  // Call the function to fetch initial blogs when the page is loaded
   window.onload = function() {
       getBlogs();
   };
+}
+
+
+function singleBlogPage(){
+
+  // Function to format blog text before adding it to the article content
+  function formatBlogText(blogText) {
+    // Split the text by empty lines to create paragraphs
+    let paragraphs = blogText.split(/\n\s*\n/);
+
+    // Create an array to store formatted content
+    let formattedContent = [];
+
+    // Iterate over each paragraph
+    paragraphs.forEach(paragraph => {
+        // Check if the paragraph contains blockquote pattern
+        if (paragraph.trim().startsWith('"') && paragraph.trim().endsWith('"')) {
+          // Add a blockquote element with a class
+          formattedContent.push(`<blockquote class="article-simpleQuote">${paragraph.trim()}</blockquote>`);
+      } else {
+          // Add paragraph elements for each sentence with a class
+          let sentences = paragraph.split('.');
+          let formattedParagraph = sentences.map(sentence => `<p>${sentence.trim()}.</p>`).join('');
+          formattedContent.push(formattedParagraph);
+        }
+    });
+
+    // Join the formatted content and return as a single string
+    return formattedContent.join('');
+  }
+
+  // Function to fetch and display a specific blog based on its ID
+  function displayBlogById(blogId) {
+    fetch(`http://localhost/Bibliomaniacs/backend/get_single_blog.php?idblogs=${blogId}`)
+        .then(response => response.json())
+        .then(blog => {
+            // Update the HTML content with the fetched blog data
+            document.getElementById('articleHeader').innerHTML = `<h1>${blog.blog_title}</h1>`;
+            document.querySelector('.article-banner img').src = `data:image/webp;base64,${blog.blog_img_64}`;
+            // Format the blog text before adding it to the article content
+            let formattedText = formatBlogText(blog.blog_text);
+            document.querySelector('.article-content').innerHTML = formattedText;
+        })
+        .catch(error => console.error('Error fetching blog:', error));
+  }
+
+  // Call the function to fetch and display the blog based on its ID
+  window.onload = function() {
+    // Extract the blog ID from the URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('idblogs');
+
+    // Call the function to display the blog based on its ID
+    if (blogId) {
+        displayBlogById(blogId);
+    } else {
+        console.error('Blog ID not found in URL parameters');
+    }
+  };
+
 }

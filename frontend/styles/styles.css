@@ -1485,22 +1485,6 @@ ins {
   border-left: 5px solid #ff5e14;
 }
 
-#articleFooter {
-  margin: 0 6rem 20px 6rem;
-  font-size: 1rem;
-  border-top: solid 1px #ccc;
-}
-.footer-anchor {
-  text-decoration: underline #ff5e14 !important;
-  transition: text-decoration-color 300ms;
-  color: #000;
-  font-weight: bold;
-}
-.footer-anchor:hover {
-  color: #38A3A5;
-  text-decoration-color: #273C42;
-}
-
 /*########################################################################################### */
 /* Start styling contact us page */
 
