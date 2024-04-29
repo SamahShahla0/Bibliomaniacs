@@ -90,7 +90,7 @@ async function catalogPage() {
   const loadMoreButton = document.getElementById("load-more");
 
   const cardLimit = 34;
-  const cardIncrease = 5;
+  const cardIncrease = 8;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
   let currentPage = 1;
 
@@ -158,19 +158,14 @@ async function catalogPage() {
   };
 
   const fetchBookData = async () => {
-    console.log("fetchBookData test");
     try {
       const response = await fetch('http://localhost/Bibliomaniacs/backend/get_books.php');
       if (!response.ok) {
-        console.log("fetchBookData fail");
         throw new Error('Failed to fetch book data');
       }
       const bookDataList = await response.json();
-      console.log("fetchBookData success");
-      console.log(bookDataList);
       return bookDataList;
     } catch (error) {
-      console.log("fetchBookData test error");
       console.error('Error fetching book data:', error);
       return [];
     }
@@ -182,8 +177,6 @@ async function catalogPage() {
     handleButtonStatus();
 
     const bookDataList = await fetchBookData();
-    console.log("addCards test");
-    console.log(bookDataList);
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange =
       pageIndex * cardIncrease > cardLimit ? cardLimit : pageIndex * cardIncrease;
@@ -193,13 +186,88 @@ async function catalogPage() {
     }
   };
 
+  /******************************************************************** */
+
+  // Function to fetch books based on category
+  function fetchBooksByCategory(categoryId) {
+    fetch('http://localhost/Bibliomaniacs/backend/get_books_by_category.php?category_id=' + categoryId)
+        .then(response => { 
+          return response.json();
+        })
+        .then(books =>  {
+          console.log('books are:', books);
+          displayBooks(books);
+        })
+        .catch(error => console.error('Error fetching book data:', error));
+  }
+
+  // Function to display books in the book container
+  function displayBooks(books) {
+    const bookContainer = document.getElementById('card-container');
+    bookContainer.innerHTML = ''; // Clear previous content
+    console.log(books);
+    books.forEach(book => {
+        createBookCard(book);
+    });
+  }
+
+
+  // Event listener for category links
+  document.getElementById('category-list').addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+        event.preventDefault(); // Prevent default behavior of anchor tag
+        const categoryId = event.target.dataset.categoryId;
+        console.log('category id : ' + categoryId);
+        fetchBooksByCategory(categoryId);
+    }
+  });
+
+
+  // Function to populate category list dynamically
+  function populateCategoryList(categories) {
+    const categoryList = document.getElementById('category-list');
+    categories.forEach(category => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.className = "icon fa fa-magic";
+        const categoryName = document.createElement('span');
+        link.href = '#'; // Set href to '#' since we're handling the click event
+        categoryName.textContent = category.category_desc;
+        link.dataset.categoryId = category.idcategories; // Set dataset to store category ID
+        link.appendChild(categoryName);
+        listItem.appendChild(link);
+        categoryList.appendChild(listItem);
+    });
+  }
+
+
+  // Assuming you have a function to retrieve categories from the server
+  function getCategories() {
+    console.log('Fetching categories...');
+
+    fetch('http://localhost/Bibliomaniacs/backend/get_categories.php')
+        .then(response => {
+            return response.json();
+        })
+        .then(categories => {
+            console.log('Received categories:', categories);
+            populateCategoryList(categories);
+        })
+        .catch(error => console.error('Error fetching category data:', error));
+}
+
+
   window.onload = async function () {
-    console.log("testing window load");
+    getCategories();
+
     await addCards(currentPage);
     loadMoreButton.addEventListener("click", () => {
       addCards(currentPage + 1);
     });
+    
   };
+
+
 }
 
 

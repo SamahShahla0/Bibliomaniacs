@@ -56,7 +56,6 @@ if (isset($_GET['category_id'])) {
 
     // Fetch books by category
     $books = getBooksByCategory($categoryId);
-
     // Return books as JSON
     header('Content-Type: application/json');
     echo json_encode($books);

@@ -6,6 +6,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 // Allow certain headers
 header("Access-Control-Allow-Headers: Content-Type");
 
+
 // Include the function to establish database connection
 include 'connection.php';
 
