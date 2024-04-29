@@ -1990,7 +1990,7 @@ a.remove {
 }
 .genel .single-book-content .sol .para
 {
-  font-size:30px;
+  font-size:26px;
   font-weight:bolder;
 }
 .genel .single-book-content .sol .action
@@ -2027,8 +2027,8 @@ a.remove {
 }
 .genel .single-book-content .sag
 {
-  width:58%;
-  height:90%;  
+  width:48%;
+  height:60%;  
   padding:45px 0;
   position:relative;
 }

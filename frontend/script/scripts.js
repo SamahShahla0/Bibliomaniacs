@@ -103,6 +103,9 @@ else if(pPath == "blog.html"){
 else if(pPath == "single-article.html"){
   singleBlogPage()
 }
+else if(pPath == "single-book-page.html"){
+  singleBookPage()
+}
 
 // Define functions for each page
 
@@ -164,7 +167,7 @@ async function catalogPage() {
   
     // Creating anchor element
     const imgAnchor = document.createElement("a");
-    imgAnchor.href = "single-book-page.html"; // Replace "your_target_page_url_here" with the URL you want to link to
+    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`; // Replace "your_target_page_url_here" with the URL you want to link to
     
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
@@ -341,7 +344,6 @@ async function catalogPage() {
 
 
 }
-
 
 
 function MyAccountPage() {
@@ -559,5 +561,39 @@ function singleBlogPage(){
         console.error('Blog ID not found in URL parameters');
     }
   };
+
+}
+
+function singleBookPage(){
+  // Function to fetch book data from PHP API
+  function fetchBook(bookId) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var bookData = JSON.parse(this.responseText);
+            displayBook(bookData);
+        }
+    };
+    xhttp.open("GET", "http://localhost/Bibliomaniacs/backend/get_single_book.php?idbooks=" + bookId, true);
+    xhttp.send();
+  }
+
+  // Function to display book data on the HTML page
+  function displayBook(bookData) {
+    document.getElementById("bookTitle").innerHTML = bookData['tittle'];
+    document.getElementById("bookAuthor").innerHTML = "Author: " + bookData['author'];
+    document.getElementById("bookDescription").innerHTML = bookData['long_desc'];
+    document.getElementById("bookImage").src = 'data:image/webp;base64,' + bookData['image_base64'];
+    document.getElementById("bookPrice").innerHTML = "Price: $" + bookData['price'];
+  }
+
+  function getBookIdFromURL() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('idbooks');
+  }
+
+  // Fetch book data based on the book ID from URL
+  var bookId = getBookIdFromURL();
+  fetchBook(bookId);
 
 }
