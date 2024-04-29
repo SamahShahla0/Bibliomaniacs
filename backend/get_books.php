@@ -7,7 +7,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
 
 // Include the function to establish database connection
-include 'connection.php'; // Update with the actual filename if needed
+include 'connection.php'; 
 
 // Function to fetch books from the database
 function fetchBooks() {
