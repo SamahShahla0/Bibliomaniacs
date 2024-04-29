@@ -89,7 +89,7 @@ async function catalogPage() {
   const cardContainer = document.getElementById("card-container");
   const loadMoreButton = document.getElementById("load-more");
 
-  const cardLimit = 10;
+  const cardLimit = 34;
   const cardIncrease = 5;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
   let currentPage = 1;
@@ -114,7 +114,7 @@ async function catalogPage() {
     
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
-    bookImg.src = bookData.imgSrc;
+    bookImg.src = "data:image/webp;base64," + bookData.image_base64; // Assuming the image is JPEG format, adjust accordingly
     bookImg.alt = bookData.tittle;
     
     // Appending image to the anchor
@@ -136,7 +136,7 @@ async function catalogPage() {
     const insSpan = document.createElement("ins");
     const amountSpan = document.createElement("span");
     amountSpan.className = "amount";
-    amountSpan.textContent = bookData.price;
+    amountSpan.textContent = "$ " + bookData.price;
     insSpan.appendChild(amountSpan);
     bookSumDiv.appendChild(insSpan);
     
@@ -158,14 +158,19 @@ async function catalogPage() {
   };
 
   const fetchBookData = async () => {
+    console.log("fetchBookData test");
     try {
-      const response = await fetch('http://localhost/Bibliomaniacs/backend/get_books.php'); // Replace '/api/books' with your backend API endpoint
+      const response = await fetch('http://localhost/Bibliomaniacs/backend/get_books.php');
       if (!response.ok) {
+        console.log("fetchBookData fail");
         throw new Error('Failed to fetch book data');
       }
       const bookDataList = await response.json();
+      console.log("fetchBookData success");
+      console.log(bookDataList);
       return bookDataList;
     } catch (error) {
+      console.log("fetchBookData test error");
       console.error('Error fetching book data:', error);
       return [];
     }
@@ -177,7 +182,8 @@ async function catalogPage() {
     handleButtonStatus();
 
     const bookDataList = await fetchBookData();
-
+    console.log("addCards test");
+    console.log(bookDataList);
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange =
       pageIndex * cardIncrease > cardLimit ? cardLimit : pageIndex * cardIncrease;
@@ -188,6 +194,7 @@ async function catalogPage() {
   };
 
   window.onload = async function () {
+    console.log("testing window load");
     await addCards(currentPage);
     loadMoreButton.addEventListener("click", () => {
       addCards(currentPage + 1);
