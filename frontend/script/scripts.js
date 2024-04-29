@@ -94,6 +94,9 @@ else if(pPath == "catalog.html"){
 else if(pPath == "my-account.html"){
   MyAccountPage()
 }
+else if(pPath == "contact-us.html"){
+  contactUsPage()
+}
 
 
 // Define functions for each page
@@ -377,5 +380,48 @@ function MyAccountPage() {
           activeTab.classList.add("active");
       }
   }
+
+}
+
+function contactUsPage(){
+
+  function handleContactForm() {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        console.log('Form submitted');
+        const formData = new FormData(this);
+
+        console.log("startt 111");
+        // Log the form data to check its contents
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ': ' + pair[1]); 
+        }
+
+        console.log("222");
+        console.log(formData);
+
+        // Send form data to backend
+        fetch('http://localhost/Bibliomaniacs/backend/save_messages.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Message sent successfully!');
+                contactForm.reset(); // Reset the form after successful submission
+            } else {
+                throw new Error('Failed to send message');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending message:', error);
+            alert('Failed to send message. Please try again later.');
+        });
+    });
+  }
+
+  handleContactForm(); 
 
 }
