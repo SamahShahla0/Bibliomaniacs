@@ -229,12 +229,30 @@ async function catalogPage() {
     categories.forEach(category => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
-        link.className = "icon fa fa-magic";
-        const categoryName = document.createElement('span');
+
+        if (category.idcategories == 1) {
+          link.className = "icon fa fa-gratipay";
+        } else if (category.idcategories == 2) {
+          link.className = "icon fa fa-magic";
+        } else if (category.idcategories == 3) {
+          link.className = "icon fa fa-hourglass-half";
+        } else if (category.idcategories == 4) {
+          link.className = "icon fa fa-book";
+        } else if (category.idcategories == 5) {
+          link.className = "icon fa fa-graduation-cap";
+        } else if (category.idcategories == 6) {
+          link.className = "icon fa fa-puzzle-piece";
+        } else if (category.idcategories == 7) {
+          link.className = "icon fa fa-child";
+        } else if (category.idcategories == 8) {
+          link.className = "icon fa fa-trophy";
+        }
+
+        const spanName = document.createElement('span');
         link.href = '#'; // Set href to '#' since we're handling the click event
-        categoryName.textContent = category.category_desc;
+        spanName.textContent = category.category_desc;
         link.dataset.categoryId = category.idcategories; // Set dataset to store category ID
-        link.appendChild(categoryName);
+        link.appendChild(spanName);
         listItem.appendChild(link);
         categoryList.appendChild(listItem);
     });
@@ -269,7 +287,6 @@ async function catalogPage() {
 
 
 }
-
 
 
 
