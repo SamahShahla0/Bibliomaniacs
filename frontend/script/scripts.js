@@ -134,30 +134,81 @@ function signPage() {
 
   
   document.addEventListener('DOMContentLoaded', function() {
+
     var signUpForm = document.getElementById('signUpForm');
 
     signUpForm.addEventListener('submit', function(e) {
         e.preventDefault(); // Prevent form submission
-        console.log("start");
+
+        // Get the password input value
+        var passwordInput = document.getElementById("signupPass");
+        var password = passwordInput.value;
+        // Password validation: Minimum length of 6 characters, including at least one letter and one number
+        if (password.length < 6 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+          window.alert("Password must be at least 6 characters long and include both letters and numbers.");
+          passwordInput.value = "";
+          return; // Stop form submission
+        }
+
+
         var formData = new FormData(signUpForm);
         for (var pair of formData.entries()) {
           console.log(pair[0] + ': ' + pair[1]);
         }
-
         // Send form data to the PHP API using fetch API
         fetch('http://localhost/Bibliomaniacs/backend/signup.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log("response status: " + response.status);
+            return response;
+        })
+        .then(response => response.text()) // Extract text from response
+        .then(data => {
+            console.log("data is: " + data); // Log the response
+            // Check if the response contains an error message
+            if (data.includes("Error:")) {
+                // Display error message to the user
+                window.alert(data);
+            } else {
+                // Sign-up successful, display success message
+                window.alert("Sign-up successful! You can now log in.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Display a generic error message to the user
+            window.alert("An error occurred. Please try again later.");
+        });
+
+        
+    });
+
+
+    /* ********************************* */
+    
+    var signInForm = document.getElementById('signInForm');
+
+    signInForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        var formData = new FormData(signInForm);
+
+        // Send form data to the PHP API using fetch API
+        fetch('signin.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.text())
         .then(data => {
             console.log(data); // Log the response
-            // Optionally, you can display a message to the user indicating successful sign-up
-            window.alert("Sign-up successful! You can now log in.");
+            // Redirect to the user's account page after successful sign-in
+            window.location.href = "http://127.0.0.1:5500/frontend/my-account.html";
         })
         .catch(error => {
             console.error('Error:', error);
-            // Optionally, you can display an error message to the user
+            // Display error message to the user
             window.alert("An error occurred. Please try again later.");
         });
     });

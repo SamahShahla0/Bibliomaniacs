@@ -1,13 +1,8 @@
 <?php
-// Allow requests from any origin
+
 header("Access-Control-Allow-Origin: *");
-
-// Allow GET, POST, PUT, DELETE requests
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Allow specific headers
 header("Access-Control-Allow-Headers: Content-Type");
-// Include database connection file
 include 'connection.php';
 
 $conn = connectDB();
@@ -20,6 +15,21 @@ if ($conn->connect_error) {
 $FirstName = $_POST['First_name'];
 $LastName = $_POST['Last_name'];
 $email = $_POST['email'];
+
+// Check if the email already exists
+$stmt = $conn->prepare("SELECT idusers FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
+
+if ($stmt->num_rows > 0) {
+    // Email already exists, return response status
+    http_response_code(400);
+    echo "Error: Email already registered";
+    exit();
+}
+$stmt->close();
+
 
 // Extract username from email
 $username = explode('@', $email)[0];
@@ -42,14 +52,12 @@ if ($stmt->num_rows > 0) {
     }
     $username = $newUsername;
 }
-
 $stmt->close();
 
+
 $password = $_POST['password'];
-
-
 // Hash the password before storing it in the database
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+$hashedPassword = hash('sha256', $password);
 
 // SQL query to insert user data into the database
 $sql = "INSERT INTO users (First_name, Last_name, email, username, password, addresses_idaddresses, `user-types_iduser-types`)
