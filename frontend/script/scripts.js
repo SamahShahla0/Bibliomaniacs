@@ -182,7 +182,7 @@ function signPage() {
             window.alert("An error occurred. Please try again later.");
         });
 
-        
+
     });
 
 
@@ -196,23 +196,31 @@ function signPage() {
         var formData = new FormData(signInForm);
 
         // Send form data to the PHP API using fetch API
-        fetch('signin.php', {
+        fetch('http://localhost/Bibliomaniacs/backend/signin.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
             console.log(data); // Log the response
-            // Redirect to the user's account page after successful sign-in
-            window.location.href = "http://127.0.0.1:5500/frontend/my-account.html";
+             if (data.status === "success") {
+                // Redirect to the user's account page after successful sign-in
+                window.location.href = "http://127.0.0.1:5500/frontend/my-account.html";
+            } else {
+                // Display error message to the user if sign-in fails
+                window.alert(data.message);
+            }
         })
+        
         .catch(error => {
             console.error('Error:', error);
             // Display error message to the user
             window.alert("An error occurred. Please try again later.");
         });
     });
+
   });
+
 }
 
 
