@@ -107,6 +107,7 @@ else if(pPath == "single-book-page.html"){
   singleBookPage()
 }
 
+
 // Define functions for each page
 
 
@@ -128,6 +129,38 @@ function signPage() {
 
   loginBtn.addEventListener('click', () => {
     signContainer.classList.remove("active");
+  });
+
+
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var signUpForm = document.getElementById('signUpForm');
+
+    signUpForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form submission
+        console.log("start");
+        var formData = new FormData(signUpForm);
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        // Send form data to the PHP API using fetch API
+        fetch('http://localhost/Bibliomaniacs/backend/signup.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Log the response
+            // Optionally, you can display a message to the user indicating successful sign-up
+            window.alert("Sign-up successful! You can now log in.");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Optionally, you can display an error message to the user
+            window.alert("An error occurred. Please try again later.");
+        });
+    });
   });
 }
 
@@ -563,6 +596,7 @@ function singleBlogPage(){
   };
 
 }
+
 
 function singleBookPage(){
   // Function to fetch book data from PHP API
