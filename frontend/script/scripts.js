@@ -446,7 +446,58 @@ async function catalogPage() {
 
 function MyAccountPage() {
 
+  // Function to handle sign-out
+  function signOut() {
+    // Clear user information from local storage
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    
+    // Redirect to sign-in page or refresh the current page
+    window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html"; // Replace with your sign-in page URL
+    // Alternatively, you can refresh the current page
+    // window.location.reload();
+  }
+  
   document.addEventListener("DOMContentLoaded", function() {
+
+    // Function to check if user is signed in
+    function checkSignInStatus() {
+      var userId = localStorage.getItem('userId');
+      if (!userId) {
+          // User is not signed in, hide the tab content
+          var tabContent = document.getElementById('myTabContent');
+          if (tabContent) {
+              tabContent.style.display = 'none';
+          }
+          // Show the sign-in buttons
+          var signInButtons = document.querySelectorAll('.sign-in-button');
+          signInButtons.forEach(function(button) {
+            console.log("btn");
+            button.classList.remove('hidden');
+          });
+
+
+            // Hide the sign-out link
+          var signOutAnchor = document.getElementById('logout');
+          if (signOutAnchor) {
+            signOutAnchor.style.display = 'none';
+          }
+      } else {
+        // User is signed in, attach event listener to the sign-out anchor
+        var signOutAnchor = document.getElementById('logout');
+        if (signOutAnchor) {
+          signOutAnchor.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            signOut(); // Call the sign-out function
+          });
+        }
+    }
+      
+  }
+    
+    checkSignInStatus(); // Check sign-in status when the page loads
+
     var tabLinks = document.querySelectorAll(".nav-item .nav-link");
     tabLinks.forEach(function(tabLink) {
         tabLink.addEventListener("click", function(event) {
@@ -509,27 +560,7 @@ function MyAccountPage() {
       console.error('Error fetching user information:', error);
   });
 
-  // Function to handle sign-out
-  function signOut() {
-    // Clear user information from local storage
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('userName');
-    
-    // Redirect to sign-in page or refresh the current page
-    window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html"; // Replace with your sign-in page URL
-    // Alternatively, you can refresh the current page
-    // window.location.reload();
-  }
 
-  // Attach event listener to the sign-out anchor
-  var signOutAnchor = document.getElementById('logout');
-  if (signOutAnchor) {
-    signOutAnchor.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default anchor behavior
-        signOut(); // Call the sign-out function
-    });
-  }
 
 }
 

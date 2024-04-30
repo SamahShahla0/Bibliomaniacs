@@ -2127,6 +2127,24 @@ a.remove {
   border-color: #ff5e14;
 }
 
+.sign-in-buttons {
+  margin-top: 30px;
+}
+.sign-in-button.hidden {
+  display: none !important;
+}
+.sign-in-button {
+  color: #273c42 !important;
+  border: 2px solid #ff5e14 !important;
+  padding: 10px 20px;
+  margin: 20px;
+  margin-left: 0;
+}
+
+.sign-in-button:hover {
+  color: #38A3A5 !important;
+}
+
 /* Tabs Content Styles */
 .tabs {
   width: 100%;
