@@ -202,10 +202,16 @@ function signPage() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Log the response
-             if (data.status === "success") {
+                console.log(data); // Log the response
+
+                if (data.status === "success") {
+                    // Save user information in local storage
+                    localStorage.setItem('userId', data.user.id);
+                    localStorage.setItem('userEmail', data.user.email);
+                    localStorage.setItem('userName', data.user.username);
+                   
                 // Redirect to the user's account page after successful sign-in
-                window.location.href = "http://127.0.0.1:5500/frontend/my-account.html";
+                window.location.href = `http://127.0.0.1:5500/frontend/my-account.html?idusers=${data.user.id};`
             } else {
                 // Display error message to the user if sign-in fails
                 window.alert(data.message);
@@ -479,6 +485,10 @@ function MyAccountPage() {
           activeTab.classList.add("active");
       }
   }
+
+
+  
+
 
 }
 

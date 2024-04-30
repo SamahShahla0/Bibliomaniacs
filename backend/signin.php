@@ -29,7 +29,15 @@ if ($result->num_rows > 0) {
     $hashedPasswordFromInput = hash('sha256', $password);
 
     if ($hashedPasswordFromInput === $hashedPasswordFromDatabase) {
-        $response = array("status" => "success", "message" => "Signed in successfully");
+        $response = array(
+            "status" => "success",
+            "message" => "Signed in successfully",
+            "user" => array(
+                "id" => $user['idusers'],
+                "email" => $user['email'],
+                "username" => $user['username']
+            )
+        );
 
     } else {
 
