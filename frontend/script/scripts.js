@@ -211,7 +211,7 @@ function signPage() {
                     localStorage.setItem('userName', data.user.username);
                    
                 // Redirect to the user's account page after successful sign-in
-                window.location.href = `http://127.0.0.1:5500/frontend/my-account.html?idusers=${data.user.id};`
+                window.location.href = `http://localhost/Bibliomaniacs/frontend/my-account.html?idusers=${data.user.id};`
             } else {
                 // Display error message to the user if sign-in fails
                 window.alert(data.message);
@@ -486,9 +486,50 @@ function MyAccountPage() {
       }
   }
 
+    // Get user ID from URL query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('idusers');
 
-  
 
+    // Example: Fetch user information from backend using user ID
+  fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
+  .then(response => response.json())
+  .then(userData => {
+      console.log(userData);
+      const userName = userData.username;
+
+      console.log(userName);
+      // Update HTML to display the username
+      const userUsernameElement = document.getElementById('user-username');
+      if (userUsernameElement) {
+          userUsernameElement.textContent = userName;
+      }
+  })
+  .catch(error => {
+      console.error('Error fetching user information:', error);
+  });
+
+  // Function to handle sign-out
+  function signOut() {
+    // Clear user information from local storage
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    
+    // Redirect to sign-in page or refresh the current page
+    window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html"; // Replace with your sign-in page URL
+    // Alternatively, you can refresh the current page
+    // window.location.reload();
+  }
+
+  // Attach event listener to the sign-out anchor
+  var signOutAnchor = document.getElementById('logout');
+  if (signOutAnchor) {
+    signOutAnchor.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        signOut(); // Call the sign-out function
+    });
+  }
 
 }
 

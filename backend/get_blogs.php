@@ -1,18 +1,14 @@
 <?php
-// Allow requests from any origin
+
 header("Access-Control-Allow-Origin: *");
-
-// Allow GET, POST, PUT, DELETE requests
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Allow specific headers
 header("Access-Control-Allow-Headers: Content-Type");
 // Include database connection file
 include 'connection.php';
 
 // Function to fetch blogs from the database
 function getBlogs() {
-    $conn = connectDB(); // Connect to the database
+    $conn = connectDB(); 
     if (!$conn) {
         return json_encode(array("error" => "Database connection failed"));
     }
