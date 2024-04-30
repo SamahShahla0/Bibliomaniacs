@@ -585,12 +585,39 @@ function singleBookPage(){
     document.getElementById("bookDescription").innerHTML = bookData['long_desc'];
     document.getElementById("bookImage").src = 'data:image/webp;base64,' + bookData['image_base64'];
     document.getElementById("bookPrice").innerHTML = "Price: $" + bookData['price'];
+
+    // Set data-book-id attribute for Add To Favorites button
+    var addToFavoritesButton = document.getElementById("addToFavoritesButton");
+    addToFavoritesButton.setAttribute("data-book-id", bookData['idbooks']);
   }
 
   function getBookIdFromURL() {
     var urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('idbooks');
   }
+
+  // Function to add book to favorites
+  function addToFavorites(idbooks) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Book added to favorites!");
+        }
+    };
+    xhttp.open("GET", "http://localhost/Bibliomaniacs/backend/add_to_favorites.php?idbooks=" + idbooks, true);
+    xhttp.send();
+  }
+
+  // Attach event listeners to all "Add To Favorites" buttons
+  document.addEventListener('DOMContentLoaded', function() {
+    var addToFavoritesButtons = document.querySelectorAll('.add-to-favorites-btn');
+    addToFavoritesButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var bookId = this.getAttribute('data-book-id');
+            addToFavorites(bookId);
+        });
+    });
+  });
 
   // Fetch book data based on the book ID from URL
   var bookId = getBookIdFromURL();
