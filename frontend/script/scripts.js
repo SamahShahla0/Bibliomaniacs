@@ -458,6 +458,31 @@ function MyAccountPage() {
     // Alternatively, you can refresh the current page
     // window.location.reload();
   }
+
+  function displayOrders(userId) {
+    fetch(`http://localhost/Bibliomaniacs/backend/orders.php?userId=${userId}`)
+      .then(response => response.json())
+      .then(orders => {
+        const ordersTableBody = document.querySelector('#my-orders-table tbody');
+        ordersTableBody.innerHTML = ''; // Clear existing rows
+        
+        orders.forEach(order => {
+          // Create a new table row for each order
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td># ${order.idorders}</td>
+            <td>${order.date_created}</td>
+            <td>${order.status}</td>
+            <td>$ ${order.total_order}</td>
+          `;
+          ordersTableBody.appendChild(row); // Append row to the table body
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching orders:', error);
+      });
+  }
+  
   
   document.addEventListener("DOMContentLoaded", function() {
 
@@ -492,6 +517,8 @@ function MyAccountPage() {
             signOut(); // Call the sign-out function
           });
         }
+
+        displayOrders(userId);
     }
       
   }
