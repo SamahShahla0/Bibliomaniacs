@@ -607,6 +607,40 @@ function MyAccountPage() {
     
       }
 
+      var accountDetailForm = document.getElementById('accountDetailForm');
+
+      if (accountDetailForm) {
+        accountDetailForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var formData = new FormData(accountDetailForm); // Get form data
+
+            // Make AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_account_details.php?idusers=${userId}`,true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert('Details updated successfully');
+                            // You can redirect the user or do any other action here
+                        } else {
+                            alert('Error occurred');
+                            // Handle error response
+                        }
+                    } else {
+                        console.error(xhr.responseText);
+                        alert('Error occurred');
+                        // Handle error response
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+      }
+
   });
 
   function showTab(tabId) {
