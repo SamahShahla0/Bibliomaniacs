@@ -454,7 +454,7 @@ function MyAccountPage() {
     localStorage.removeItem('userName');
     
     // Redirect to sign-in page or refresh the current page
-    window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html"; // Replace with your sign-in page URL
+    window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html";
     // Alternatively, you can refresh the current page
     // window.location.reload();
   }
@@ -486,70 +486,127 @@ function MyAccountPage() {
   
   document.addEventListener("DOMContentLoaded", function() {
 
-    // Function to check if user is signed in
-    function checkSignInStatus() {
-      var userId = localStorage.getItem('userId');
-      if (!userId) {
-          // User is not signed in, hide the tab content
-          var tabContent = document.getElementById('myTabContent');
-          if (tabContent) {
-              tabContent.style.display = 'none';
-          }
-          // Show the sign-in buttons
-          var signInButtons = document.querySelectorAll('.sign-in-button');
-          signInButtons.forEach(function(button) {
-            console.log("btn");
-            button.classList.remove('hidden');
-          });
+      // Get user ID from URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get('idusers').replace(';', '');
+      console.log(userId);
+      // Function to check if user is signed in
+      function checkSignInStatus() {
+        var userId = localStorage.getItem('userId');
+        if (!userId) {
+            // User is not signed in, hide the tab content
+            var tabContent = document.getElementById('myTabContent');
+            if (tabContent) {
+                tabContent.style.display = 'none';
+            }
+            // Show the sign-in buttons
+            var signInButtons = document.querySelectorAll('.sign-in-button');
+            signInButtons.forEach(function(button) {
+              console.log("btn");
+              button.classList.remove('hidden');
+            });
 
 
-            // Hide the sign-out link
+              // Hide the sign-out link
+            var signOutAnchor = document.getElementById('logout');
+            if (signOutAnchor) {
+              signOutAnchor.style.display = 'none';
+            }
+        } else {
+          // User is signed in, attach event listener to the sign-out anchor
           var signOutAnchor = document.getElementById('logout');
           if (signOutAnchor) {
-            signOutAnchor.style.display = 'none';
+            signOutAnchor.addEventListener('click', function(event) {
+              event.preventDefault(); // Prevent default anchor behavior
+              signOut(); // Call the sign-out function
+            });
           }
-      } else {
-        // User is signed in, attach event listener to the sign-out anchor
-        var signOutAnchor = document.getElementById('logout');
-        if (signOutAnchor) {
-          signOutAnchor.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default anchor behavior
-            signOut(); // Call the sign-out function
-          });
-        }
 
-        displayOrders(userId);
-    }
+          displayOrders(userId);
+      }
+        
+      }
       
-  }
+      checkSignInStatus(); // Check sign-in status when the page loads
+
+      var tabLinks = document.querySelectorAll(".nav-item .nav-link");
+      tabLinks.forEach(function(tabLink) {
+          tabLink.addEventListener("click", function(event) {
+              event.preventDefault();
+              var targetTabId = this.getAttribute("href").substring(1);
+              showTab(targetTabId);
+          });
+      });
+
+      // DataTable initialization (this part should be replaced with actual DataTable initialization)
+      var ordersTable = document.getElementById("my-orders-table");
+      if (ordersTable) {
+          // Initialize DataTable
+      }
+
+      var cards = document.querySelectorAll(".my-account-dashboard .card");
+      cards.forEach(function(card) {
+          card.addEventListener("click", function() {
+              var areaToggle = this.getAttribute("area-toggle");
+              var navLink = document.querySelector(".nav-area a#" + areaToggle);
+              if (navLink) {
+                  navLink.click();
+              }
+          });
+      });
+
+      // Example: Fetch user information from backend using user ID
+      fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
+      .then(response => response.json())
+      .then(userData => {
+          console.log(userData);
+          const userName = userData.username;
+
+          console.log(userName);
+          // Update HTML to display the username
+          const userUsernameElement = document.getElementById('user-username');
+          if (userUsernameElement) {
+              userUsernameElement.textContent = userName;
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user information:', error);
+      });
+
+      var addressForm = document.getElementById('addressForm');
+
+      if (addressForm) {
+        addressForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
     
-    checkSignInStatus(); // Check sign-in status when the page loads
-
-    var tabLinks = document.querySelectorAll(".nav-item .nav-link");
-    tabLinks.forEach(function(tabLink) {
-        tabLink.addEventListener("click", function(event) {
-            event.preventDefault();
-            var targetTabId = this.getAttribute("href").substring(1);
-            showTab(targetTabId);
+            var formData = new FormData(addressForm); // Get form data
+            // Make AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_address.php?idusers=${userId}`, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert('Address updated/inserted successfully');
+                            // You can redirect the user or do any other action here
+                        } else {
+                            alert('Error occurred');
+                            // Handle error response
+                        }
+                    } else {
+                        console.error(xhr.responseText);
+                        alert('Error occurred');
+                        // Handle error response
+                    }
+                }
+            };
+            xhr.send(formData);
         });
-    });
+    
+      }
 
-    // DataTable initialization (this part should be replaced with actual DataTable initialization)
-    var ordersTable = document.getElementById("my-orders-table");
-    if (ordersTable) {
-        // Initialize DataTable
-    }
-
-    var cards = document.querySelectorAll(".my-account-dashboard .card");
-    cards.forEach(function(card) {
-        card.addEventListener("click", function() {
-            var areaToggle = this.getAttribute("area-toggle");
-            var navLink = document.querySelector(".nav-area a#" + areaToggle);
-            if (navLink) {
-                navLink.click();
-            }
-        });
-    });
   });
 
   function showTab(tabId) {
@@ -564,32 +621,14 @@ function MyAccountPage() {
       }
   }
 
-    // Get user ID from URL query parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const userId = urlParams.get('idusers');
-
-
-    // Example: Fetch user information from backend using user ID
-  fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
-  .then(response => response.json())
-  .then(userData => {
-      console.log(userData);
-      const userName = userData.username;
-
-      console.log(userName);
-      // Update HTML to display the username
-      const userUsernameElement = document.getElementById('user-username');
-      if (userUsernameElement) {
-          userUsernameElement.textContent = userName;
-      }
-  })
-  .catch(error => {
-      console.error('Error fetching user information:', error);
-  });
 
 
 
+ 
 }
+
+
+
 
 function contactUsPage(){
 
