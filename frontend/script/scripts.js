@@ -106,6 +106,9 @@ else if(pPath == "single-article.html"){
 else if(pPath == "single-book-page.html"){
   singleBookPage()
 }
+else if(pPath == "favorites.html"){
+  favoritesPage()
+}
 
 
 // Define functions for each page
@@ -296,8 +299,8 @@ async function catalogPage() {
     bookSumDiv.appendChild(insSpan);
     
     const addToCartBtn = document.createElement("button");
-    addToCartBtn.className = "btn";
-    addToCartBtn.textContent = "Add To Cart";
+    addToCartBtn.className = "btn hreff";
+    addToCartBtn.textContent = "See Book";
   
     bookContentDiv.appendChild(bookTitleDiv);
     bookContentDiv.appendChild(bookAuthorDiv);
@@ -310,6 +313,17 @@ async function catalogPage() {
     cardContainer.appendChild(card);
 
     cardContainer.appendChild(card);
+
+
+    var linkBtn = addToCartBtn; // Use the button as the linkBtn
+
+    linkBtn.addEventListener("click", () => {
+        // Get the idbooks associated with this card
+        const idbooks = bookData.idbooks;
+        window.location.href = `http://localhost/Bibliomaniacs/frontend/single-book-page.html?idbooks=${idbooks}`;
+    });
+
+    
   };
 
   const fetchBookData = async () => {
@@ -437,6 +451,7 @@ async function catalogPage() {
     loadMoreButton.addEventListener("click", () => {
       addCards(currentPage + 1);
     });
+
     
   };
 
@@ -975,5 +990,178 @@ function singleBookPage(){
   // Fetch book data based on the book ID from URL
   var bookId = getBookIdFromURL();
   fetchBook(bookId);
+
+}
+
+function favoritesPage() {
+  const cardContainer = document.getElementById("card-container");
+  const messageBox = document.getElementById("messageBox");
+
+  // Function to delete a favorite book
+  function deleteFavorite(bookId, userId) {
+    console.log("user id:" + userId);
+    console.log("book id:" + bookId);
+    console.log("begin deletee");
+    console.log("DELETE Request Payload:", { idbooks: bookId, idusers: userId });
+    // Make an API call to delete the book from favorites
+    fetch(`http://localhost/Bibliomaniacs/backend/delete_favorite.php`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({idbooks:bookId, idusers:userId})
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.log("book not deleted");
+            throw new Error('Failed to delete favorite book');
+        }
+        location.reload();
+
+    })
+    .catch(error => {
+        console.error('Error deleting favorite:', error);
+
+    });
+  }
+
+
+  const createBookCard = (bookData) => {
+    const card = document.createElement("div");
+    card.className = "book-cell";
+  
+    const bookImgDiv = document.createElement("div");
+    bookImgDiv.className = "book-img";
+  
+    // Creating anchor element
+    const imgAnchor = document.createElement("a");
+    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`; // Replace "your_target_page_url_here" with the URL you want to link to
+    
+    const bookImg = document.createElement("img");
+    bookImg.className = "book-photo";
+    bookImg.src = "data:image/webp;base64," + bookData.image_base64; 
+    bookImg.alt = bookData.tittle;
+    
+    // Appending image to the anchor
+    imgAnchor.appendChild(bookImg);
+    
+    // Appending anchor to the image div
+    bookImgDiv.appendChild(imgAnchor);
+  
+    const bookContentDiv = document.createElement("div");
+    bookContentDiv.className = "book-content";
+    const bookTitleDiv = document.createElement("div");
+    bookTitleDiv.className = "book-title";
+    bookTitleDiv.textContent = bookData.tittle;
+    const bookAuthorDiv = document.createElement("div");
+    bookAuthorDiv.className = "book-author";
+    bookAuthorDiv.textContent = "by " + bookData.author;
+    const bookSumDiv = document.createElement("div");
+    bookSumDiv.className = "book-sum";
+    const insSpan = document.createElement("ins");
+    const amountSpan = document.createElement("span");
+    amountSpan.className = "amount";
+    amountSpan.textContent = "$ " + bookData.price;
+    insSpan.appendChild(amountSpan);
+    bookSumDiv.appendChild(insSpan);
+    
+    const addToCartBtn = document.createElement("button");
+    addToCartBtn.className = "btn hreff";
+    addToCartBtn.textContent = "See Book";
+
+    const deleteIcon = document.createElement('i');
+    deleteIcon.className = "margin-left fa-solid fa-trash";
+    deleteIcon.style.marginLeft = "15px";
+    deleteIcon.style.cursor="pointer";
+
+    deleteIcon.addEventListener('click', function() {
+      const bookId = bookData.idbooks;
+      deleteFavorite(bookId,userId);
+
+    });
+
+    bookContentDiv.appendChild(bookTitleDiv);
+    bookContentDiv.appendChild(bookAuthorDiv);
+    bookContentDiv.appendChild(bookSumDiv);
+    bookContentDiv.appendChild(addToCartBtn);
+    bookContentDiv.appendChild(deleteIcon);
+  
+    card.appendChild(bookImgDiv);
+    card.appendChild(bookContentDiv);
+  
+    cardContainer.appendChild(card);
+  
+    cardContainer.appendChild(card);
+  
+  
+    var linkBtn = addToCartBtn; // Use the button as the linkBtn
+  
+    linkBtn.addEventListener("click", () => {
+        // Get the idbooks associated with this card
+        const idbooks = bookData.idbooks;
+        redirectToPage( `http://localhost/Bibliomaniacs/frontend/single-book-page.html?idbooks=${idbooks}`);
+        /*window.location.href = `http://localhost/Bibliomaniacs/frontend/single-book-page.html?idbooks=${idbooks}`;*/
+    });
+  
+    
+  };
+
+
+  async function fetchBookDetails(bookId) {
+    try {
+      const response = await fetch(`http://localhost/Bibliomaniacs/backend/get_single_book.php?idbooks=${bookId}`);
+      return await response.json();
+    } catch (error) {
+      const errorMessage = 'Error fetching book details: ' + error;
+      messageBox.textContent = errorMessage;
+      throw error; // Rethrow the error to be caught by the caller
+    }
+  }
+
+  async function fetchFavorites(userId) {
+    try {
+      const response = await fetch(`http://localhost/Bibliomaniacs/backend/get_favorites.php?idusers=${userId}`);
+      return await response.json();
+    } catch (error) {
+      const errorMessage = 'Error fetching favorites: ' + error;
+      messageBox.textContent = errorMessage;
+      throw error;  // Rethrow the error to be caught by the caller
+    }
+  }
+
+  function displayFavorite(bookId) {
+    fetchBookDetails(bookId)
+      .then(bookData => {
+        createBookCard(bookData);
+      })
+      .catch(error => {
+        const errorMessage = 'Error displaying favorite: ' + error;
+        messageBox.textContent = errorMessage;
+      });
+  }
+
+  const userId = localStorage.getItem('userId');
+  if (userId) {
+    fetchFavorites(userId)
+      .then(favorites => {
+        if (favorites.length === 0) {
+          const message = "No favorites found for this user.";
+          messageBox.textContent = message;
+        } else {
+          // Display each favorite book
+          favorites.forEach(bookId => {
+            displayFavorite(bookId);
+          });
+        }
+      })
+      .catch(error => {
+        const errorMessage = 'Error fetching favorites: ' + error;
+        messageBox.textContent = errorMessage;
+      });
+  } else {
+    const message = "Please log in first.";
+    messageBox.textContent = message;
+  }
+  
 
 }
