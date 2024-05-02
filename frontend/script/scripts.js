@@ -460,7 +460,7 @@ function MyAccountPage() {
   }
 
   function displayOrders(userId) {
-    fetch(`http://localhost/Bibliomaniacs/backend/orders.php?userId=${userId}`)
+    fetch(`http://localhost/Bibliomaniacs/backend/orders.php?idusers=${userId}`)
       .then(response => response.json())
       .then(orders => {
         const ordersTableBody = document.querySelector('#my-orders-table tbody');
@@ -470,10 +470,10 @@ function MyAccountPage() {
           // Create a new table row for each order
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td># ${order.idorders}</td>
+            <td># ${order.order_id}</td>
             <td>${order.date_created}</td>
             <td>${order.status}</td>
-            <td>$ ${order.total_order}</td>
+            <td>$ ${order.total}</td>
           `;
           ordersTableBody.appendChild(row); // Append row to the table body
         });
@@ -488,7 +488,7 @@ function MyAccountPage() {
 
       // Get user ID from URL query parameters
       const urlParams = new URLSearchParams(window.location.search);
-      const userId = urlParams.get('idusers').replace(';', '');
+      const userId = urlParams.get('idusers');
       console.log(userId);
       // Function to check if user is signed in
       function checkSignInStatus() {
@@ -505,26 +505,117 @@ function MyAccountPage() {
               console.log("btn");
               button.classList.remove('hidden');
             });
+                          
+            var signOutAnchor = document.getElementById('logout');
+            if(signOutAnchor){
+              signOutAnchor.style.display = 'none';
+            } 
 
-
-              // Hide the sign-out link
+        } else {
+            // User is signed in, attach event listener to the sign-out anchor
             var signOutAnchor = document.getElementById('logout');
             if (signOutAnchor) {
-              signOutAnchor.style.display = 'none';
+              signOutAnchor.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                signOut(); // Call the sign-out function
+              });
             }
-        } else {
-          // User is signed in, attach event listener to the sign-out anchor
-          var signOutAnchor = document.getElementById('logout');
-          if (signOutAnchor) {
-            signOutAnchor.addEventListener('click', function(event) {
-              event.preventDefault(); // Prevent default anchor behavior
-              signOut(); // Call the sign-out function
-            });
-          }
 
-          displayOrders(userId);
-      }
-        
+                        // Example: Fetch user information from backend using user ID
+            fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
+            .then(response => response.json())
+            .then(userData => {
+                console.log(userData);
+                const userName = userData.username;
+
+                console.log(userName);
+                // Update HTML to display the username
+                const userUsernameElement = document.getElementById('user-username');
+                if (userUsernameElement) {
+                    userUsernameElement.textContent = userName;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user information:', error);
+            });
+
+            var addressForm = document.getElementById('addressForm');
+
+            if (addressForm) {
+              addressForm.addEventListener('submit', function(event) {
+                  event.preventDefault(); // Prevent form submission
+          
+                  var formData = new FormData(addressForm); // Get form data
+                  // Make AJAX request
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_address.php?idusers=${userId}`, true);
+                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                  xhr.onreadystatechange = function() {
+                      if (xhr.readyState === XMLHttpRequest.DONE) {
+                          if (xhr.status === 200) {
+                              var response = JSON.parse(xhr.responseText);
+                              if (response.success) {
+                                  alert('Address updated/inserted successfully');
+                                  // You can redirect the user or do any other action here
+                              } else {
+                                  alert('Error occurred');
+                                  // Handle error response
+                              }
+                          } else {
+                              console.error(xhr.responseText);
+                              alert('Error occurred');
+                              // Handle error response
+                          }
+                      }
+                  };
+                  xhr.send(formData);
+              });
+          
+            }
+
+            var accountDetailForm = document.getElementById('accountDetailForm');
+
+            if (accountDetailForm) {
+              accountDetailForm.addEventListener('submit', function(event) {
+                  event.preventDefault(); // Prevent form submission
+
+                  var formData = new FormData(accountDetailForm); // Get form data
+
+                  // Make AJAX request
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_account_details.php?idusers=${userId}`,true);
+                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                  xhr.onreadystatechange = function() {
+                      if (xhr.readyState === XMLHttpRequest.DONE) {
+                          if (xhr.status === 200) {
+                              var response = JSON.parse(xhr.responseText);
+                              if (response.success) {
+                                  alert('Details updated successfully');
+                                  // You can redirect the user or do any other action here
+                              } else {
+                                  alert('Error occurred');
+                                  // Handle error response
+                              }
+                          } else {
+                              console.error(xhr.responseText);
+                              alert('Error occurred');
+                              // Handle error response
+                          }
+                      }
+                  };
+                  xhr.send(formData);
+              });
+            }
+
+            // DataTable initialization (this part should be replaced with actual DataTable initialization)
+            var ordersTable = document.getElementById("my-orders-table");
+            if (ordersTable) {
+              displayOrders(userId);
+            }
+
+            displayOrders(userId);
+        }
+            
       }
       
       checkSignInStatus(); // Check sign-in status when the page loads
@@ -538,11 +629,7 @@ function MyAccountPage() {
           });
       });
 
-      // DataTable initialization (this part should be replaced with actual DataTable initialization)
-      var ordersTable = document.getElementById("my-orders-table");
-      if (ordersTable) {
-          // Initialize DataTable
-      }
+
 
       var cards = document.querySelectorAll(".my-account-dashboard .card");
       cards.forEach(function(card) {
@@ -555,91 +642,7 @@ function MyAccountPage() {
           });
       });
 
-      // Example: Fetch user information from backend using user ID
-      fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
-      .then(response => response.json())
-      .then(userData => {
-          console.log(userData);
-          const userName = userData.username;
 
-          console.log(userName);
-          // Update HTML to display the username
-          const userUsernameElement = document.getElementById('user-username');
-          if (userUsernameElement) {
-              userUsernameElement.textContent = userName;
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user information:', error);
-      });
-
-      var addressForm = document.getElementById('addressForm');
-
-      if (addressForm) {
-        addressForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-    
-            var formData = new FormData(addressForm); // Get form data
-            // Make AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_address.php?idusers=${userId}`, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        var response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            alert('Address updated/inserted successfully');
-                            // You can redirect the user or do any other action here
-                        } else {
-                            alert('Error occurred');
-                            // Handle error response
-                        }
-                    } else {
-                        console.error(xhr.responseText);
-                        alert('Error occurred');
-                        // Handle error response
-                    }
-                }
-            };
-            xhr.send(formData);
-        });
-    
-      }
-
-      var accountDetailForm = document.getElementById('accountDetailForm');
-
-      if (accountDetailForm) {
-        accountDetailForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            var formData = new FormData(accountDetailForm); // Get form data
-
-            // Make AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', `http://localhost/Bibliomaniacs/backend/update_account_details.php?idusers=${userId}`,true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        var response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            alert('Details updated successfully');
-                            // You can redirect the user or do any other action here
-                        } else {
-                            alert('Error occurred');
-                            // Handle error response
-                        }
-                    } else {
-                        console.error(xhr.responseText);
-                        alert('Error occurred');
-                        // Handle error response
-                    }
-                }
-            };
-            xhr.send(formData);
-        });
-      }
 
   });
 
@@ -654,10 +657,6 @@ function MyAccountPage() {
           activeTab.classList.add("active");
       }
   }
-
-
-
-
  
 }
 
@@ -872,16 +871,71 @@ function singleBookPage(){
   }
 
   // Function to add book to favorites
-  function addToFavorites(idbooks) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Book added to favorites!");
-        }
-    };
-    xhttp.open("GET", "http://localhost/Bibliomaniacs/backend/add_to_favorites.php?idbooks=" + idbooks, true);
-    xhttp.send();
+  function addToFavorites() {
+    // Check if the user is logged in
+    if (isLoggedIn()) {
+        // Retrieve bookId from the URL
+        var bookId = getBookIdFromURL();
+
+        // Retrieve userId from localStorage
+        var userId = localStorage.getItem('userId');
+
+        // Send AJAX request to the server to add/remove the book from the user's favorites
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/Bibliomaniacs/backend/add_to_favorites.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Handle success (e.g., show a success message)
+                    alert('Book added to favorites!');
+                } else {
+                    // Handle error (e.g., show an error message)
+                    alert('Error adding book to favorites. Please try again later.');
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+        xhr.send(JSON.stringify({ userId: userId, bookId: bookId }));
+    } else {
+        // Redirect the user to the login page or show a message indicating they need to log in
+        alert('Please log in to add the book to your favorites.');
+        // window.location.href = '/login';
+    }
   }
+
+
+  // Function to add item to cart
+  function addToCart(bookId) {
+    // Check if the user is logged in
+    if (isLoggedIn()) {
+        // Retrieve userId from localStorage
+        var userId = localStorage.getItem('userId');
+
+        // Send AJAX request to the server to add the product to the cart
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/Bibliomaniacs/backend/add_to_cart.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Handle success (e.g., show a success message)
+                    alert('Product added to cart!');
+                } else {
+                    // Handle error (e.g., show an error message)
+                    alert('Error adding product to cart. Please try again later.');
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+        xhr.send(JSON.stringify({ userId: userId, bookId: bookId}));
+    } else {
+        // Redirect the user to the login page or show a message indicating they need to log in
+        alert('Please log in to add the product to your cart.');
+        // window.location.href = '/login';
+    }
+  }
+
 
   // Attach event listeners to all "Add To Favorites" buttons
   document.addEventListener('DOMContentLoaded', function() {
@@ -892,7 +946,31 @@ function singleBookPage(){
             addToFavorites(bookId);
         });
     });
+
+    var addToCartButton = document.getElementById('addToCart');
+    addToCartButton.addEventListener('click', function() {
+        // Retrieve productId from the URL
+        var bookId = getBookIdFromURL();
+
+        addToCart(bookId);
+    });
+
   });
+
+
+  // Function to check if the user is logged in
+  function isLoggedIn() {
+    // Check if the 'userId' is stored in localStorage
+    var userId = localStorage.getItem('userId');
+
+    // If 'userId' exists and is not null, consider the user as logged in
+    if (userId) {
+        return true; // User is logged in
+    } else {
+        return false; // User is not logged in
+    }
+  }
+
 
   // Fetch book data based on the book ID from URL
   var bookId = getBookIdFromURL();

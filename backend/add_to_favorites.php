@@ -2,21 +2,19 @@
 // Allow requests from all origins (replace * with specific origins if needed)
 header("Access-Control-Allow-Origin: *");
 // Allow certain HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Methods: POST");
 // Allow certain headers
 header("Access-Control-Allow-Headers: Content-Type");
 
 // Include the function to establish database connection
 include 'connection.php'; 
 
-// Get book id from GET parameter
-$bookId = $_GET['idbooks'];
+// Get user id from POST parameter
+$data = json_decode(file_get_contents("php://input"));
+$userId = $data->userId; // Assuming the client sends userId along with bookId
 
-// Check if the user is logged in and retrieve their user ID
-// You need to implement user authentication and retrieve the user ID accordingly
-
-// For demonstration purposes, let's assume the user ID is 1
-$userId = 1;
+// Get book id from POST parameter
+$bookId = $data->bookId;
 
 // Connect to the database
 $conn = connectDB();
@@ -31,12 +29,17 @@ $sql = "INSERT INTO favorites (users_idusers, books_idbooks) VALUES (?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $userId, $bookId);
 
+$response = new stdClass();
+
 if ($stmt->execute() === TRUE) {
-    echo "Book added to favorites successfully.";
+    $response->message = "Book added to favorites successfully.";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    $response->error = "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $stmt->close();
 $conn->close();
+
+// Convert response object to JSON and echo
+echo json_encode($response);
 ?>

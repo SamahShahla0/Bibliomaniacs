@@ -13,10 +13,10 @@ if ($conn->connect_error) {
 }
 
 // Retrieve user ID from the request parameters
-$userId = $_GET['userId'];
+$userId = $_GET['idusers'];
 
 // Prepare and execute SQL query to fetch orders for the user
-$stmt = $conn->prepare("SELECT * FROM orders WHERE carts_users_idusers = ?");
+$stmt = $conn->prepare("SELECT * FROM orders WHERE carts_idcarts IN (SELECT idcarts FROM carts WHERE user_id = ?)");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
