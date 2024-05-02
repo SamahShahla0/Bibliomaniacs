@@ -1718,16 +1718,16 @@ ins {
     .cartSection {
       display: table-cell;
       vertical-align: middle;
+      width: 70%;
       .itemNumber {
         font-size: .75em;
         color: #777;
         margin-bottom: .5em;
       }
       h3 {
-        font-size: 1em;
+        font-size: 0.7em;
         font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: .025em; 
+        text-transform: uppercase; 
       }
       p {
         display: inline-block;
@@ -2816,6 +2816,11 @@ a.remove {
 
   .single-book .dummy-nav-place{
     display: none;
+  }
+
+  .mainscreen .card {
+    flex-direction: column;
+    width:min-content;
   }
 
 }

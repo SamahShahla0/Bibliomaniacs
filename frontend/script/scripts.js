@@ -234,11 +234,77 @@ function signPage() {
 
 
 function cartPage() {
-  $('a.remove').click(function(e){
-    e.preventDefault();
-    $(this).parent().parent().parent().hide( 400 );
-  
-  })
+
+  // Function to delete a book from the cart
+  function deleteBookFromCart(bookId) {
+    // Make AJAX request to PHP script to delete the book from the cart
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/Bibliomaniacs/backend/delete_book_from_cart.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Refresh cart display after successful deletion
+            var userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+            updateCartDisplay(userId); // Update cart display based on user ID
+        }
+    };
+    xhr.send("bookId=" + bookId);
+  }
+
+    // Function to fetch cart contents and update cart display
+  function updateCartDisplay(userId) {
+    // Make AJAX request to the PHP API endpoint
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/Bibliomaniacs/backend/get_cart_contents.php?userId=" + userId, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse JSON response
+            var cartContents = JSON.parse(xhr.responseText);
+            if (cartContents.length > 0) {
+                // Update cart display based on cartContents
+                var cartList = document.querySelector('.cart-wrap');
+                cartList.innerHTML = ''; // Clear existing cart items
+                cartContents.forEach(function (item) {
+                    var listItem = document.createElement('li');
+                    listItem.className = 'items';
+                    listItem.innerHTML = `
+                        <div class="infoWrap">
+                            <div class="cartSection">
+                                <img src="data:image/webp;base64,${item.image_base64}" alt="" class="itemImg">
+                                <p class="itemNumber">#${item.book_id}</p>
+                                <h3>${item.title}</h3>
+                                <p><input type="text" class="cart-qty" value="${item.quantity}" /> x $${item.price}</p>
+                            </div>
+                            <div class="prodTotal cartSection">
+                                <p>$${item.total}</p>
+                            </div>
+                            <div class="cartSection removeWrap">
+                                <a href="#" class="remove">x</a>
+                            </div>
+                        </div>
+                    `;
+                    // Attach event listener directly to the remove button
+                    listItem.querySelector('.remove').addEventListener('click', function(e) {
+                      e.preventDefault();
+                      deleteBookFromCart(item.book_id);
+                  });
+              });
+            } else {
+                // No items in the cart
+                console.log('Cart is empty');
+            }
+
+        }
+    };
+    xhr.send();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Example usage:
+    var userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+    updateCartDisplay(userId); // Update cart display based on user ID
+
+  });
 }
 
 
@@ -1165,3 +1231,4 @@ function favoritesPage() {
   
 
 }
+
