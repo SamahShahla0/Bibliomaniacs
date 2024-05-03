@@ -161,7 +161,32 @@ function landingPage() {
         })
         .catch(error => console.error('Error fetching ads:', error));
 
-
+    const searchInput = document.querySelector('.search__input');
+    
+    searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            const searchQuery = searchInput.value.trim();
+            if (searchQuery !== '') {
+              // Fetch the idbooks parameter from search.php
+              fetch('http://localhost/Bibliomaniacs/backend/search_for_book.php?search_query=' + encodeURIComponent(searchQuery))
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+                  return response.text();
+              })
+              .then(idbooks => {
+                  // Redirect to the HTML page with the received idbooks parameter
+                  /*console.log("single-book-page.html?idbooks=" + idbooks)*/
+                  window.location.href = 'single-book-page.html?idbooks=' + encodeURIComponent(idbooks);
+                  searchInput.value = '';
+              })
+              .catch(error => {
+                  console.error('There was a problem with the fetch operation:', error);
+              });
+            }
+        }
+    });
 
   });
 
