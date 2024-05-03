@@ -419,9 +419,9 @@ function cartPage() {
 
         // Retrieve the total value
         var total = document.querySelector('.subtotal .total').textContent;
-
+       
         // Save the total in local storage
-        localStorage.setItem('total', total);
+        localStorage.setItem('total',  parseFloat(total.substring(1)));
 
         // Redirect to the checkout page
         window.location.href = checkoutBtn.href;
@@ -902,7 +902,34 @@ function checkoutPage (){
     xhr.send(formData);
 }
 
+  function placeOrder() {
+    // Retrieve total and cart ID from local storage
+    var total = localStorage.getItem('total');
+    var cartId = localStorage.getItem('cartId');
+    console.log("cart id: " + cartId);
 
+    // Create a data object to send in the AJAX request
+    var data = {
+        total: total,
+        cartId: cartId
+    };
+
+    console.log(data);
+    // Make an AJAX POST request to the place_order.php API
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/Bibliomaniacs/backend/place_order.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Handle the response from the server if needed
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Convert data object to JSON format before sending
+    xhr.send(JSON.stringify(data));
+  }
 
 
 
@@ -912,13 +939,27 @@ function checkoutPage (){
 
     var form = document.getElementById('checkoutForm');
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        submitPaymentInfo(userId);
-        // Delay the redirection by resetting the form after a short delay
-        setTimeout(function() {
-          form.reset();
-          window.location.href = 'placed-order.html'; // Redirect to the destination page
-        }, 500); // Adjust the delay as needed 
+        var cardnum = document.getElementById("card_number");
+        if (cardnum.value.length > 16) {
+            alert("card number cannot exceed 16 characters");
+            event.preventDefault(); // Prevent form submission
+        }else {
+            var cvv = document.getElementById("cvv");
+            if (cvv.value.length > 4) {
+              alert("cvv cannot exceed 16 characters");
+              event.preventDefault(); // Prevent form submission
+            } else {
+                event.preventDefault(); // Prevent the default form submission
+                submitPaymentInfo(userId);
+                placeOrder();
+
+                // Delay the redirection by resetting the form after a short delay
+                setTimeout(function() {
+                  form.reset();
+                  /*window.location.href = 'placed-order.html'; // Redirect to the destination page*/
+                }, 500); // Adjust the delay as needed 
+              }
+        }
     });
   });
 
@@ -1039,7 +1080,6 @@ function blogPage() {
   };
 }
 
-
 function singleBlogPage(){
 
   // Function to format blog text before adding it to the article content
@@ -1098,7 +1138,6 @@ function singleBlogPage(){
   };
 
 }
-
 
 function singleBookPage(){
   // Function to fetch book data from PHP API
@@ -1182,6 +1221,15 @@ function singleBookPage(){
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     // Handle success (e.g., show a success message)
+                    // Parse the JSON response
+                    var response = JSON.parse(xhr.responseText);
+                    // Check if the response indicates success
+                    if (response.success) {
+                        // Access the cartId from the response
+                        var cartId = response.cartId;
+                        console.log("Cart ID:", cartId);
+                        localStorage.setItem("cartId", cartId);
+                    }
                     alert('Product added to cart!');
                 } else {
                     // Handle error (e.g., show an error message)
@@ -1215,6 +1263,7 @@ function singleBookPage(){
         var bookId = getBookIdFromURL();
 
         addToCart(bookId);
+        console.log("cart id in add to cart " + localStorage.getItem("cartId"));
     });
 
   });

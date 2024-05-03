@@ -43,7 +43,7 @@ try {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        echo json_encode(array("success" => true));
+        echo json_encode(array("success" => true, "cartId" => $cartId));
     } else {
         echo json_encode(array("success" => false, "message" => "Failed to add product to cart."));
     }
