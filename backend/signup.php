@@ -60,8 +60,8 @@ $password = $_POST['password'];
 $hashedPassword = hash('sha256', $password);
 
 // SQL query to insert user data into the database
-$sql = "INSERT INTO users (First_name, Last_name, email, username, password, addresses_idaddresses, `user-types_iduser-types`)
-        VALUES (?, ?, ?, ?, ?, NULL, 2)";
+$sql = "INSERT INTO users (First_name, Last_name, email, username, password, `user-types_iduser-types`)
+        VALUES (?, ?, ?, ?, ?, 2)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssss", $FirstName, $LastName, $email, $username, $hashedPassword);

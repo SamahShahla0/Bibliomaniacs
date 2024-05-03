@@ -1471,10 +1471,73 @@ function favoritesPage() {
 }
 
 function orderPlacedPage(){
+
+
+  function sendEmail(userId, orderId) {
+    fetch('http://localhost/Bibliomaniacs/backend/send_email_order_confirm.php', { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId: userId,
+        orderId: orderId
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        console.log('Email sent successfully');
+      } else {
+        console.error('Failed to send email:', data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error sending email:', error);
+    });
+  }
+  
+  //Function to delete cart records via AJAX
+  function deleteCartRecords(cartId) {
+      // Create a new XMLHttpRequest object
+      var xhr = new XMLHttpRequest();
+
+      // Define the request parameters
+      xhr.open('POST', 'http://localhost/Bibliomaniacs/backend/clear_cart.php', true);
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      // Define the success and error handlers
+      xhr.onload = function() {
+          if (xhr.status >= 200 && xhr.status < 300) {
+              console.log(xhr.responseText); // Print response to console
+              // Handle response as needed
+          } else {
+              console.error('Request failed with status:', xhr.status); // Print error to console
+              // Handle error as needed
+          }
+      };
+
+      xhr.onerror = function() {
+          console.error('Request failed'); // Print error to console
+          // Handle error as needed
+      };
+
+      // Send the request with the cart_id as data
+      xhr.send('cartId=' + encodeURIComponent(cartId));
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     var orderid = document.getElementById("order_id");
     var orderId = localStorage.getItem("orderid");
     orderid.textContent = "#" + orderId;
+
+    var userId = localStorage.getItem("userId");
+    sendEmail(userId, orderId);
+    localStorage.removeItem("orderid");
+
+    var cartId = localStorage.getItem("cartId");
+    // Call the function to delete cart records
+    deleteCartRecords(cartId);
 
   });
 }
