@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 // Check if user ID exists in the URL query parameters
 if(isset($_GET['idusers'])) {
-    $userId = $_GET['iduserss'];
+    $userId = $_GET['idusers'];
 
     // Check if the request method is POST and form data is set
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['city'], $_POST['street'], $_POST['building'], $_POST['floor'])) {
