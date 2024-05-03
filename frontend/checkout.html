@@ -80,11 +80,11 @@
             <img src="/images/credit-card.jpg" class="circle-img" alt="logo" />
           </div>
           <div class="rightside">
-            <form action="">
+            <form action="" id="checkoutForm">
               <h1>CheckOut</h1>
               <h3>Payment Information</h3>
               <p>Cardholder Name</p>
-              <input type="text" class="inputbox" name="name" required />
+              <input type="text" class="inputbox" name="holderName" required />
               <p>Card Number</p>
               <input
                 type="number"
@@ -106,7 +106,7 @@
                 <input
                   type="date"
                   class="inputbox"
-                  name="exp_date"
+                  name="expiry_date"
                   id="exp_date"
                   required
                 />
@@ -121,11 +121,7 @@
                 />
               </div>
               <p></p>
-              <button
-                type="submit"
-                class="btn place-order-btn"
-                onclick="redirectToPage('placed-order.html')"
-              >
+              <button type="submit" class="btn place-order-btn">
                 Place Order
               </button>
             </form>

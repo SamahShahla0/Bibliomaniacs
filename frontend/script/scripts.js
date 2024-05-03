@@ -867,10 +867,61 @@ function MyAccountPage() {
 
 function checkoutPage (){
 
+  function submitPaymentInfo(userId) {
+    // Collect form data
+    var holderName = document.querySelector('input[name="holderName"]').value;
+    var cardNumber = document.querySelector('input[name="card_number"]').value;
+    var cardType = document.querySelector('select[name="card_type"]').value;
+    var expiry_date = document.querySelector('input[name="expiry_date"]').value;
+    var cvv = document.querySelector('input[name="cvv"]').value;
+
+    // Create a FormData object to send form data as key-value pairs
+    var formData = new FormData();
+    formData.append('holderName', holderName);
+    formData.append('card_number', cardNumber);
+    formData.append('card_type', cardType);
+    formData.append('expiry_date', expiry_date);
+    formData.append('cvv', cvv);
+
+    // Make a POST request to the API endpoint
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/Bibliomaniacs/backend/set_payment_info.php?userId=" + userId, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // Request was successful, handle the response
+                console.log(xhr.responseText);
+                // Redirect to the checkout page or perform any other action
+            } else {
+                // Request failed, handle the error
+                console.error("Error: " + xhr.statusText);
+            }
+        }
+    };
+    // Send the FormData object as the request body
+    xhr.send(formData);
+}
+
+
+
+
+
+
   document.addEventListener('DOMContentLoaded', function() {
-    console.log(localStorage.getItem('total'));
+    var userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+
+    var form = document.getElementById('checkoutForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        submitPaymentInfo(userId);
+        // Delay the redirection by resetting the form after a short delay
+        setTimeout(function() {
+          form.reset();
+          window.location.href = 'placed-order.html'; // Redirect to the destination page
+        }, 500); // Adjust the delay as needed 
+    });
   });
-  
+
 }
 
 
