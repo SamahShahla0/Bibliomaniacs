@@ -112,6 +112,9 @@ else if(pPath == "favorites.html"){
 else if(pPath == "checkout.html"){
   checkoutPage();
 }
+else if(pPath == "placed-order.html"){
+  orderPlacedPage();
+}
 
 
 // Define functions for each page
@@ -865,6 +868,7 @@ function MyAccountPage() {
  
 }
 
+
 function checkoutPage (){
 
   function submitPaymentInfo(userId) {
@@ -900,7 +904,7 @@ function checkoutPage (){
     };
     // Send the FormData object as the request body
     xhr.send(formData);
-}
+  }
 
   function placeOrder() {
     // Retrieve total and cart ID from local storage
@@ -923,6 +927,9 @@ function checkoutPage (){
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Handle the response from the server if needed
+            var responseObj = JSON.parse(xhr.responseText);
+            var orderId = responseObj.orderId; 
+            localStorage.setItem("orderid", orderId);
             console.log(xhr.responseText);
         }
     };
@@ -930,9 +937,6 @@ function checkoutPage (){
     // Convert data object to JSON format before sending
     xhr.send(JSON.stringify(data));
   }
-
-
-
 
   document.addEventListener('DOMContentLoaded', function() {
     var userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
@@ -956,8 +960,8 @@ function checkoutPage (){
                 // Delay the redirection by resetting the form after a short delay
                 setTimeout(function() {
                   form.reset();
-                  /*window.location.href = 'placed-order.html'; // Redirect to the destination page*/
-                }, 500); // Adjust the delay as needed 
+                  window.location.href = 'placed-order.html';
+                }, 500);
               }
         }
     });
@@ -999,6 +1003,7 @@ function contactUsPage(){
   handleContactForm(); 
 
 }
+
 
 function blogPage() {
   let numBlogsDisplayed = 0; // Track the number of blogs already displayed
@@ -1080,6 +1085,7 @@ function blogPage() {
   };
 }
 
+
 function singleBlogPage(){
 
   // Function to format blog text before adding it to the article content
@@ -1138,6 +1144,7 @@ function singleBlogPage(){
   };
 
 }
+
 
 function singleBookPage(){
   // Function to fetch book data from PHP API
@@ -1288,6 +1295,7 @@ function singleBookPage(){
   fetchBook(bookId);
 
 }
+
 
 function favoritesPage() {
   const cardContainer = document.getElementById("card-container");
@@ -1460,5 +1468,14 @@ function favoritesPage() {
   }
   
 
+}
+
+function orderPlacedPage(){
+  document.addEventListener("DOMContentLoaded", function() {
+    var orderid = document.getElementById("order_id");
+    var orderId = localStorage.getItem("orderid");
+    orderid.textContent = "#" + orderId;
+
+  });
 }
 

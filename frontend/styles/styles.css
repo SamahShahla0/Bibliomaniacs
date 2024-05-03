@@ -2390,6 +2390,7 @@ a.remove {
   box-shadow: 5px 5px 10px grey;
   text-align: center;
   padding: 100px;
+  padding-top: 60px;
 }
 
 .hr-container {
