@@ -122,7 +122,74 @@ else if(pPath == "placed-order.html"){
 
 
 function landingPage() {
-  showDivs(slideIndex);
+
+  document.addEventListener("DOMContentLoaded", function() {
+    /* ads section --------------------------------------------------------*/
+    fetch('http://localhost/Bibliomaniacs/backend/fetch_ads.php')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(function(ad) {
+                var adDiv = document.createElement('div');
+                adDiv.classList.add('hero-content', 'mySlides', 'ad-div');
+                adDiv.innerHTML = `
+                    <div class="hero-overlay">
+                        <div class="hero-wrapper">
+                            <div class="hero-wrapper-one">
+                                <p class="ad-tag-line">${ad.ad_tagline}</p>
+                                <h1 class="ad-title">${ad.ad_title}</h1>
+                                <p class="ad-description">${ad.ad_desc}</p>
+                                <button class="hero-button" data-type="${ad.is_article === '1' ? 'article' : 'book'}" data-title="${ad.ad_title}">Learn more</button>
+                            </div>
+                            <div class="hero-wrapper-two">
+                                <img class="ad-img" src="data:image/webp;base64,${ad.ad_img_64}" />
+                            </div>
+                        </div>
+                    </div>`;
+                document.querySelector('.hero-content.hero-display-container').appendChild(adDiv);
+            });
+
+            showDivs(slideIndex);
+            
+            // Add event listener to 'Learn more' buttons
+            document.querySelectorAll('.hero-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    var adType = this.getAttribute('data-type');
+                    var adTitle = this.getAttribute('data-title');
+                    redirectToPage(adType, adTitle);
+                });
+            });
+        })
+        .catch(error => console.error('Error fetching ads:', error));
+
+
+
+  });
+
+
+  function redirectToPage(type, title) {
+    console.log("Type:", type);
+    var pageUrl = type === 'article' ? 'single-article.html' : 'single-book-page.html';
+    var idKey = type === 'article' ? 'idblogs' : 'idbooks'; // Key for fetching ID based on type
+    
+    // Fetch the ID of the article/book based on its title and type
+    fetch('http://localhost/Bibliomaniacs/backend/fetch_id.php?type=' + encodeURIComponent(type) + '&title=' + encodeURIComponent(title))
+        .then(response => response.json())
+        .then(data => {
+            var id = data[idKey]; // Assuming the response contains the ID for the specific type
+            if (pageUrl === 'single-article.html'){
+              window.location.href = pageUrl + '?idblogs=' + id;
+            }else{
+              window.location.href = pageUrl + '?idbooks=' + id;
+            }
+            
+            
+        })
+        .catch(error => console.error('Error fetching ID:', error));
+  }
+
+
+
+
   
 }
 
