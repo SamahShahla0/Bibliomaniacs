@@ -634,9 +634,22 @@ async function catalogPage() {
             populateCategoryList(categories);
         })
         .catch(error => console.error('Error fetching category data:', error));
-}
+  }
 
 
+  function fetchBooksByCategoryFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get('category');
+    const defaultCategoryId = 1;
+  
+    if (categoryId) {
+      fetchBooksByCategory(categoryId);
+    } else {
+      // Default behavior if no category is specified
+      fetchBooksByCategory(defaultCategoryId);
+    }
+  }
+  
   window.onload = async function () {
     getCategories();
 
@@ -645,6 +658,7 @@ async function catalogPage() {
       addCards(currentPage + 1);
     });
 
+    fetchBooksByCategoryFromURL();
     
   };
 
