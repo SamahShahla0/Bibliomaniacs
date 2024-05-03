@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: POST, GET");
 header("Access-Control-Allow-Headers: Content-Type");
 
 include 'connection.php'; 
@@ -28,8 +28,7 @@ if ($result_carts->num_rows > 0) {
                           FROM cart_details
                           INNER JOIN books ON cart_details.books_book_id = books.idbooks
                           WHERE cart_details.carts_cart_id = $idcarts";
-    /*$stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $user_id);*/
+
 
     $result_cart_contents = $conn->query($sql_cart_contents);
 

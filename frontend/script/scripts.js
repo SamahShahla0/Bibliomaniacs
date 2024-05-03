@@ -109,6 +109,9 @@ else if(pPath == "single-book-page.html"){
 else if(pPath == "favorites.html"){
   favoritesPage()
 }
+else if(pPath == "checkout.html"){
+  checkoutPage();
+}
 
 
 // Define functions for each page
@@ -251,6 +254,24 @@ function cartPage() {
     xhr.send("bookId=" + bookId);
   }
 
+  // Function to update subtotal based on cart contents
+  function updateSubtotal() {
+    var cartItems = document.querySelectorAll('.prodTotal p');
+    var subtotal = 0;
+
+    cartItems.forEach(function(item) {
+        // Extract the numerical value from the text content
+        var itemTotal = parseFloat(item.textContent.substring(1)); // Remove the '$' sign and parse as float
+        subtotal += itemTotal;
+    });
+
+    // Update the subtotal value in the HTML
+    var subtotalElement = document.querySelector('.subtotal .value');
+    var totalElement = document.querySelector('.subtotal .total');
+    subtotalElement.textContent = '$' + subtotal;
+    totalElement.textContent = '$' + subtotal;
+  }
+
     // Function to fetch cart contents and update cart display
   function updateCartDisplay(userId) {
     // Make AJAX request to the PHP API endpoint
@@ -273,7 +294,7 @@ function cartPage() {
                                 <img src="data:image/webp;base64,${item.image_base64}" alt="" class="itemImg">
                                 <p class="itemNumber">#${item.book_id}</p>
                                 <h3>${item.title}</h3>
-                                <p><input type="text" class="cart-qty" value="${item.quantity}" /> x $${item.price}</p>
+                                <p><input type="text" class="cart-qty" data-bookId="${item.book_id}" value="${item.quantity}" /> x $${item.price}</p>
                             </div>
                             <div class="prodTotal cartSection">
                                 <p>$${item.total}</p>
@@ -287,7 +308,11 @@ function cartPage() {
                     listItem.querySelector('.remove').addEventListener('click', function(e) {
                       e.preventDefault();
                       deleteBookFromCart(item.book_id);
-                  });
+                    });
+
+                  cartList.appendChild(listItem);
+                  updateSubtotal();
+                  
               });
             } else {
                 // No items in the cart
@@ -299,12 +324,111 @@ function cartPage() {
     xhr.send();
   }
 
+    // Function to handle promo code submission
+  function handlePromoCode() {
+    var promoInput = document.querySelector('input[name="promo"]');
+    var promoCode = promoInput.value.trim(); // Trim whitespace from input
+
+    // Make AJAX request to check if the promo code exists and get the discount percentage
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/Bibliomaniacs/backend/check_promo_code.php?promoCode=" + promoCode, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse JSON response
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                // Promo code exists, apply discount
+                var discountPercentage = response.discountPercentage;
+                var subtotalElement = document.querySelector('.subtotal .value');
+                var subtotal = parseFloat(subtotalElement.textContent.substring(1)); // Remove '$' sign and parse as float
+
+                // Calculate discount amount
+                var discountAmount = parseFloat((subtotal * discountPercentage / 100).toFixed(2));
+                var discountedSubtotal = parseFloat((subtotal - discountAmount).toFixed(2));
+
+                // Update subtotal and discount elements in the HTML
+                var discountElement = document.querySelector('.subtotal .discount');
+                var totalElement = document.querySelector('.subtotal .total');
+
+                discountElement.textContent = '-$' + discountAmount;
+                totalElement.textContent = '$' + discountedSubtotal;
+            } else {
+                // Promo code does not exist or is invalid
+                console.log('Invalid promo code');
+                alert("invalid promo code");
+            }
+        }
+    };
+    xhr.send();
+  }
+
+    // Function to handle quantity change
+  function handleQuantityChange(bookId, newQuantity) {
+    // Make AJAX request to update the quantity in the database
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/Bibliomaniacs/backend/update_quantity.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Upon successful update in the database, recalculate item total, subtotal, and total
+            var userId = localStorage.getItem('userId');
+            updateCartDisplay(userId);
+
+        }
+    };
+
+    // Prepare data to send in the request body
+    var params = "bookId=" + bookId + "&quantity=" + newQuantity;
+
+    // Send the request
+    xhr.send(params);
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
-    // Example usage:
-    var userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+
+    console.log("DOMContentLoaded event fired");
+  
+    const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
     updateCartDisplay(userId); // Update cart display based on user ID
+    // Attach event listener to handle promo code submission
+    var promoButton = document.querySelector('.promoCode a');
+    promoButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      handlePromoCode();
+    });
+
+
+    // Delegate event listener to the document for change events on quantity input fields
+    document.addEventListener('change', function(event) {
+      if (event.target.classList.contains('cart-qty')) {
+          var bookId = event.target.getAttribute('data-bookId');
+          var newQuantity = parseInt(event.target.value);
+          handleQuantityChange(bookId, newQuantity);
+      }
+  
+    });
+
+
+    // Select the checkout button element
+    var checkoutBtn = document.querySelector('.checkout-btn');
+
+    // Add event listener to the checkout button
+    checkoutBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Retrieve the total value
+        var total = document.querySelector('.subtotal .total').textContent;
+
+        // Save the total in local storage
+        localStorage.setItem('total', total);
+
+        // Redirect to the checkout page
+        window.location.href = checkoutBtn.href;
+    });
 
   });
+
 }
 
 
@@ -741,7 +865,13 @@ function MyAccountPage() {
  
 }
 
+function checkoutPage (){
 
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log(localStorage.getItem('total'));
+  });
+  
+}
 
 
 function contactUsPage(){
