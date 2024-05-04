@@ -155,7 +155,7 @@ function landingPage() {
                 button.addEventListener('click', function() {
                     var adType = this.getAttribute('data-type');
                     var adTitle = this.getAttribute('data-title');
-                    redirectToPage(adType, adTitle);
+                    redirectPage(adType, adTitle);
                 });
             });
         })
@@ -188,10 +188,86 @@ function landingPage() {
         }
     });
 
+    function fetchNewestBooks() {
+      fetch("http://localhost/Bibliomaniacs/backend/newest_books.php")
+          .then(response => response.json())
+          .then(data => {
+              // Call function to populate HTML with book data
+              populateNewestBooks(data);
+              // Initialize Flickity slider
+              initFlickity();
+          })
+          .catch(error => console.error("Error fetching newest books:", error));
+    }
+
+    // Function to populate the HTML with book data
+    function populateNewestBooks(books) {
+        const bookSlide = document.querySelector(".book-slide");
+
+        // Loop through each book in the data array
+        books.forEach(book => {
+            // Create HTML elements for the book
+            const bookCell = document.createElement("div");
+            bookCell.classList.add("book-cell");
+
+            const bookImg = document.createElement("div");
+            bookImg.classList.add("book-img");
+
+            const img = document.createElement("img");
+            img.classList.add("book-photo");
+            img.src = 'data:image/webp;base64,' + book.image_base64;
+            img.alt = ""; // Add alt text for accessibility
+            bookImg.appendChild(img);
+
+            const bookContent = document.createElement("div");
+            bookContent.classList.add("book-content");
+
+            const title = document.createElement("div");
+            title.classList.add("book-title");
+            title.textContent = book.tittle;
+
+            const author = document.createElement("div");
+            author.classList.add("book-author");
+            author.textContent = "by " + book.author;
+
+            const summary = document.createElement("div");
+            summary.classList.add("book-sum");
+            summary.textContent = book.short_desc; // Assuming short_desc contains the summary
+
+            const button = document.createElement("button");
+            button.classList.add("btn");
+            button.textContent = "See The Book";
+            button.addEventListener("click", function() {
+                var link = "single-book-page.html?idbooks=" + book.idbooks;
+                redirectToPage(link); 
+            });
+
+            // Append elements to the bookCell
+            bookContent.appendChild(title);
+            bookContent.appendChild(author);
+            bookContent.appendChild(summary);
+            bookContent.appendChild(button);
+
+            bookCell.appendChild(bookImg);
+            bookCell.appendChild(bookContent);
+
+            // Append bookCell to the bookSlide
+            bookSlide.appendChild(bookCell);
+        });
+    }
+
+    // Function to initialize Flickity slider
+    function initFlickity() {
+      const flkty = new Flickity('.book-slide', {
+          wrapAround: true
+      });
+    }
+    // Call function to fetch newest books data
+    fetchNewestBooks();
   });
 
 
-  function redirectToPage(type, title) {
+  function redirectPage(type, title) {
     console.log("Type:", type);
     var pageUrl = type === 'article' ? 'single-article.html' : 'single-book-page.html';
     var idKey = type === 'article' ? 'idblogs' : 'idbooks'; // Key for fetching ID based on type
@@ -1259,7 +1335,14 @@ function singleBookPage(){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var bookData = JSON.parse(this.responseText);
+            document.getElementById("bookNotFound").textContent ='';
+            document.getElementById("addToCart").style.display = 'inline-block';
+            document.getElementById("addToFavoritesButton").style.display = 'inline-block';
             displayBook(bookData);
+        }else {
+          document.getElementById("addToCart").style.display = 'none';
+          document.getElementById("addToFavoritesButton").style.display = 'none';
+          document.getElementById("bookNotFound").textContent = "Book not found :(";
         }
     };
     xhttp.open("GET", "http://localhost/Bibliomaniacs/backend/get_single_book.php?idbooks=" + bookId, true);

@@ -416,7 +416,7 @@ ul{
  }
  .book-title {
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: none;
   overflow: hidden;
   font-weight: 600;
  }
@@ -428,8 +428,11 @@ ul{
   overflow: hidden;
  }
  .book-sum {
+  height: 60px;
   margin-top: 20px;
   font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: none;
   overflow: hidden;
   display: -webkit-box;
  }
@@ -2579,7 +2582,7 @@ a.remove {
       flex-direction: column;
       align-items: center;
       justify-content: first baseline;
-      margin-left: -9px;
+      margin-left: -20px;
       transition: transform 0.5s ease-in-out;
       box-shadow:  5px 0px 10px 0px #aaa;
       overflow: scroll;
