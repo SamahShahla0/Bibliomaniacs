@@ -26,7 +26,6 @@ function showDivs(n) {
 
 function redirectToPage(pageName) {
   // Redirect to the target page
-  console.log("testtt testt")
   window.location.href = pageName;
 }
 
@@ -58,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle the response from the server
         console.log(xhr.responseText);
         alert('Subscription successful!');
-        // Optionally, reset the form after successful submission
         form.reset();
       } else {
         console.error('Error sending email:', xhr.statusText);
@@ -177,7 +175,6 @@ function landingPage() {
               })
               .then(idbooks => {
                   // Redirect to the HTML page with the received idbooks parameter
-                  /*console.log("single-book-page.html?idbooks=" + idbooks)*/
                   window.location.href = 'single-book-page.html?idbooks=' + encodeURIComponent(idbooks);
                   searchInput.value = '';
               })
@@ -232,7 +229,7 @@ function landingPage() {
 
             const summary = document.createElement("div");
             summary.classList.add("book-sum");
-            summary.textContent = book.short_desc; // Assuming short_desc contains the summary
+            summary.textContent = book.short_desc; 
 
             const button = document.createElement("button");
             button.classList.add("btn");
@@ -657,7 +654,7 @@ async function catalogPage() {
   
     // Creating anchor element
     const imgAnchor = document.createElement("a");
-    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`; // Replace "your_target_page_url_here" with the URL you want to link to
+    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`;
     
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
@@ -817,7 +814,7 @@ async function catalogPage() {
   }
 
 
-  // Assuming you have a function to retrieve categories from the server
+
   function getCategories() {
     console.log('Fetching categories...');
 
@@ -871,10 +868,9 @@ function MyAccountPage() {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userName');
     
-    // Redirect to sign-in page or refresh the current page
+    // Redirect to sign-in page 
     window.location.href = "http://localhost/Bibliomaniacs/frontend/sign-in-up.html";
-    // Alternatively, you can refresh the current page
-    // window.location.reload();
+
   }
 
   function displayOrders(userId) {
@@ -939,7 +935,6 @@ function MyAccountPage() {
               });
             }
 
-                        // Example: Fetch user information from backend using user ID
             fetch(`http://localhost/Bibliomaniacs/backend/userInfo.php?idusers=${userId}`)
             .then(response => response.json())
             .then(userData => {
@@ -974,7 +969,7 @@ function MyAccountPage() {
                               var response = JSON.parse(xhr.responseText);
                               if (response.success) {
                                   alert('Address updated/inserted successfully');
-                                  // You can redirect the user or do any other action here
+                       
                               } else {
                                   alert('Error occurred');
                                   // Handle error response
@@ -1009,7 +1004,7 @@ function MyAccountPage() {
                               var response = JSON.parse(xhr.responseText);
                               if (response.success) {
                                   alert('Details updated successfully');
-                                  // You can redirect the user or do any other action here
+                                  
                               } else {
                                   alert('Error occurred');
                                   // Handle error response
@@ -1025,7 +1020,7 @@ function MyAccountPage() {
               });
             }
 
-            // DataTable initialization (this part should be replaced with actual DataTable initialization)
+
             var ordersTable = document.getElementById("my-orders-table");
             if (ordersTable) {
               displayOrders(userId);
@@ -1425,7 +1420,7 @@ function singleBookPage(){
     } else {
         // Redirect the user to the login page or show a message indicating they need to log in
         alert('Please log in to add the book to your favorites.');
-        // window.location.href = '/login';
+
     }
   }
 
@@ -1464,9 +1459,8 @@ function singleBookPage(){
         };
         xhr.send(JSON.stringify({ userId: userId, bookId: bookId}));
     } else {
-        // Redirect the user to the login page or show a message indicating they need to log in
         alert('Please log in to add the product to your cart.');
-        // window.location.href = '/login';
+      
     }
   }
 
@@ -1556,7 +1550,7 @@ function favoritesPage() {
   
     // Creating anchor element
     const imgAnchor = document.createElement("a");
-    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`; // Replace "your_target_page_url_here" with the URL you want to link to
+    imgAnchor.href = `single-book-page.html?idbooks=${bookData.idbooks}`;  
     
     const bookImg = document.createElement("img");
     bookImg.className = "book-photo";
@@ -1727,16 +1721,16 @@ function orderPlacedPage(){
       xhr.onload = function() {
           if (xhr.status >= 200 && xhr.status < 300) {
               console.log(xhr.responseText); // Print response to console
-              // Handle response as needed
+             
           } else {
               console.error('Request failed with status:', xhr.status); // Print error to console
-              // Handle error as needed
+           
           }
       };
 
       xhr.onerror = function() {
           console.error('Request failed'); // Print error to console
-          // Handle error as needed
+   
       };
 
       // Send the request with the cart_id as data

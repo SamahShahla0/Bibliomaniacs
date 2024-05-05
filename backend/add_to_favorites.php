@@ -11,7 +11,7 @@ include 'connection.php';
 
 // Get user id from POST parameter
 $data = json_decode(file_get_contents("php://input"));
-$userId = $data->userId; // Assuming the client sends userId along with bookId
+$userId = $data->userId; 
 
 // Get book id from POST parameter
 $bookId = $data->bookId;
