@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliomaniacs - home</title>
+    <title>Bibliomaniacs</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link
       rel="stylesheet"
@@ -56,7 +56,7 @@
                 ></a>
               </li>
               <li>
-                <a href="sign-in-up.html">
+                <a href="my-account.html">
                   <h5>Account</h5>
                   <i class="fa-solid fa-user"></i
                 ></a>
@@ -80,121 +80,8 @@
           <div class="new-section-header-title">My Favorites</div>
         </header>
         <div class="month-deals-section">
-          <div class="month-deals-content">
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">BIG MAGIC BIG</div>
-                <div class="book-author">by Elizabeth Gilbert</div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">
-                  The ultimate guide to Computer Science
-                </div>
-                <div class="book-author">by Elizabeth Gilbert</div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">BIG MAGIC</div>
-                <div class="book-author">
-                  by Leanord
-                  Hofstaterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-                </div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">BIG MAGIC</div>
-                <div class="book-author">by Elizabeth Gilbert</div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">BIG MAGIC</div>
-                <div class="book-author">by Elizabeth Gilbert</div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-            <div class="book-cell">
-              <div class="book-img">
-                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
-              </div>
-              <div class="book-content">
-                <div class="book-title">BIG MAGIC</div>
-                <div class="book-author">by Elizabeth Gilbert</div>
-                <div class="book-sum">
-                  <del>
-                    <span class="amount">€35,00</span>
-                  </del>
-                  <ins>
-                    <span class="amount">€32,50</span>
-                  </ins>
-                </div>
-                <button class="btn">Add To Cart</button>
-              </div>
-            </div>
-          </div>
+          <div class="month-deals-content" id="card-container"></div>
+          <div class="new-section-header-title" id="messageBox"></div>
         </div>
         <div class="dummy-nav-place"></div>
       </section>
@@ -215,7 +102,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="cta-text">
                     <h4>Find us</h4>
-                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                    <span>Maamoura st, Beirut, Lebanon</span>
                   </div>
                 </div>
               </div>
@@ -224,7 +111,7 @@
                   <i class="fas fa-phone"></i>
                   <div class="cta-text">
                     <h4>Call us</h4>
-                    <span>9876543210 0</span>
+                    <span>+961 71 982 881</span>
                   </div>
                 </div>
               </div>
@@ -233,7 +120,7 @@
                   <i class="far fa-envelope-open"></i>
                   <div class="cta-text">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span> bibliomaniacs@outlook.com</span>
                   </div>
                 </div>
               </div>
@@ -252,10 +139,11 @@
                     >
                   </div>
                   <div class="footer-text">
+                    <p>Where Every Page Sparks a Journey</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
-                      sed do eiusmod tempor incididuntut consec tetur
-                      adipisicing elit,Lorem ipsum dolor sit amet.
+                      With personalized recommendations, exclusive events, and a
+                      passion for literary excellence, we're more than just a
+                      bookstore – we're your gateway to limitless imagination.
                     </p>
                   </div>
                   <div class="footer-social-icon">
@@ -309,9 +197,15 @@
                     </p>
                   </div>
                   <div class="subscribe-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email Address" />
-                      <button><i class="fab fa-telegram-plane"></i></button>
+                    <form id="subscribe-form">
+                      <input
+                        type="text"
+                        id="subscriberEmail"
+                        placeholder="Email Address"
+                      />
+                      <button type="submit">
+                        <i class="fab fa-telegram-plane"></i>
+                      </button>
                     </form>
                   </div>
                 </div>

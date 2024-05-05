@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliomaniacs - home</title>
+    <title>Bibliomaniacs</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link
       rel="stylesheet"
@@ -56,7 +56,7 @@
                 ></a>
               </li>
               <li>
-                <a href="sign-in-up.html">
+                <a href="my-account.html">
                   <h5>Account</h5>
                   <i class="fa-solid fa-user"></i
                 ></a>
@@ -77,20 +77,25 @@
       <div class="mainscreen">
         <div class="card">
           <div class="leftside">
-            <img src="/images/credit-card.jpg" class="circle-img" alt="logo" />
+            <img
+              src="http://localhost/Bibliomaniacs/images/credit-card.jpg"
+              class="circle-img"
+              alt="logo"
+            />
           </div>
           <div class="rightside">
-            <form action="">
+            <form action="" id="checkoutForm">
               <h1>CheckOut</h1>
               <h3>Payment Information</h3>
               <p>Cardholder Name</p>
-              <input type="text" class="inputbox" name="name" required />
+              <input type="text" class="inputbox" name="holderName" required />
               <p>Card Number</p>
               <input
                 type="number"
                 class="inputbox"
                 name="card_number"
                 id="card_number"
+                maxlength="16"
                 required
               />
 
@@ -106,7 +111,7 @@
                 <input
                   type="date"
                   class="inputbox"
-                  name="exp_date"
+                  name="expiry_date"
                   id="exp_date"
                   required
                 />
@@ -117,15 +122,12 @@
                   class="inputbox"
                   name="cvv"
                   id="cvv"
+                  maxlength="4"
                   required
                 />
               </div>
               <p></p>
-              <button
-                type="submit"
-                class="btn place-order-btn"
-                onclick="redirectToPage('placed-order.html')"
-              >
+              <button type="submit" class="btn place-order-btn">
                 Place Order
               </button>
             </form>
@@ -148,7 +150,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="cta-text">
                     <h4>Find us</h4>
-                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                    <span>Maamoura st, Beirut, Lebanon</span>
                   </div>
                 </div>
               </div>
@@ -157,7 +159,7 @@
                   <i class="fas fa-phone"></i>
                   <div class="cta-text">
                     <h4>Call us</h4>
-                    <span>9876543210 0</span>
+                    <span>+961 71 982 881</span>
                   </div>
                 </div>
               </div>
@@ -166,7 +168,7 @@
                   <i class="far fa-envelope-open"></i>
                   <div class="cta-text">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span> bibliomaniacs@outlook.com</span>
                   </div>
                 </div>
               </div>
@@ -185,10 +187,11 @@
                     >
                   </div>
                   <div class="footer-text">
+                    <p>Where Every Page Sparks a Journey</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
-                      sed do eiusmod tempor incididuntut consec tetur
-                      adipisicing elit,Lorem ipsum dolor sit amet.
+                      With personalized recommendations, exclusive events, and a
+                      passion for literary excellence, we're more than just a
+                      bookstore – we're your gateway to limitless imagination.
                     </p>
                   </div>
                   <div class="footer-social-icon">
@@ -242,9 +245,15 @@
                     </p>
                   </div>
                   <div class="subscribe-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email Address" />
-                      <button><i class="fab fa-telegram-plane"></i></button>
+                    <form id="subscribe-form">
+                      <input
+                        type="text"
+                        id="subscriberEmail"
+                        placeholder="Email Address"
+                      />
+                      <button type="submit">
+                        <i class="fab fa-telegram-plane"></i>
+                      </button>
                     </form>
                   </div>
                 </div>

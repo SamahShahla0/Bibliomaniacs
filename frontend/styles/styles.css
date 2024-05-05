@@ -215,11 +215,6 @@ ul{
   transition: transform .2s;
 }
 
-.ad-img:hover{
-  cursor: pointer;
-  transform: scale(0.7);
-}
-
 .hero-wrapper-one p {
   font-size: .8725rem;
   color: #F4F4F4;
@@ -420,7 +415,7 @@ ul{
  
  }
  .book-title {
-  text-overflow: ellipsis;
+  text-overflow: ellipsis !important;
   white-space: nowrap;
   overflow: hidden;
   font-weight: 600;
@@ -435,7 +430,6 @@ ul{
  .book-sum {
   margin-top: 20px;
   font-size: 14px;
-  overflow: hidden;
   display: -webkit-box;
  }
  
@@ -673,7 +667,7 @@ ins {
 }
 .latest-blog-content .item {
   padding: 10px;
-  min-height:425px;
+  min-height: 480px;
   text-align: left;
   border: 2px solid;
   border-color: #273C42;
@@ -701,6 +695,10 @@ ins {
   font-size:14px;
   margin-top:15px;
   margin-bottom:0;
+  max-height: 60px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
 }
 
 .latest-blog-content .item .action {
@@ -1486,22 +1484,6 @@ ins {
   border-left: 5px solid #ff5e14;
 }
 
-#articleFooter {
-  margin: 0 6rem 20px 6rem;
-  font-size: 1rem;
-  border-top: solid 1px #ccc;
-}
-.footer-anchor {
-  text-decoration: underline #ff5e14 !important;
-  transition: text-decoration-color 300ms;
-  color: #000;
-  font-weight: bold;
-}
-.footer-anchor:hover {
-  color: #38A3A5;
-  text-decoration-color: #273C42;
-}
-
 /*########################################################################################### */
 /* Start styling contact us page */
 
@@ -1639,22 +1621,12 @@ ins {
   resize: none;
 }
 
-.contact-us-main .contact-form .input-box span {
-  position: absolute;
-  left: 0;
-  padding: 5px 0;
+.contact-us-main .contact-form .input-box ::placeholder {
   font-size: 16px;
   margin: 10px 0;
   pointer-events: none;
-  transition: 0.5s;
-  color: #666;
-}
-
-.contact-us-main .contact-form .input-box input:focus ~ span,
-.contact-form .input-box textarea:focus ~ span{
   color: #ff5e14;
-  font-size: 12px;
-  transform: translateY(-20px);
+  opacity: 0.7;
 }
 
 .contact-us-main .contact-form .input-box input[type="submit"]{
@@ -1745,16 +1717,16 @@ ins {
     .cartSection {
       display: table-cell;
       vertical-align: middle;
+      width: 70%;
       .itemNumber {
         font-size: .75em;
         color: #777;
         margin-bottom: .5em;
       }
       h3 {
-        font-size: 1em;
+        font-size: 0.7em;
         font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: .025em; 
+        text-transform: uppercase; 
       }
       p {
         display: inline-block;
@@ -2017,7 +1989,7 @@ a.remove {
 }
 .genel .single-book-content .sol .para
 {
-  font-size:30px;
+  font-size:26px;
   font-weight:bolder;
 }
 .genel .single-book-content .sol .action
@@ -2054,8 +2026,8 @@ a.remove {
 }
 .genel .single-book-content .sag
 {
-  width:58%;
-  height:90%;  
+  width:48%;
+  height:60%;  
   padding:45px 0;
   position:relative;
 }
@@ -2152,6 +2124,24 @@ a.remove {
   color: #273C42;
   background: #F4F4F4;
   border-color: #ff5e14;
+}
+
+.sign-in-buttons {
+  margin-top: 30px;
+}
+.sign-in-button.hidden {
+  display: none !important;
+}
+.sign-in-button {
+  color: #273c42 !important;
+  border: 2px solid #ff5e14 !important;
+  padding: 10px 20px;
+  margin: 20px;
+  margin-left: 0;
+}
+
+.sign-in-button:hover {
+  color: #38A3A5 !important;
 }
 
 /* Tabs Content Styles */
@@ -2399,6 +2389,7 @@ a.remove {
   box-shadow: 5px 5px 10px grey;
   text-align: center;
   padding: 100px;
+  padding-top: 60px;
 }
 
 .hr-container {
@@ -2587,7 +2578,7 @@ a.remove {
       flex-direction: column;
       align-items: center;
       justify-content: first baseline;
-      margin-left: -9px;
+      margin-left: -20px;
       transition: transform 0.5s ease-in-out;
       box-shadow:  5px 0px 10px 0px #aaa;
       overflow: scroll;
@@ -2825,6 +2816,11 @@ a.remove {
 
   .single-book .dummy-nav-place{
     display: none;
+  }
+
+  .mainscreen .card {
+    flex-direction: column;
+    width:min-content;
   }
 
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliomaniacs - home</title>
+    <title>Bibliomaniacs</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link
       rel="stylesheet"
@@ -56,7 +56,7 @@
                 ></a>
               </li>
               <li>
-                <a href="sign-in-up.html">
+                <a href="my-account.html">
                   <h5>Account</h5>
                   <i class="fa-solid fa-user"></i
                 ></a>
@@ -76,43 +76,26 @@
     <main class="single-book-main">
       <section class="single-book">
         <div class="dummy-nav-place"></div>
+        <div class="new-section-header-title" id="bookNotFound"></div>
         <div class="genel">
           <div class="single-book-content">
             <div class="sol">
-              <h1>INAN BIÇAKLARI İLE MUTFAKDA BICAK DERDİ YOK</h1>
-              <h3>Çelik Tasarım</h3>
-              <p id="bookGeneralDesc">
-                Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor... Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor...
-              </p>
-              <p id="bookGeneralDesc">
-                Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor... Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor...
-              </p>
-              <p id="bookGeneralDesc">
-                Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor... Eşsiz Tasarımı ve Yapısı ile Inan Bıçakları Sizlerle
-                Buluşuyor.Evinizde, Mutfağınızda Inan Bıçakları Kolaylık
-                Sağlıyor...
-              </p>
-              <div class="para">$2.98</div>
+              <h1 id="bookTitle"></h1>
+              <p id="bookAuthor"></p>
+              <p id="bookDescription"></p>
+              <div class="para" id="bookPrice"></div>
               <div class="action">
-                <button><i class="fas fa-shopping-bag"></i> Add To Bag</button>
-                <button><i class="fas fa-heart"></i> Add To Favorites</button>
+                <button id="addToCart">
+                  <i class="fas fa-shopping-bag"></i> Add To Bag
+                </button>
+                <button id="addToFavoritesButton" class="add-to-favorites-btn">
+                  <i class="fas fa-heart"></i>
+                  Add To Favorites
+                </button>
               </div>
             </div>
             <div class="sag">
-              <img
-                src="https://images.pexels.com/photos/952354/pexels-photo-952354.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&"
-                alt=""
-              />
+              <img id="bookImage" alt="" />
             </div>
           </div>
         </div>
@@ -134,7 +117,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="cta-text">
                     <h4>Find us</h4>
-                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                    <span>Maamoura st, Beirut, Lebanon</span>
                   </div>
                 </div>
               </div>
@@ -143,7 +126,7 @@
                   <i class="fas fa-phone"></i>
                   <div class="cta-text">
                     <h4>Call us</h4>
-                    <span>9876543210 0</span>
+                    <span>+961 71 982 881</span>
                   </div>
                 </div>
               </div>
@@ -152,7 +135,7 @@
                   <i class="far fa-envelope-open"></i>
                   <div class="cta-text">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span> bibliomaniacs@outlook.com</span>
                   </div>
                 </div>
               </div>
@@ -171,10 +154,11 @@
                     >
                   </div>
                   <div class="footer-text">
+                    <p>Where Every Page Sparks a Journey</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
-                      sed do eiusmod tempor incididuntut consec tetur
-                      adipisicing elit,Lorem ipsum dolor sit amet.
+                      With personalized recommendations, exclusive events, and a
+                      passion for literary excellence, we're more than just a
+                      bookstore – we're your gateway to limitless imagination.
                     </p>
                   </div>
                   <div class="footer-social-icon">
@@ -228,9 +212,15 @@
                     </p>
                   </div>
                   <div class="subscribe-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email Address" />
-                      <button><i class="fab fa-telegram-plane"></i></button>
+                    <form id="subscribe-form">
+                      <input
+                        type="text"
+                        id="subscriberEmail"
+                        placeholder="Email Address"
+                      />
+                      <button type="submit">
+                        <i class="fab fa-telegram-plane"></i>
+                      </button>
                     </form>
                   </div>
                 </div>

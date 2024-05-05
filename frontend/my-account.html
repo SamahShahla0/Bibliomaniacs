@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliomaniacs - home</title>
+    <title>Bibliomaniacs</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link
       rel="stylesheet"
@@ -57,7 +57,7 @@
                 ></a>
               </li>
               <li>
-                <a href="sign-in-up.html">
+                <a href="my-account.html">
                   <h5>Account</h5>
                   <i class="fa-solid fa-user"></i
                 ></a>
@@ -87,12 +87,24 @@
                       <div class="inner">
                         <h1 class="page-title">My Account</h1>
                         <h3 class="user-name">
-                          Hello <span id="user-username">Yash</span>!
+                          Hello <span id="user-username"></span>!
                         </h3>
                         <p class="description">
-                          Aspernatur magni in repellat repellendus itaque
-                          consequuntur alias necessitatibus.
+                          Feel free to navigate your previous orders, change
+                          your address or update your acoount details.
                         </p>
+                        <div class="sign-in-buttons">
+                          <a
+                            href="sign-in-up.html"
+                            class="btn sign-in-button hidden"
+                            >Sign In</a
+                          >
+                          <a
+                            href="sign-in-up.html"
+                            class="btn sign-in-button hidden"
+                            >Sign Up</a
+                          >
+                        </div>
                       </div>
                     </div>
                     <!-- Column end -->
@@ -151,7 +163,7 @@
                           aria-controls="logout"
                           aria-selected="false"
                           ><i class="fas fa-sign-out-alt"></i>
-                          <span>Logout</span></a
+                          <span>Sign Out</span></a
                         >
                       </li>
                     </ul>
@@ -183,26 +195,7 @@
                               <th>Total</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <td>#8083</td>
-                              <td>Sep 9, 2021</td>
-                              <td>Completed</td>
-                              <td>$350</td>
-                            </tr>
-                            <tr>
-                              <td>#8283</td>
-                              <td>Sep 8, 2021</td>
-                              <td>Pending</td>
-                              <td>$190</td>
-                            </tr>
-                            <tr>
-                              <td>#8483</td>
-                              <td>Sep 7, 2021</td>
-                              <td>Completed</td>
-                              <td>$3999</td>
-                            </tr>
-                          </tbody>
+                          <tbody></tbody>
                         </table>
                       </div>
                       <div
@@ -213,40 +206,50 @@
                       >
                         <div class="address-form">
                           <div class="inner">
-                            <form class="tg-form" action="" method="">
+                            <form
+                              class="tg-form"
+                              action=""
+                              method=""
+                              id="addressForm"
+                            >
                               <div class="form-group">
-                                <label for="inputAddress">Address</label>
+                                <label for="inputAddress">City</label>
                                 <input
                                   type="text"
+                                  name="city"
                                   class="form-control"
                                   id="inputAddress"
                                   placeholder="1234 Main St"
                                 />
                               </div>
                               <div class="form-group">
-                                <label for="inputAddress2">Address 2</label>
+                                <label for="inputAddress2">Street</label>
                                 <input
                                   type="text"
+                                  name="street"
                                   class="form-control"
                                   id="inputAddress2"
-                                  placeholder="Apartment, studio, or floor"
+                                  placeholder="1234 Main St"
                                 />
                               </div>
 
                               <div class="form-group">
-                                <label for="inputCity">City</label>
+                                <label for="inputCity">Building</label>
                                 <input
                                   type="text"
+                                  name="building"
                                   class="form-control"
                                   id="inputCity"
                                 />
                               </div>
                               <div class="form-group">
-                                <label for="inputState">State</label>
+                                <label for="inputState">Floor</label>
                                 <input
                                   type="text"
+                                  name="floor"
                                   id="inputState"
                                   class="form-control"
+                                  placeholder="Apartment, studio, or floor"
                                 />
                               </div>
 
@@ -263,11 +266,17 @@
                       >
                         <div class="account-detail-form">
                           <div class="inner">
-                            <form class="tg-form" action="" method="">
+                            <form
+                              class="tg-form"
+                              action=""
+                              method=""
+                              id="accountDetailForm"
+                            >
                               <div class="form-group col-md-6">
                                 <label for="inputfname">First Name</label>
                                 <input
                                   type="text"
+                                  name="first_name"
                                   class="form-control"
                                   id="inputfname"
                                   placeholder="First Name"
@@ -277,6 +286,7 @@
                                 <label for="inputlname">Last Name</label>
                                 <input
                                   type="text"
+                                  name="last_name"
                                   class="form-control"
                                   id="inputlname"
                                   placeholder="Last Name"
@@ -286,18 +296,10 @@
                                 <label for="inputdname">Display Name</label>
                                 <input
                                   type="text"
+                                  name="display_name"
                                   class="form-control"
                                   id="inputdname"
                                   placeholder="Display Name"
-                                />
-                              </div>
-                              <div class="form-group col-md-12">
-                                <label for="inputEmail4">Email</label>
-                                <input
-                                  type="email"
-                                  class="form-control"
-                                  id="inputEmail4"
-                                  placeholder="Email"
                                 />
                               </div>
 
@@ -323,6 +325,7 @@
     <section class="footer">
       <footer class="footer-section">
         <div class="container">
+          <!-- CTA ==> (call to action) -->
           <div class="footer-cta pt-5 pb-5">
             <div class="row">
               <div class="col-xl-4 col-md-4 mb-30">
@@ -330,7 +333,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="cta-text">
                     <h4>Find us</h4>
-                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                    <span>Maamoura st, Beirut, Lebanon</span>
                   </div>
                 </div>
               </div>
@@ -339,7 +342,7 @@
                   <i class="fas fa-phone"></i>
                   <div class="cta-text">
                     <h4>Call us</h4>
-                    <span>9876543210 0</span>
+                    <span>+961 71 982 881</span>
                   </div>
                 </div>
               </div>
@@ -348,7 +351,7 @@
                   <i class="far fa-envelope-open"></i>
                   <div class="cta-text">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span> bibliomaniacs@outlook.com</span>
                   </div>
                 </div>
               </div>
@@ -367,10 +370,11 @@
                     >
                   </div>
                   <div class="footer-text">
+                    <p>Where Every Page Sparks a Journey</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
-                      sed do eiusmod tempor incididuntut consec tetur
-                      adipisicing elit,Lorem ipsum dolor sit amet.
+                      With personalized recommendations, exclusive events, and a
+                      passion for literary excellence, we're more than just a
+                      bookstore – we're your gateway to limitless imagination.
                     </p>
                   </div>
                   <div class="footer-social-icon">
@@ -424,9 +428,15 @@
                     </p>
                   </div>
                   <div class="subscribe-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email Address" />
-                      <button><i class="fab fa-telegram-plane"></i></button>
+                    <form id="subscribe-form">
+                      <input
+                        type="text"
+                        id="subscriberEmail"
+                        placeholder="Email Address"
+                      />
+                      <button type="submit">
+                        <i class="fab fa-telegram-plane"></i>
+                      </button>
                     </form>
                   </div>
                 </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliomaniacs - home</title>
+    <title>Bibliomaniacs</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link
       rel="stylesheet"
@@ -60,7 +60,7 @@
                 ></a>
               </li>
               <li>
-                <a href="sign-in-up.html">
+                <a href="my-account.html">
                   <h5>Account</h5>
                   <i class="fa-solid fa-user"></i
                 ></a>
@@ -84,10 +84,10 @@
           <div class="container">
             <h2>Contact Us</h2>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Have a question about our products or policies? Need assistance
+              with an order? We're here to help! Please don't hesitate to
+              contact us using the information provided below. Our dedicated
+              team is ready to assist you with any inquiries you may have.
             </p>
           </div>
         </div>
@@ -102,10 +102,7 @@
 
                 <div class="contact-info-content">
                   <h4>Address</h4>
-                  <p>
-                    4671 Sugar Camp Road,<br />
-                    Owatonna, Minnesota, <br />55060
-                  </p>
+                  <p>Maamoura st, Beirut, Lebanon</p>
                 </div>
               </div>
 
@@ -116,7 +113,7 @@
 
                 <div class="contact-info-content">
                   <h4>Phone</h4>
-                  <p>571-457-2321</p>
+                  <p>+961 71 982 881</p>
                 </div>
               </div>
 
@@ -127,36 +124,42 @@
 
                 <div class="contact-info-content">
                   <h4>Email</h4>
-                  <p>ntamerrwael@mfano.ga</p>
+                  <p>bibliomaniacs@outlook.com</p>
                 </div>
               </div>
             </div>
 
             <div class="contact-form">
-              <form action="" id="contactForm">
+              <form id="contactForm">
                 <h2>Send Message</h2>
                 <div class="input-box">
-                  <input type="text" required="true" name="" />
-                  <span>Full Name</span>
-                </div>
-
-                <div class="input-box">
-                  <input type="email" required="true" name="" />
-                  <span>Email</span>
-                </div>
-
-                <div class="input-box">
-                  <textarea required="true" name=""></textarea>
-                  <span>Type your Message...</span>
+                  <input
+                    type="text"
+                    name="full_name"
+                    required="true"
+                    placeholder="Full Name"
+                  />
                 </div>
 
                 <div class="input-box">
                   <input
-                    class="hero-button"
-                    type="submit"
-                    value="Send"
-                    name=""
+                    type="email"
+                    name="sender_email"
+                    required="true"
+                    placeholder="Email"
                   />
+                </div>
+
+                <div class="input-box">
+                  <textarea
+                    name="message"
+                    required="true"
+                    placeholder="Type your Message..."
+                  ></textarea>
+                </div>
+
+                <div class="input-box">
+                  <input class="hero-button" type="submit" value="Send" />
                 </div>
               </form>
             </div>
@@ -176,7 +179,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="cta-text">
                     <h4>Find us</h4>
-                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                    <span>Maamoura st, Beirut, Lebanon</span>
                   </div>
                 </div>
               </div>
@@ -185,7 +188,7 @@
                   <i class="fas fa-phone"></i>
                   <div class="cta-text">
                     <h4>Call us</h4>
-                    <span>9876543210 0</span>
+                    <span>+961 71 982 881</span>
                   </div>
                 </div>
               </div>
@@ -194,7 +197,7 @@
                   <i class="far fa-envelope-open"></i>
                   <div class="cta-text">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span> bibliomaniacs@outlook.com</span>
                   </div>
                 </div>
               </div>
@@ -213,10 +216,11 @@
                     >
                   </div>
                   <div class="footer-text">
+                    <p>Where Every Page Sparks a Journey</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
-                      sed do eiusmod tempor incididuntut consec tetur
-                      adipisicing elit,Lorem ipsum dolor sit amet.
+                      With personalized recommendations, exclusive events, and a
+                      passion for literary excellence, we're more than just a
+                      bookstore – we're your gateway to limitless imagination.
                     </p>
                   </div>
                   <div class="footer-social-icon">
@@ -254,8 +258,7 @@
                         >Our Services</a
                       >
                     </li>
-
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
                   </ul>
                 </div>
               </div>
@@ -271,9 +274,15 @@
                     </p>
                   </div>
                   <div class="subscribe-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email Address" />
-                      <button><i class="fab fa-telegram-plane"></i></button>
+                    <form id="subscribe-form">
+                      <input
+                        type="text"
+                        id="subscriberEmail"
+                        placeholder="Email Address"
+                      />
+                      <button type="submit">
+                        <i class="fab fa-telegram-plane"></i>
+                      </button>
                     </form>
                   </div>
                 </div>
