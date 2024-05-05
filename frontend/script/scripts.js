@@ -411,7 +411,7 @@ function signPage() {
                     localStorage.setItem('userId', data.user.id);
                     localStorage.setItem('userEmail', data.user.email);
                     localStorage.setItem('userName', data.user.username);
-                   
+                    location.reload();
                 // Redirect to the user's account page after successful sign-in
                 window.location.href = `http://localhost/Bibliomaniacs/frontend/my-account.html?idusers=${data.user.id};`
             } else {
@@ -609,19 +609,32 @@ function cartPage() {
     // Select the checkout button element
     var checkoutBtn = document.querySelector('.checkout-btn');
 
-    // Add event listener to the checkout button
-    checkoutBtn.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default link behavior
+    if(!userId){
+      checkoutBtn.style.pointerEvents="none";
+      checkoutBtn.style.cursor="default";
+      /*checkoutBtn.disabled = true;
+      checkoutBtn.classList.add("disabled");*/
+    }else{
+        checkoutBtn.style.pointerEvents="auto";
+        checkoutBtn.style.cursor="pointer";
+        /*checkoutBtn .disabled = false;
+        checkoutBtn.classList.remove("disabled");*/
+      // Add event listener to the checkout button
+        checkoutBtn.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
 
-        // Retrieve the total value
-        var total = document.querySelector('.subtotal .total').textContent;
-       
-        // Save the total in local storage
-        localStorage.setItem('total',  parseFloat(total.substring(1)));
+          // Retrieve the total value
+          var total = document.querySelector('.subtotal .total').textContent;
+        
+          // Save the total in local storage
+          localStorage.setItem('total',  parseFloat(total.substring(1)));
+          console.log("total  = " + localStorage.getItem("total"));
 
-        // Redirect to the checkout page
-        window.location.href = checkoutBtn.href;
-    });
+          // Redirect to the checkout page
+          window.location.href = checkoutBtn.href;
+      });
+    }
+    
 
   });
 
@@ -1149,18 +1162,19 @@ function checkoutPage (){
     var form = document.getElementById('checkoutForm');
     form.addEventListener('submit', function(event) {
         var cardnum = document.getElementById("card_number");
-        if (cardnum.value.length > 16) {
-            alert("card number cannot exceed 16 characters");
+        if (cardnum.value.length > 16 || cardnum.value.length < 16) {
+            alert("card number must be 16 characters");
             event.preventDefault(); // Prevent form submission
         }else {
             var cvv = document.getElementById("cvv");
-            if (cvv.value.length > 4) {
-              alert("cvv cannot exceed 16 characters");
+            if (cvv.value.length > 4 || cvv.value.length < 4 ) {
+              alert("cvv must be 4 characters");
               event.preventDefault(); // Prevent form submission
             } else {
                 event.preventDefault(); // Prevent the default form submission
                 submitPaymentInfo(userId);
                 placeOrder();
+                console.log(localStorage.getItem('total'));
 
                 // Delay the redirection by resetting the form after a short delay
                 setTimeout(function() {
@@ -1744,8 +1758,8 @@ function orderPlacedPage(){
 
     var userId = localStorage.getItem("userId");
     sendEmail(userId, orderId);
-    localStorage.removeItem("orderid");
-
+    //localStorage.removeItem("orderid");
+    console.log(localStorage.getItem("total"));
     var cartId = localStorage.getItem("cartId");
     // Call the function to delete cart records
     deleteCartRecords(cartId);
