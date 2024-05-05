@@ -264,6 +264,34 @@ function landingPage() {
     }
     // Call function to fetch newest books data
     fetchNewestBooks();
+
+
+     // Function to fetch latest blog posts
+     function fetchLatestBlogs() {
+      fetch('http://localhost/Bibliomaniacs/backend/latest_blogs.php')
+      .then(response => response.json())
+      .then(data => {
+          // Display latest blog posts on the webpage
+          const latestBlogSection = document.querySelector('.latest-blog-section');
+          data.forEach(blog => {
+            const blogItem = document.createElement('div');
+            blogItem.classList.add('col-sm-6', 'col-md-4', 'item');
+            const firstLine = blog.blog_text.split('\n')[0]; // Get the first line of the blog text
+            blogItem.innerHTML = `
+                <a href="single-article.html?idblogs=${blog.idblogs}"><img class="img-fluid" src="data:image/webp;base64,${blog.blog_img_64}" /></a>
+                <h3 class="pt-3 name">${blog.blog_title}</h3>
+                <p class="description">${firstLine}</p>
+                <a href="single-article.html?idblogs=${blog.idblogs}" class="action">Read article <i class="fa fa-arrow-circle-right"></i></a>
+            `;
+              // Append blogItem to the latestBlogSection
+              latestBlogSection.querySelector('.row').appendChild(blogItem);
+          });
+      })
+      .catch(error => console.error('Error fetching latest blogs:', error));
+    }
+
+    // Call fetchLatestBlogs function to load latest blogs when the page loads
+    fetchLatestBlogs();
   });
 
 

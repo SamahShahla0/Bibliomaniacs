@@ -415,8 +415,8 @@ ul{
  
  }
  .book-title {
-  text-overflow: ellipsis;
-  white-space: none;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
   overflow: hidden;
   font-weight: 600;
  }
@@ -428,12 +428,8 @@ ul{
   overflow: hidden;
  }
  .book-sum {
-  height: 60px;
   margin-top: 20px;
   font-size: 14px;
-  text-overflow: ellipsis;
-  white-space: none;
-  overflow: hidden;
   display: -webkit-box;
  }
  
