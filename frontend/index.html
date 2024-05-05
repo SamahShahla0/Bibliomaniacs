@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliomaniacs - home</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Rock+Salt"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/cbe57ec8d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  </head>
+  <body>
+    <!-- Start Header section -->
+    <section class="header">
+      <header>
+        <nav class="navbar">
+          <div class="navbar-container container">
+            <input type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+              <li><a href="#">Home</a></li>
+              <li><a href="about-us-services.html">About Us</a></li>
+              <li><a href="catalog.html">Catalog</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li>
+                <a href="favorites.html">
+                  <h5>Favorites</h5>
+                  <i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <h5>Cart</h5>
+                  <i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+              <li>
+                <a href="sign-in-up.html">
+                  <h5>Account</h5>
+                  <i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+            </ul>
+            <h1 class="logo">
+              <span class="biblio">Biblio</span
+              ><span class="maniacs">maniacs</span>
+            </h1>
+          </div>
+        </nav>
+      </header>
+    </section>
+    <!--End header section-->
+    <div class="dummy-nav-place"></div>
+    <!--Start main home sections-->
+    <main class="home-main">
+      <!--Start hero section-->
+      <section>
+        <div class="hero-content hero-display-container">
+          <div class="hero-content mySlides ad-div">
+            <div class="hero-overlay">
+              <div class="hero-wrapper">
+                <div class="hero-wrapper-one">
+                  <p class="ad-tag-line">Premium quality</p>
+                  <h1 class="ad-title">The best men’s watches money can buy</h1>
+                  <p class="ad-description">
+                    Centuries before the advent of smartphones, watches served a
+                    highly practical purpose as efficient, mechanical
+                    time-telling tools. Since then, they have evolved to be
+                    about far more than just function.
+                  </p>
+                  <button class="hero-button">Learn more</button>
+                </div>
+                <div class="hero-wrapper-two">
+                  <img class="ad-img" src="/images/alfshamssati3a1.jpg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-content mySlides ad-div">
+            <div class="hero-overlay">
+              <div class="hero-wrapper">
+                <div class="hero-wrapper-one">
+                  <p class="ad-tag-line">Premium quality</p>
+                  <h1 class="ad-title">Samsouma is so Cool!!!</h1>
+                  <p class="ad-description">
+                    Centuries before the advent of smartphones, watches served a
+                    highly practical purpose as efficient, mechanical
+                    time-telling tools. Since then, they have evolved to be
+                    about far more than just function.
+                  </p>
+                  <button class="hero-button">Learn more</button>
+                </div>
+                <div class="hero-wrapper-two">
+                  <img class="ad-img" src="/images/AOU New Logo.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-content mySlides ad-div">
+            <div class="hero-overlay">
+              <div class="hero-wrapper">
+                <div class="hero-wrapper-one">
+                  <p class="ad-tag-line">Premium quality</p>
+                  <h1 class="ad-title">I'm iin love with a fairyyale.</h1>
+                  <p class="ad-description">
+                    Centuries before the advent of smartphones, watches served a
+                    highly practical purpose as efficient, mechanical
+                    time-telling tools. Since then, they have evolved to be
+                    about far more than just function.
+                  </p>
+                  <button class="hero-button">Learn more</button>
+                </div>
+                <div class="hero-wrapper-two">
+                  <img class="ad-img" src="/images/harrypotter2.jpg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hero-center hero-container hero-controls hero-display-bottommiddle"
+            style="width: 100%"
+          >
+            <div class="hero-left hero-hover-text" onclick="plusDivs(-1)">
+              &#10094;
+            </div>
+            <div class="hero-right hero-hover-text" onclick="plusDivs(1)">
+              &#10095;
+            </div>
+            <span
+              class="hero-badge demo hero-border hero-transparent"
+              onclick="currentDiv(1)"
+            ></span>
+            <span
+              class="hero-badge demo hero-border hero-transparent"
+              onclick="currentDiv(2)"
+            ></span>
+            <span
+              class="hero-badge demo hero-border hero-transparent"
+              onclick="currentDiv(3)"
+            ></span>
+          </div>
+        </div>
+      </section>
+      <!--End hero section-->
+
+      <!-- Start Search bar section-->
+      <div class="search__container">
+        <p class="search__title">Search What To Read Next</p>
+        <input class="search__input" type="text" placeholder="Search" />
+      </div>
+      <!-- End Search bar section -->
+
+      <!--Start new books section-->
+      <section class="new-books">
+        <header class="new-section-header">
+          <div class="new-section-header-title">Newest Books</div>
+        </header>
+
+        <div class="book-slide">
+          <div
+            class="book js-flickity"
+            data-flickity-options='{ "wrapAround": true }'
+          >
+            <div class="book-cell">
+              <div class="book-img">
+                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
+              </div>
+              <div class="book-content">
+                <div class="book-title">BIG MAGIC</div>
+                <div class="book-author">by Elizabeth Gilbert</div>
+                <div class="book-sum">
+                  Readers of all ages and walks of life have drawn inspiration
+                  and empowerment from Elizabeth Gilbert’s books for years.
+                </div>
+                <button
+                  class="btn"
+                  onclick="redirectToPage('single-book-page.html')"
+                >
+                  See The Book
+                </button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img
+                  src="https://i.pinimg.com/originals/a8/b9/ff/a8b9ff74ed0f3efd97e09a7a0447f892.jpg"
+                  alt=""
+                  class="book-photo"
+                />
+              </div>
+              <div class="book-content">
+                <div class="book-title">Ten Thousand Skies Above You</div>
+                <div class="book-author">by Claudia Gray</div>
+                <div class="book-sum">
+                  The hunt for each splinter of Paul's soul sends Marguerite
+                  racing through a war-torn San Francisco.
+                </div>
+                <button class="btn">See The Book</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img
+                  src="https://i.pinimg.com/originals/a8/b9/ff/a8b9ff74ed0f3efd97e09a7a0447f892.jpg"
+                  alt=""
+                  class="book-photo"
+                />
+              </div>
+              <div class="book-content">
+                <div class="book-title">A Tale For The Time Being</div>
+                <div class="book-author">by Ruth Ozeki</div>
+                <div class="book-sum">
+                  In Tokyo, sixteen-year-old Nao has decided there’s only one
+                  escape from her aching loneliness and her classmates’
+                  bullying.
+                </div>
+                <button class="btn">See The Book</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img
+                  src="https://images-na.ssl-images-amazon.com/images/I/81af+MCATTL.jpg"
+                  alt=""
+                  class="book-photo"
+                />
+              </div>
+              <div class="book-content">
+                <div class="book-title">The Great Gatsby</div>
+                <div class="book-author">by F.Scott Fitzgerald</div>
+                <div class="book-sum">
+                  The Great Gatsby, F. Scott Fitzgerald’s third book, stands as
+                  the supreme achievement of his career.
+                </div>
+                <button class="btn">See The Book</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img
+                  src="https://images-na.ssl-images-amazon.com/images/I/81UWB7oUZ0L.jpg"
+                  alt=""
+                  class="book-photo"
+                />
+              </div>
+              <div class="book-content">
+                <div class="book-title">After You</div>
+                <div class="book-author">by Jojo Moyes</div>
+                <div class="book-sum">
+                  Louisa Clark is no longer just an ordinary girl living an
+                  ordinary life. After the transformative six months spent.
+                </div>
+                <button class="btn">See The Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dummy-nav-place"></div>
+      </section>
+      <!--End new books section-->
+
+      <!--Start Our Advantages section-->
+      <section class="our-advantages">
+        <header class="new-section-header">
+          <div class="new-section-header-title">Our Advantages</div>
+        </header>
+        <div class="our-advantages-content row">
+          <div class="advantage">
+            <i class="ri-macbook-line"></i>
+            <h3>Web Design</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="advantage">
+            <i class="ri-store-3-line"></i>
+            <h3>Marketing</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="advantage">
+            <i class="ri-database-2-line"></i>
+            <h3>Data Analysis</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="advantage">
+            <i class="ri-palette-line"></i>
+            <h3>Graphic Design</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="dummy-nav-place"></div>
+      </section>
+      <!--End Our Advantages section-->
+
+      <!-- Start View all categories-->
+      <section class="view-categories">
+        <header class="new-section-header">
+          <div class="new-section-header-title">View All Categories</div>
+        </header>
+        <div class="view-categories-content">
+          <div class="view-cat-menu l-rounded">
+            <ul>
+              <li>
+                <a href="catalog.html" class="icon fa fa-gratipay"
+                  ><span>Romance</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-magic"
+                  ><span>Fiction and Fantasy</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-hourglass-half"
+                  ><span>Biographies and Memories</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-book"
+                  ><span>Litrature and Fantasy</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-graduation-cap"
+                  ><span>Education Curriculum</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-puzzle-piece"
+                  ><span>Crimes and puzzles</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-child"
+                  ><span>kids favorites books</span></a
+                >
+              </li>
+              <li>
+                <a href="catalog.html" class="icon fa fa-trophy"
+                  ><span>award winning</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="dummy-nav-place"></div>
+      </section>
+      <!-- End View all categories -->
+
+      <!-- Start Deals of the Month -->
+      <section class="month-deals">
+        <header class="new-section-header">
+          <div class="new-section-header-title">Deals of The Month</div>
+        </header>
+        <div class="month-deals-section">
+          <div class="month-deals-content">
+            <div class="book-cell">
+              <div class="book-img">
+                <a href="single-book-page.html"
+                  ><img
+                    class="book-photo"
+                    src="/images/harrypotter2.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="book-content">
+                <div class="book-title">BIG MAGIC BIG</div>
+                <div class="book-author">by Elizabeth Gilbert</div>
+                <div class="book-sum">
+                  <del>
+                    <span class="amount">€35,00</span>
+                  </del>
+                  <ins>
+                    <span class="amount">€32,50</span>
+                  </ins>
+                </div>
+                <button class="btn">Add To Cart</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
+              </div>
+              <div class="book-content">
+                <div class="book-title">
+                  The ultimate guide to Computer Science
+                </div>
+                <div class="book-author">by Elizabeth Gilbert</div>
+                <div class="book-sum">
+                  <del>
+                    <span class="amount">€35,00</span>
+                  </del>
+                  <ins>
+                    <span class="amount">€32,50</span>
+                  </ins>
+                </div>
+                <button class="btn">Add To Cart</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
+              </div>
+              <div class="book-content">
+                <div class="book-title">BIG MAGIC</div>
+                <div class="book-author">
+                  by Leanord
+                  Hofstaterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+                </div>
+                <div class="book-sum">
+                  <del>
+                    <span class="amount">€35,00</span>
+                  </del>
+                  <ins>
+                    <span class="amount">€32,50</span>
+                  </ins>
+                </div>
+                <button class="btn">Add To Cart</button>
+              </div>
+            </div>
+            <div class="book-cell">
+              <div class="book-img">
+                <img class="book-photo" src="/images/harrypotter2.jpg" alt="" />
+              </div>
+              <div class="book-content">
+                <div class="book-title">BIG MAGIC</div>
+                <div class="book-author">by Elizabeth Gilbert</div>
+                <div class="book-sum">
+                  <del>
+                    <span class="amount">€35,00</span>
+                  </del>
+                  <ins>
+                    <span class="amount">€32,50</span>
+                  </ins>
+                </div>
+                <button class="btn">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dummy-nav-place"></div>
+      </section>
+      <!-- End Deals of the Month -->
+
+      <!-- Start Latest blog section -->
+      <section class="latest-blog">
+        <header class="new-section-header">
+          <div class="new-section-header-title">Latest Blog</div>
+        </header>
+        <div class="latest-blog-section">
+          <div class="latest-blog-content container">
+            <div class="row">
+              <div class="col-sm-6 col-md-4 item">
+                <a href="single-article.html"
+                  ><img class="img-fluid" src="/images/peakpx (5).jpg"
+                /></a>
+                <h3 class="pt-3 name">Article Title</h3>
+                <p class="description">
+                  Aenean tortor est, vulputate quis leo in, vehicula rhoncus
+                  lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
+                  finibus est, interdum justo suscipit id.
+                </p>
+                <a href="single-article.html" class="action"
+                  >Read article <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </div>
+              <div class="col-sm-6 col-md-4 item">
+                <a href="#"
+                  ><img class="img-fluid" src="/images/color-palette-7.png"
+                /></a>
+                <h3 class="pt-3 name">Article Title</h3>
+                <p class="description">
+                  Aenean tortor est, vulputate quis leo in, vehicula rhoncus
+                  lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
+                  finibus est, interdum justo suscipit id.
+                </p>
+                <a href="#" class="action"
+                  >Read article <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </div>
+              <div class="col-sm-6 col-md-4 item">
+                <a href="#"
+                  ><img class="img-fluid" src="/images/harrypotter2.jpg"
+                /></a>
+                <h3 class="pt-3 name">Article Title</h3>
+                <p class="description">
+                  Aenean tortor est, vulputate quis leo in, vehicula rhoncus
+                  lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
+                  finibus est, interdum justo suscipit id.
+                </p>
+                <a href="#" class="action"
+                  >Read article <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dummy-nav-place"></div>
+      </section>
+      <!-- End Latest blog section -->
+    </main>
+
+    <!--End main home sections-->
+
+    <!--Start footer sections-->
+    <section class="footer">
+      <footer class="footer-section">
+        <div class="container">
+          <!-- CTA ==> (call to action) -->
+          <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="cta-text">
+                    <h4>Find us</h4>
+                    <span>1010 Avenue, sw 54321, chandigarh</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-phone"></i>
+                  <div class="cta-text">
+                    <h4>Call us</h4>
+                    <span>9876543210 0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="far fa-envelope-open"></i>
+                  <div class="cta-text">
+                    <h4>Mail us</h4>
+                    <span>mail@info.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-content pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 mb-50">
+                <div class="footer-widget">
+                  <div class="footer-logo">
+                    <a href="index.html"
+                      ><h1 class="logo">
+                        <span class="biblio">Biblio</span
+                        ><span class="maniacs">maniacs</span>
+                      </h1></a
+                    >
+                  </div>
+                  <div class="footer-text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
+                      sed do eiusmod tempor incididuntut consec tetur
+                      adipisicing elit,Lorem ipsum dolor sit amet.
+                    </p>
+                  </div>
+                  <div class="footer-social-icon">
+                    <span>Follow us</span>
+                    <a href="#"
+                      ><i class="fab fa-facebook-f facebook-bg"></i
+                    ></a>
+                    <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                    <a href="#"
+                      ><i class="fab fa-google-plus-g google-bg"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="footer-widget">
+                  <div class="footer-widget-heading">
+                    <h3>Useful Links</h3>
+                  </div>
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                      <a href="terms-and-conditions-privacy.html"
+                        >Terms and Conditions</a
+                      >
+                    </li>
+                    <li><a href="about-us-services.html">About us</a></li>
+                    <li>
+                      <a href="terms-and-conditions-privacy.html#privacyPolicy"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li>
+                      <a href="about-us-services.html#servicesSection"
+                        >Our Services</a
+                      >
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                <div class="footer-widget">
+                  <div class="footer-widget-heading">
+                    <h3>Subscribe</h3>
+                  </div>
+                  <div class="footer-text mb-25">
+                    <p>
+                      Don’t miss to subscribe to our new feeds, kindly fill the
+                      form below.
+                    </p>
+                  </div>
+                  <div class="subscribe-form">
+                    <form action="#">
+                      <input type="text" placeholder="Email Address" />
+                      <button><i class="fab fa-telegram-plane"></i></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                <div class="copyright-text">
+                  <p>Copyright &copy; 2024, All Right Reserved.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <!--End footer sections-->
+    <script src="script/scripts.js"></script>
+  </body>
+</html>
