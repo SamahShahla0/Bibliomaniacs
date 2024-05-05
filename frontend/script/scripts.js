@@ -1763,6 +1763,9 @@ function orderPlacedPage(){
     var cartId = localStorage.getItem("cartId");
     // Call the function to delete cart records
     deleteCartRecords(cartId);
+    localStorage.removeItem('orderid');
+    localStorage.removeItem('total');
+
 
   });
 }
